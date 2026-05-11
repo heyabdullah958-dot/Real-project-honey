@@ -14,6 +14,7 @@
 
 ## Current State
 - All functional phases from the implementation plan are complete.
+- Science section features 192-frame Cinematic Pour Canvas animation.
 - Build is passing and verified.
 - SEO and Schema markup are integrated.
 

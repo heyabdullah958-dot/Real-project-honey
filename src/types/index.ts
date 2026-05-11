@@ -4,14 +4,14 @@ export interface Product {
   mgo: number;
   price: number;
   size: string;
-  potency: number; // 1-5 stars
+  potency: number; // 1-5 scale for strength/mgo
+  rating: number; // 4 or 5 stars as requested
   description: string;
   benefits: string[];
   bestFor: string;
   antibacterial: string;
   taste: string;
   image: string;
-  imageLid: string;
   tagline: string;
   color: string;
   slug: string;

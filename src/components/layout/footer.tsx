@@ -1,89 +1,180 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, MapPin, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const AnimatedLink = ({ href, children }: { href: string; children: string }) => {
+  return (
+    <Link href={href} className="group relative block w-fit overflow-hidden">
+      <motion.div
+        className="relative flex"
+        initial="rest"
+        whileHover="hover"
+        animate="rest"
+      >
+        {children.split("").map((char, i) => (
+          <motion.span
+            key={i}
+            variants={{
+              rest: { y: 0, opacity: 0.7, color: "#9ca3af" }, // text-text-secondary
+              hover: { 
+                y: [0, -2, 0], 
+                opacity: 1, 
+                color: "#f59e0b", // amber-500
+                transition: { 
+                  duration: 0.4, 
+                  delay: i * 0.02,
+                  ease: [0.22, 1, 0.36, 1] 
+                }
+              }
+            }}
+            className="inline-block whitespace-pre"
+          >
+            {char}
+          </motion.span>
+        ))}
+        {/* Shimmer Overlay */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-500/20 to-transparent w-full h-full skew-x-12"
+          variants={{
+            rest: { x: "-100%" },
+            hover: { 
+              x: "200%",
+              transition: { duration: 0.8, ease: "easeInOut", delay: 0.1 } 
+            }
+          }}
+        />
+      </motion.div>
+    </Link>
+  );
+};
+
+const SocialIcon = ({ icon: Icon, href = "#" }: { icon: React.ElementType; href?: string }) => (
+  <motion.a
+    href={href}
+    whileHover={{ scale: 1.15 }}
+    className="relative group p-2 text-text-secondary hover:text-amber-500 transition-colors duration-300"
+  >
+    <Icon className="w-5 h-5 relative z-10" />
+    <AnimatePresence>
+      <motion.div
+        className="absolute inset-0 bg-amber-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+        initial={{ scale: 0 }}
+        whileHover={{ scale: 1.5, opacity: 1 }}
+        exit={{ scale: 0, opacity: 0 }}
+      />
+    </AnimatePresence>
+    <motion.div
+      className="absolute inset-0 drop-shadow-[0_0_8px_rgba(245,158,11,0.5)] opacity-0 group-hover:opacity-100 transition-opacity"
+    />
+  </motion.a>
+);
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-void border-t border-amber-900/10 pt-16 pb-8 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+    <footer className="bg-[#050505] border-t border-white/10 pt-16 pb-8 px-8 overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 relative z-10 text-center md:text-left justify-items-center md:justify-items-start">
         {/* Brand */}
-        <div className="col-span-1 md:col-span-1">
-          <Link href="/" className="flex items-center gap-3 mb-6">
-            <Image 
-              src="/assets/brand/Amazing_Natures_logo_design_202605111144.jpeg" 
-              alt="Amazing Natures Logo" 
-              width={32} 
-              height={32} 
-              className="w-8 h-8 object-contain rounded-md"
-            />
+        <div className="col-span-1 md:col-span-1 flex flex-col items-center md:items-start">
+          <Link href="/" className="flex items-center gap-3 mb-6 group" aria-label="Amazing Natures Home">
+            <motion.div
+              whileHover={{ rotate: 5, scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Image 
+                src="/assets/brand/Amazing_Natures_logo_design_202605111144.jpeg" 
+                alt="Amazing Natures Logo" 
+                width={32} 
+                height={32} 
+                className="w-8 h-8 object-contain rounded-md"
+              />
+            </motion.div>
             <span className="text-xl font-display font-bold tracking-tight text-text-primary">
               AMAZING <span className="text-amber-500">NATURES</span>
             </span>
           </Link>
-          <p className="text-text-muted text-sm leading-relaxed mb-6">
+          <p className="text-text-muted text-sm leading-relaxed mb-6 max-w-xs">
             Nature&apos;s most potent healing honey, cold-extracted from the pristine wilderness of Australia.
           </p>
-          <div className="flex gap-4">
-            <div className="text-text-secondary hover:text-amber-500 transition-colors">
-              <Mail className="w-5 h-5" />
-            </div>
-            <div className="text-text-secondary hover:text-amber-500 transition-colors">
-              <MapPin className="w-5 h-5" />
-            </div>
-            <div className="text-text-secondary hover:text-amber-500 transition-colors">
-              <ArrowRight className="w-5 h-5" />
-            </div>
+          <div className="flex gap-4 justify-center md:justify-start">
+            <SocialIcon icon={Mail} />
+            <SocialIcon icon={MapPin} />
+            <SocialIcon icon={ArrowRight} />
           </div>
         </div>
 
         {/* Links */}
-        <div>
-          <h4 className="text-amber-500 font-display font-bold mb-6 uppercase tracking-widest text-xs">Shop</h4>
-          <ul className="space-y-4">
-            <li><Link href="/products" className="text-text-secondary hover:text-text-primary transition-colors text-sm">All Honey</Link></li>
-            <li><Link href="/products/mgo-800" className="text-text-secondary hover:text-text-primary transition-colors text-sm">Premium MGO 800+</Link></li>
-            <li><Link href="/wellness-quiz" className="text-text-secondary hover:text-text-primary transition-colors text-sm">Wellness Quiz</Link></li>
-            <li><Link href="/subscriptions" className="text-text-secondary hover:text-text-primary transition-colors text-sm">Subscribe & Save</Link></li>
+        <div className="flex flex-col items-center md:items-start">
+          <h4 className="text-amber-500 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Shop</h4>
+          <ul className="space-y-4 flex flex-col items-center md:items-start">
+            <li><AnimatedLink href="/products">All Honey</AnimatedLink></li>
+            <li><AnimatedLink href="/products/mgo-800">Premium MGO 800+</AnimatedLink></li>
+            <li><AnimatedLink href="/wellness-quiz">Wellness Quiz</AnimatedLink></li>
+            <li><AnimatedLink href="/subscriptions">Subscribe & Save</AnimatedLink></li>
           </ul>
         </div>
 
-        <div>
-          <h4 className="text-amber-500 font-display font-bold mb-6 uppercase tracking-widest text-xs">Information</h4>
-          <ul className="space-y-4">
-            <li><Link href="/about" className="text-text-secondary hover:text-text-primary transition-colors text-sm">Our Story</Link></li>
-            <li><Link href="/science" className="text-text-secondary hover:text-text-primary transition-colors text-sm">Science of MGO</Link></li>
-            <li><Link href="/blog" className="text-text-secondary hover:text-text-primary transition-colors text-sm">Wellness Blog</Link></li>
-            <li><Link href="/contact" className="text-text-secondary hover:text-text-primary transition-colors text-sm">Contact Us</Link></li>
+        <div className="flex flex-col items-center md:items-start">
+          <h4 className="text-amber-500 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Information</h4>
+          <ul className="space-y-4 flex flex-col items-center md:items-start">
+            <li><AnimatedLink href="/about">Our Story</AnimatedLink></li>
+            <li><AnimatedLink href="/science">Science of MGO</AnimatedLink></li>
+            <li><AnimatedLink href="/blog">Wellness Blog</AnimatedLink></li>
+            <li><AnimatedLink href="/contact">Contact Us</AnimatedLink></li>
           </ul>
         </div>
 
-        <div>
-          <h4 className="text-amber-500 font-display font-bold mb-6 uppercase tracking-widest text-xs">Newsletter</h4>
-          <p className="text-text-muted text-sm mb-4">Join our wellness community for 10% off your first order.</p>
-          <form className="flex gap-2">
-            <input 
-              type="email" 
-              placeholder="Email address" 
-              className="bg-earth border border-amber-900/20 rounded-full px-4 py-2 text-sm text-text-primary focus:outline-none focus:border-amber-500 w-full"
+        {/* Newsletter Section */}
+        <div className="relative flex flex-col items-center md:items-start w-full max-w-sm">
+          <h4 className="text-amber-500 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Newsletter</h4>
+          <p className="text-text-muted text-sm mb-6 text-center md:text-left">Join our wellness community for 10% off your first order.</p>
+          
+          <motion.div 
+            className="group relative w-full"
+            whileHover="active"
+          >
+            <motion.div
+              className="absolute -inset-4 bg-amber-500/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 pointer-events-none"
+              variants={{
+                active: {
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.6, 0.3],
+                  transition: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                }
+              }}
             />
-            <button className="w-10 h-10 amber-gradient rounded-full flex items-center justify-center text-void">
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </form>
+            
+            <form className="flex flex-col sm:flex-row gap-3 relative z-10 w-full items-center">
+              <input 
+                type="email" 
+                placeholder="Email address" 
+                className="bg-earth/30 border border-amber-900/20 rounded-2xl px-5 py-4 text-sm text-text-primary focus:outline-none focus:border-amber-500 w-full transition-all duration-500 placeholder:text-text-muted/50 h-14"
+              />
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-14 h-14 amber-gradient rounded-2xl flex items-center justify-center text-void shadow-lg shadow-amber-500/10 shrink-0"
+              >
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+            </form>
+          </motion.div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="max-w-7xl mx-auto pt-8 border-t border-amber-900/5 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-text-muted text-[10px] uppercase tracking-tighter">
+      <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
+        <p className="text-text-muted text-[10px] uppercase tracking-[0.3em] font-bold text-center">
           &copy; {currentYear} AMAZING NATURES. PROUDLY AUSTRALIAN MADE.
         </p>
-        <div className="flex gap-6">
-          <Link href="/policies/privacy" className="text-text-muted hover:text-text-primary text-[10px] uppercase tracking-tighter transition-colors">Privacy Policy</Link>
-          <Link href="/policies/shipping" className="text-text-muted hover:text-text-primary text-[10px] uppercase tracking-tighter transition-colors">Shipping & Returns</Link>
-          <Link href="/policies/terms" className="text-text-muted hover:text-text-primary text-[10px] uppercase tracking-tighter transition-colors">Terms of Service</Link>
+        <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
+          <AnimatedLink href="/policies/privacy">Privacy Policy</AnimatedLink>
+          <AnimatedLink href="/policies/shipping">Shipping & Returns</AnimatedLink>
+          <AnimatedLink href="/policies/terms">Terms of Service</AnimatedLink>
         </div>
       </div>
     </footer>

@@ -51,14 +51,14 @@ export default function ContactPage() {
                        <Mail className="w-6 h-6" />
                     </div>
                     <h4 className="font-bold text-text-primary uppercase tracking-widest text-sm">Email Us</h4>
-                    <p className="text-text-secondary text-sm">hello@amazingnatures.com.au</p>
+                    <p className="text-text-secondary text-sm">zeeshan.ahmed2691@gmail.com</p>
                  </div>
                  <div className="flex flex-col gap-4">
                     <div className="w-12 h-12 amber-gradient rounded-2xl flex items-center justify-center text-void">
                        <Phone className="w-6 h-6" />
                     </div>
                     <h4 className="font-bold text-text-primary uppercase tracking-widest text-sm">Call Us</h4>
-                    <p className="text-text-secondary text-sm">+61 123 456 789</p>
+                    <p className="text-text-secondary text-sm">0405 686 486</p>
                  </div>
               </div>
 

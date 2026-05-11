@@ -1,40 +1,103 @@
-import { Leaf, ShieldCheck, Heart } from "lucide-react";
+"use client";
+
+import { Leaf, ShieldCheck, Heart, Beaker } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+
+const CinematicSection = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+
+  return (
+    <div ref={containerRef} className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[3rem] overflow-hidden group mb-32 shadow-2xl shadow-amber-500/5">
+      <motion.div style={{ y, scale: 1.2 }} className="absolute inset-0">
+        <Image
+          src="/assets/about-hive.jpg"
+          alt="Australian Manuka Hive & Wilderness"
+          fill
+          className="object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+          priority
+        />
+      </motion.div>
+
+      <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent opacity-80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-void/40 via-transparent to-transparent opacity-40" />
+      
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none shadow-[inset_0_0_100px_rgba(212,147,10,0.2)]" />
+
+      <div className="absolute bottom-12 left-12 right-12 flex flex-col md:flex-row justify-between items-end gap-8">
+        <div className="max-w-xl text-left">
+          <span className="text-amber-500 font-bold uppercase tracking-[0.5em] text-[10px] mb-4 block">
+            The Source of Life
+          </span>
+          <h2 className="text-4xl md:text-6xl font-display font-bold text-text-primary">
+            A Sanctuary of <br />
+            <span className="text-amber-500">Pure Bio-Activity.</span>
+          </h2>
+        </div>
+        <div className="flex flex-col items-end">
+          <p className="text-text-muted text-sm max-w-xs text-right mb-6 leading-relaxed">
+            Every drop is a testament to the untamed beauty of the Australian wilderness and the power of monofloral excellence.
+          </p>
+          <div className="w-12 h-[1px] bg-amber-500/50" />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function AboutPage() {
   return (
-    <div className="py-24 px-6">
+    <div className="py-24 px-8 bg-[#050505] min-h-screen">
       <div className="max-w-7xl mx-auto">
-        {/* Hero Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32">
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-col gap-4">
-              <span className="text-amber-500 font-medium tracking-[0.3em] uppercase text-xs">Our Story</span>
-              <h1 className="text-5xl md:text-7xl font-display font-bold text-text-primary">
-                Bottled <span className="text-amber-500">Gold</span> from the Wild.
+        <CinematicSection />
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-32">
+          <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-4 text-left">
+              <span className="text-amber-500 font-bold tracking-[0.4em] uppercase text-[10px]">The Beginning</span>
+              <h1 className="text-5xl md:text-8xl font-display font-bold text-text-primary leading-[1.1]">
+                Bottled <span className="text-amber-500 underline decoration-amber-500/20 underline-offset-8">Gold</span> <br /> from the Wild.
               </h1>
             </div>
-            <p className="text-lg text-text-secondary leading-relaxed max-w-xl">
+            <p className="text-xl text-text-secondary leading-relaxed max-w-xl font-medium text-left">
               Amazing Natures was born from a simple belief: that nature holds the ultimate power for healing and wellness. Our journey began in the pristine wilderness of Australia, where the unique Manuka flower blooms.
             </p>
-            <div className="flex items-center gap-4 p-6 glass-panel rounded-3xl border-amber-500/10">
-               <div className="w-12 h-12 amber-gradient rounded-2xl flex items-center justify-center text-void">
-                 <Leaf className="w-6 h-6" />
-               </div>
-               <div>
-                 <h4 className="font-bold text-text-primary uppercase tracking-widest text-xs">Sustainably Sourced</h4>
-                 <p className="text-text-muted text-xs">Respecting the bees, the land, and the process.</p>
-               </div>
+            
+            <div className="grid grid-cols-2 gap-6">
+              <div className="flex flex-col gap-4 p-8 glass-panel rounded-3xl border-amber-500/10">
+                 <div className="w-12 h-12 amber-gradient rounded-2xl flex items-center justify-center text-void">
+                   <Leaf className="w-6 h-6" />
+                 </div>
+                 <h4 className="font-bold text-text-primary uppercase tracking-widest text-[10px]">Sustainably Sourced</h4>
+              </div>
+              <div className="flex flex-col gap-4 p-8 glass-panel rounded-3xl border-amber-500/10">
+                 <div className="w-12 h-12 amber-gradient rounded-2xl flex items-center justify-center text-void">
+                   <ShieldCheck className="w-6 h-6" />
+                 </div>
+                 <h4 className="font-bold text-text-primary uppercase tracking-widest text-[10px]">Lab Certified</h4>
+              </div>
             </div>
           </div>
-          <div className="relative aspect-[4/5] glass-panel rounded-[3rem] overflow-hidden">
-             <div className="absolute inset-0 amber-gradient opacity-10" />
-             <div className="absolute inset-0 flex items-center justify-center text-text-muted text-sm uppercase tracking-widest">
-               [ Image: Australian Hive & Wilderness ]
-             </div>
+          
+          <div className="relative aspect-[4/5] glass-panel rounded-[4rem] overflow-hidden group">
+             <Image
+               src="/assets/about-hive.jpg"
+               alt="Beekeeping Process"
+               fill
+               className="object-cover transition-transform duration-1000 group-hover:scale-105"
+             />
+             <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent opacity-60" />
           </div>
         </div>
 
-        {/* Values */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
           <div className="flex flex-col gap-6 p-10 glass-panel rounded-[2.5rem]">
              <ShieldCheck className="w-10 h-10 text-amber-500" />
@@ -59,7 +122,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Call to Action */}
         <div className="text-center py-24 glass-panel rounded-[3rem] border-amber-500/10 relative overflow-hidden">
            <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-[100px]" />
            <div className="relative z-10 flex flex-col items-center gap-8 px-6">
@@ -76,6 +138,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-import Link from "next/link";
-import { Beaker } from "lucide-react";

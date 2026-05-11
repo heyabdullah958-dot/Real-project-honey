@@ -42,22 +42,22 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
         isScrolled 
-          ? "bg-void/80 backdrop-blur-lg border-b border-amber-900/20 py-3" 
+          ? "bg-void/80 backdrop-blur-lg border-b border-white/10 py-3" 
           : "bg-transparent"
       )}
       aria-label="Main Navigation"
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group" aria-label="Amazing Natures Home">
+      <div className="max-w-7xl mx-auto flex items-center justify-between relative">
+        {/* Logo - Centered on mobile absolute */}
+        <Link href="/" className="flex items-center gap-3 group relative z-20" aria-label="Amazing Natures Home">
           <Image 
             src="/assets/brand/Amazing_Natures_logo_design_202605111144.jpeg" 
             alt="Amazing Natures Logo" 
             width={40} 
             height={40} 
-            className="w-10 h-10 object-contain rounded-lg"
+            className="w-10 h-10 object-contain rounded-lg shadow-lg shadow-amber-500/10 group-hover:scale-110 transition-transform"
           />
-          <span className="text-xl font-display font-bold tracking-tight text-text-primary">
+          <span className="text-xl font-display font-bold tracking-tight text-text-primary hidden sm:inline-block">
             AMAZING <span className="text-amber-500">NATURES</span>
           </span>
         </Link>

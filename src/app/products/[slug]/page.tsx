@@ -99,9 +99,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2 mb-2">
                  {[...Array(5)].map((_, i) => (
-                   <Star key={i} className={cn("w-4 h-4", i < product.potency ? "fill-amber-500 text-amber-500" : "text-text-muted")} />
-                 ))}
-                 <span className="text-xs text-text-muted uppercase tracking-widest ml-2">Verified Potency</span>
+                   <Star key={i} className={cn("w-4 h-4", i < product.rating ? "fill-amber-500 text-amber-500" : "text-text-muted")} />
+                 ))}                 <span className="text-xs text-text-muted uppercase tracking-widest ml-2">Verified Potency</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-text-primary">
                 {product.name}

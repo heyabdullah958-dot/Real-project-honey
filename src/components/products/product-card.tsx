@@ -83,38 +83,34 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
         }}
       />
 
-      {/* Product Image Section (Frame mapping) */}
+      {/* Product Image Section */}
       <Link href={`/products/${product.slug}`} className="block relative aspect-square overflow-hidden bg-earth/30">
-        {/* BASE LAYER: Frame 4 (Closed Jar) */}
+        {/* BASE LAYER: Product Image */}
         <div className="absolute inset-0 p-8 flex items-center justify-center">
-          <Image
-            src={product.image} // Frame 4
-            alt={product.name}
-            width={400}
-            height={400}
-            className="object-contain transition-transform duration-700 group-hover:scale-105"
-            priority
-          />
+          <motion.div
+            animate={{ 
+              scale: isHovered ? 1.1 : 1,
+              y: isHovered ? -10 : 0
+            }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="relative w-full h-full flex items-center justify-center"
+          >
+            <Image
+              src={product.image}
+              alt={product.name}
+              width={400}
+              height={400}
+              className="object-contain"
+              priority
+            />
+            {/* Subtle Reflection Overlay */}
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none"
+              animate={{ x: isHovered ? ["-100%", "100%"] : "-100%" }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+            />
+          </motion.div>
         </div>
-
-        {/* TOP LAYER: Frame 14 (Open Jar) - Only visible on hover */}
-        <motion.div 
-          className="absolute inset-0 p-8 flex items-center justify-center pointer-events-none"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ 
-            opacity: isHovered ? 1 : 0,
-            y: isHovered ? -10 : 10
-          }}
-          transition={{ type: "spring", stiffness: 200, damping: 20 }}
-        >
-          <Image
-            src={product.imageLid} // Frame 14
-            alt={`${product.name} Open`}
-            width={400}
-            height={400}
-            className="object-contain"
-          />
-        </motion.div>
 
         {/* Badge */}
         <div className="absolute top-6 left-6 z-20">
@@ -143,8 +139,8 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
               <Star
                 key={i}
                 className={cn(
-                  "w-3.5 h-3.5",
-                  i < product.potency ? "fill-amber-500 text-amber-500" : "text-text-muted/30"
+                  "w-3 h-3 transition-colors duration-300",
+                  i < product.rating ? "fill-amber-500 text-amber-500" : "text-text-muted/30"
                 )}
               />
             ))}

@@ -1,10 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Beaker, ShieldCheck, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const FRAME_COUNT = 192;
+const PRIORITY_FRAMES = 10;
 
 const StaggerText = ({ text, className, hover = false }: { text: string; className?: string; hover?: boolean }) => {
   const letters = text.split("");
@@ -122,16 +129,109 @@ const ScienceItem = ({
 
 export const ScienceSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [images, setImages] = useState<HTMLImageElement[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const loadImages = async () => {
+      const imgs: HTMLImageElement[] = [];
+      for (let i = 1; i <= FRAME_COUNT; i++) {
+        const img = new globalThis.Image();
+        const frameNumber = i.toString().padStart(5, "0");
+        img.src = `/honey-frames/${frameNumber}.jpg`;
+        imgs.push(img);
+      }
+
+      try {
+        const priorityPromises = imgs.slice(0, PRIORITY_FRAMES).map(img => {
+          return new Promise((resolve) => {
+            img.onload = () => {
+              if (img.decode) img.decode().then(resolve).catch(resolve);
+              else resolve(null);
+            };
+            if (img.complete) {
+              if (img.decode) img.decode().then(resolve).catch(resolve);
+              else resolve(null);
+            }
+          });
+        });
+        await Promise.all(priorityPromises);
+      } catch (e) {
+        console.error("Priority decode failed", e);
+      }
+
+      setImages(imgs);
+      setIsLoaded(true);
+    };
+
+    loadImages();
+  }, []);
+
+  useEffect(() => {
+    if (!isLoaded || images.length === 0 || !canvasRef.current || !sectionRef.current) return;
+
+    const context = canvasRef.current.getContext("2d", { alpha: false });
+    if (!context) return;
+
+    const canvas = canvasRef.current;
+    const scrollObj = { frame: 0 };
+
+    const renderFrame = (index: number) => {
+      const idx = Math.min(FRAME_COUNT - 1, Math.max(0, index));
+      const img = images[idx];
+      if (!img || !img.complete) return;
+      
+      const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+      const x = (canvas.width / 2) - (img.width / 2) * scale;
+      const y = (canvas.height / 2) - (img.height / 2) * scale;
+      
+      // Clear with background color before drawing
+      context.fillStyle = "#050505";
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(img, x, y, img.width * scale, img.height * scale);
+    };
+
+    const updateCanvasSize = () => {
+      const rect = canvas.parentElement?.getBoundingClientRect();
+      if (rect) {
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        renderFrame(Math.round(scrollObj.frame));
+      }
+    };
+
+    window.addEventListener("resize", updateCanvasSize);
+    updateCanvasSize();
+
+    const trigger = ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: "top center",
+      end: "bottom center",
+      scrub: 1,
+      onUpdate: (self) => {
+        const frameIndex = Math.floor(self.progress * (FRAME_COUNT - 1));
+        renderFrame(frameIndex);
+      }
+    });
+
+    return () => {
+      window.removeEventListener("resize", updateCanvasSize);
+      trigger.kill();
+    };
+  }, [isLoaded, images]);
 
   return (
-    <section className="relative py-32 px-6 overflow-hidden bg-[#050505]">
+    <section ref={sectionRef} className="relative py-32 px-6 overflow-hidden bg-[#050505] min-h-[150vh]">
       {/* Decorative elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div initial="initial" whileInView="animate" viewport={{ once: true }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <motion.div initial="initial" whileInView="animate" viewport={{ once: true }} className="sticky top-32">
             <span className="text-amber-500 font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">
               <StaggerText text="The Science of MGO" />
             </span>
@@ -171,22 +271,26 @@ export const ScienceSection = () => {
             </div>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
-          >
-            <div className="aspect-square rounded-[3rem] overflow-hidden border border-amber-500/20 glass-panel p-2 group">
-              <div className="w-full h-full rounded-[2.5rem] bg-earth/30 relative overflow-hidden flex items-center justify-center">
-                <Image 
-                  src="/honey-frames/ezgif-frame-001.jpg" 
-                  alt="Manuka Honey Potency" 
-                  fill
-                  className="object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[2000ms] ease-out"
-                />
+          <div className="relative lg:sticky lg:top-32 h-[500px] md:h-[600px] w-full">
+            <div className="w-full h-full rounded-[3rem] overflow-hidden border border-amber-500/20 glass-panel p-2 group bg-[#050505]">
+              <div className="w-full h-full rounded-[2.5rem] bg-[#050505] relative overflow-hidden flex items-center justify-center">
+                {!isLoaded ? (
+                  <Image 
+                    src="/honey-frames/00001.jpg" 
+                    alt="Manuka Honey Potency Fallback" 
+                    fill
+                    className="object-contain opacity-60 grayscale group-hover:grayscale-0 transition-all duration-700"
+                    priority
+                  />
+                ) : (
+                  <canvas 
+                    ref={canvasRef} 
+                    className="w-full h-full object-contain"
+                    style={{ background: '#050505' }}
+                  />
+                )}
                 
-                {/* Glowing Drop Animation */}
+                {/* Glowing Drop Animation Overlay */}
                 <motion.div
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-6 bg-amber-500 rounded-full blur-[2px] z-20"
                   animate={{
@@ -203,15 +307,14 @@ export const ScienceSection = () => {
                   <div className="absolute inset-0 bg-white/40 blur-[1px] rounded-full scale-50 -translate-x-1" />
                 </motion.div>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
-                <div className="absolute bottom-12 left-12 right-12">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent pointer-events-none" />
+                
+                <div className="absolute bottom-12 left-12 right-12 z-30 pointer-events-none">
                   <div className="flex items-end justify-between">
-                    <motion.div
-                      whileHover={{ y: -5 }}
-                    >
+                    <div>
                       <span className="text-amber-500 font-bold text-5xl block mb-2 tracking-tighter">800+</span>
                       <span className="text-text-primary font-bold uppercase tracking-widest text-xs">Clinical MGO Grade</span>
-                    </motion.div>
+                    </div>
                     <div className="h-1.5 w-32 bg-amber-500/10 rounded-full overflow-hidden border border-amber-500/5">
                       <motion.div 
                         className="h-full bg-amber-500"
@@ -232,7 +335,7 @@ export const ScienceSection = () => {
             
             {/* Ambient Background Glow for Image */}
             <div className="absolute -inset-10 bg-amber-500/5 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

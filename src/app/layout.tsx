@@ -28,7 +28,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://amazingnatures.com.au"),
+  metadataBase: new URL("https://amazing-natures-beta.vercel.app"),
   title: {
     default: "Amazing Natures | Premium Australian Manuka Honey",
     template: "%s | Amazing Natures"
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_AU",
-    url: "https://amazingnatures.com.au",
+    url: "https://amazing-natures-beta.vercel.app",
     siteName: "Amazing Natures",
     title: "Amazing Natures | Premium Australian Manuka Honey",
     description: "Nature's purity, bottled in gold. Premium cold-extracted Australian Manuka.",

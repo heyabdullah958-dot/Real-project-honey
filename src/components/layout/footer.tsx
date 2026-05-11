@@ -172,9 +172,9 @@ const Footer = () => {
           &copy; {currentYear} AMAZING NATURES. PROUDLY AUSTRALIAN MADE.
         </p>
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
-          <AnimatedLink href="/policies/privacy">Privacy Policy</AnimatedLink>
-          <AnimatedLink href="/policies/shipping">Shipping & Returns</AnimatedLink>
-          <AnimatedLink href="/policies/terms">Terms of Service</AnimatedLink>
+          <AnimatedLink href="/privacy-policy">Privacy Policy</AnimatedLink>
+          <AnimatedLink href="/shipping-policy">Shipping & Returns</AnimatedLink>
+          <AnimatedLink href="/terms-of-service">Terms of Service</AnimatedLink>
         </div>
       </div>
     </footer>

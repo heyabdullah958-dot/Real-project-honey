@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  /* Amazing Natures Design System - Colors */
+  --color-amber-100: #FFF8E8;
+  --color-amber-300: #F5C842;
+  --color-amber-500: #D4930A;
+  --color-amber-700: #9B6500;
+  --color-amber-900: #5A3A00;
+
+  --color-void: #0A0705;
+  --color-night: #120D06;
+  --color-earth: #1E1508;
+  --color-bark: #2D2010;
+
+  --color-surface: #1E1508;
+  --color-gold-glow: rgba(213, 147, 10, 0.15);
+  --color-cream: #FAF4E8;
+  
+  --color-border: rgba(213, 147, 10, 0.2);
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-display);   /* Cormorant Garamond */
+  --font-heading: var(--font-heading);   /* Outfit */
+
+  /* Typography scale additions */
+  --tracking-eyebrow: 0.45em;
+  --leading-display: 0.92;               /* tight for large display text */
+  --leading-editorial: 1.15;            /* Cormorant reads best at 1.1–1.2 */
+
+  --animate-gold-drip: gold-drip 3s ease-in-out infinite;
+
+  @keyframes gold-drip {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(10px); opacity: 1; }
+  }
+}
+
+:root {
+  --background: #050505;
+  --foreground: #F5EDD4;
+  
+  --color-text-primary: #F5EDD4;
+  --color-text-secondary: #D4CDBC;
+  --color-text-muted: #8E887A;
+}
+
+@layer base {
+  * {
+    border-color: rgba(213, 147, 10, 0.1);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), ui-sans-serif, system-ui;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2 {
+    font-family: var(--font-display), "Georgia", serif;
+    font-weight: 600;
+    line-height: var(--leading-display);
+    letter-spacing: -0.02em;           /* Display type reads tighter */
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-text-primary);
+  }
+  h3, h4, h5, h6 {
+    font-family: var(--font-heading), ui-sans-serif, system-ui;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+}
+
+/* Custom Utilities */
+@utility glass-panel {
+  background: rgba(18, 13, 6, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(213, 147, 10, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+@utility amber-gradient {
+  background: linear-gradient(135deg, #D4930A 0%, #9B6500 100%);
+}
+
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}

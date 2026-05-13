@@ -102,25 +102,27 @@ export const HeroCanvas = () => {
     updateCanvasSize();
 
     // ✅ Scrub model — scroll-connected, cinematic
-    const trigger = ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top top",
-      end: "+=200%",          // ← 2× viewport height. Comfortable pacing.
-      pin: true,
-      scrub: 1.2,             // ← Buttery lag. Feels weighted and cinematic.
-      invalidateOnRefresh: true,
-      fastScrollEnd: true,
-      preventOverlaps: true,
-      onUpdate: (self) => {
-        const frameIndex = Math.floor(self.progress * (FRAME_COUNT - 1));
-        scrollObj.frame = frameIndex;
-        renderFrame(frameIndex);
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: "+=200%",          // ← 2× viewport height. Comfortable pacing.
+        pin: true,
+        scrub: 1.2,             // ← Buttery lag. Feels weighted and cinematic.
+        invalidateOnRefresh: true,
+        fastScrollEnd: true,
+        preventOverlaps: true,
       }
     });
 
-    const tl = gsap.timeline({ scrollTrigger: trigger });
-
-    tl.to(scrollObj, { frame: FRAME_COUNT - 1, ease: "none", duration: 1 }, 0);
+    tl.to(scrollObj, { 
+      frame: FRAME_COUNT - 1, 
+      ease: "none", 
+      duration: 1,
+      onUpdate: () => {
+        renderFrame(Math.round(scrollObj.frame));
+      }
+    }, 0);
 
     tl.fromTo(".act-1-block", { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, ease: "power2.out", duration: 0.15 }, 0)
     .fromTo(".act-1-chars .char", { y: 60, opacity: 0, filter: "blur(8px)" }, { y: 0, opacity: 1, filter: "blur(0px)", stagger: 0.02, ease: "power4.out", duration: 0.2 }, 0.05)
@@ -143,7 +145,6 @@ export const HeroCanvas = () => {
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      trigger.kill();
       tl.kill();
     };
   }, [isLoaded, images]);

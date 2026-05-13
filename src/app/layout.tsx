@@ -86,7 +86,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-void text-text-primary selection:bg-amber-500/30">
         <SmoothScroll />
         <Navbar />
-        <main className="flex-grow pt-20">
+        <main className="flex-grow">
           {children}
         </main>
         <Footer />

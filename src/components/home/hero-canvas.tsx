@@ -106,9 +106,9 @@ export const HeroCanvas = () => {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=200%",          // ← 2× viewport height. Comfortable pacing.
+        end: "+=200%",
         pin: true,
-        scrub: 1.2,             // ← Buttery lag. Feels weighted and cinematic.
+        scrub: 0.1,             // ← Reduced from 1.2 because Lenis handles smoothing
         invalidateOnRefresh: true,
         fastScrollEnd: true,
         preventOverlaps: true,

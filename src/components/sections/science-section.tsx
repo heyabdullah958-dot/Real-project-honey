@@ -210,7 +210,7 @@ export const ScienceSection = () => {
       trigger: sectionRef.current,
       start: "top center",
       end: "bottom center",
-      scrub: 1,
+      scrub: 0.1, // Reduced from 1 because Lenis handles smoothing
       onUpdate: (self) => {
         const frameIndex = Math.floor(self.progress * (FRAME_COUNT - 1));
         renderFrame(frameIndex);

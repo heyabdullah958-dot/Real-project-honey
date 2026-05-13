@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     // 1. Send Email to Admin
     await resend.emails.send({
       from: 'Amazing Natures <onboarding@resend.dev>',
-      to: process.env.ADMIN_EMAIL || 'zeeshan.ahmed2691@gmail.com',
+      to: process.env.ADMIN_EMAIL || 'heyabdullah958@gmail.com',
       subject: `🍯 New COD Order ${orderId} — ${fullName}`,
       html: getAdminOrderEmail(orderData),
     });

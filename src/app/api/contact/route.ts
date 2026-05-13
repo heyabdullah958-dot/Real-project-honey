@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     // Send Email to Admin
     await resend.emails.send({
       from: 'Amazing Natures <onboarding@resend.dev>',
-      to: process.env.ADMIN_EMAIL || 'zeeshan.ahmed2691@gmail.com',
+      to: process.env.ADMIN_EMAIL || 'heyabdullah958@gmail.com',
       subject: `📩 Contact Inquiry: ${subject}`,
       html: getAdminContactEmail({ name, email, subject, message }),
     });

@@ -16,7 +16,7 @@ export const products: Product[] = [
     bestFor: "Daily Use",
     antibacterial: "Low",
     taste: "Mild",
-    image: "/assets/products/npa 5.jpeg",
+    image: "/assets/products/mgo-30.png",
     color: "#C8A96E",
   },
   {
@@ -34,7 +34,7 @@ export const products: Product[] = [
     bestFor: "Wellness",
     antibacterial: "Moderate",
     taste: "Mild-Med",
-    image: "/assets/products/npa 10.jpeg",
+    image: "/assets/products/mgo-100.png",
     color: "#C49A2A",
   },
   {
@@ -52,7 +52,7 @@ export const products: Product[] = [
     bestFor: "Immunity",
     antibacterial: "High",
     taste: "Medium",
-    image: "/assets/products/npa 13.jpeg",
+    image: "/assets/products/mgo-263.png",
     color: "#D4930A",
   },
   {
@@ -70,7 +70,7 @@ export const products: Product[] = [
     bestFor: "Gut/Wound",
     antibacterial: "Very High",
     taste: "Strong",
-    image: "/assets/products/npa 20.jpeg",
+    image: "/assets/products/mgo-400.png",
     color: "#B87800",
   },
   {
@@ -88,7 +88,7 @@ export const products: Product[] = [
     bestFor: "Clinical",
     antibacterial: "Exceptional",
     taste: "Intense",
-    image: "/assets/products/npa 20.jpeg",
+    image: "/assets/products/mgo-800.png",
     color: "#9B6500",
   },
 ];

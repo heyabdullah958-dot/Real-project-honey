@@ -84,7 +84,13 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
       />
 
       {/* Product Image Section */}
-      <Link href={`/products/${product.slug}`} className="block relative aspect-square overflow-hidden bg-earth/30">
+      <Link href={`/products/${product.slug}`} className="block relative aspect-square overflow-hidden bg-void">
+        {/* Subtle radial glow to soften the blend */}
+        <div 
+          className="absolute inset-0 opacity-20 pointer-events-none transition-opacity duration-700"
+          style={{ background: `radial-gradient(circle at 50% 50%, ${product.color}40 0%, transparent 70%)` }}
+        />
+
         {/* BASE LAYER: Product Image */}
         <div className="absolute inset-0 p-8 flex items-center justify-center">
           <motion.div
@@ -100,7 +106,7 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
               alt={product.name}
               width={400}
               height={400}
-              className="object-contain mix-blend-multiply"
+              className="object-contain mix-blend-multiply brightness-110 contrast-110"
               priority
             />
             {/* Subtle Reflection Overlay */}

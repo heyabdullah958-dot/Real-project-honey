@@ -119,12 +119,26 @@ export default function ContactPage() {
                     </div>
                     <h4 className="font-bold text-text-primary uppercase tracking-widest text-sm">Our Hives</h4>
                  </div>
-                 <p className="text-text-secondary text-sm leading-relaxed">
-                    Amazing Natures HQ<br />
-                    123 Wilderness Way<br />
-                    New South Wales, 2000<br />
-                    Australia
-                 </p>
+                 <div className="flex flex-col gap-6">
+                    <p className="text-text-secondary text-sm leading-relaxed">
+                        Amazing Natures HQ<br />
+                        123 Wilderness Way<br />
+                        New South Wales, 2000<br />
+                        Australia
+                    </p>
+                    {/* Google Maps Embed */}
+                    <div className="w-full h-64 rounded-2xl overflow-hidden border border-amber-500/10 grayscale-[0.8] hover:grayscale-0 transition-all duration-700">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.898246877969!2d151.2073!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae401e8b983f%3A0x5017d6816329200!2sSydney%20NSW!5e0!3m2!1sen!2sau!4v1715560000000!5m2!1sen!2sau" 
+                            width="100%" 
+                            height="100%" 
+                            style={{ border: 0 }} 
+                            allowFullScreen 
+                            loading="lazy" 
+                            referrerPolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                    </div>
+                 </div>
               </div>
 
               <div className="bg-amber-500/5 p-8 rounded-3xl border border-amber-500/10">

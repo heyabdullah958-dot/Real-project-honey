@@ -84,7 +84,16 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
       />
 
       {/* Product Image Section */}
-      <Link href={`/products/${product.slug}`} className="block relative aspect-square overflow-hidden bg-earth/30">
+      <Link href={`/products/${product.slug}`} className="block relative aspect-square overflow-hidden bg-[#0a0805]">
+        {/* Glow Pedestal Backdrop */}
+        <div 
+          className="absolute inset-0 opacity-40 blur-[80px] scale-150 transition-opacity duration-700"
+          style={{ 
+            background: `radial-gradient(circle at 50% 50%, ${product.color} 0%, transparent 60%)`,
+            opacity: isHovered ? 0.6 : 0.4
+          }}
+        />
+
         {/* BASE LAYER: Product Image */}
         <div className="absolute inset-0 p-8 flex items-center justify-center">
           <motion.div
@@ -103,11 +112,11 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
               className="object-contain mix-blend-multiply"
               priority
             />
-            {/* Subtle Reflection Overlay */}
+            {/* Shimmer/Spotlight Scan */}
             <motion.div 
-              className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none"
-              animate={{ x: isHovered ? ["-100%", "100%"] : "-100%" }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none skew-x-12"
+              animate={{ x: isHovered ? ["-150%", "150%"] : "-150%" }}
+              transition={{ duration: 1.2, ease: "easeInOut", repeat: isHovered ? Infinity : 0, repeatDelay: 1 }}
             />
           </motion.div>
         </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronRight, ShieldCheck } from "lucide-react";
+import { useCartStore } from "@/store/use-cart-store";
 
 interface FloatingInputProps {
   label: string;
@@ -58,14 +59,46 @@ const FloatingInput = ({ label, name, type = "text", required = true }: Floating
 
 export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const { items, getTotalPrice, clearCart } = useCartStore();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate premium processing
-    setTimeout(() => {
-      onSuccess();
-    }, 2000);
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      fullName: formData.get('fullName'),
+      whatsapp: formData.get('whatsapp'),
+      email: formData.get('email'),
+      city: formData.get('city'),
+      address: formData.get('address'),
+      items: items.map(item => ({
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price
+      })),
+      totalAmount: getTotalPrice()
+    };
+
+    try {
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        clearCart();
+        onSuccess();
+      } else {
+        alert("Failed to place order. Please try again.");
+      }
+    } catch (error) {
+      console.error("Order submit error:", error);
+      alert("An error occurred. Please check your connection.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -76,7 +109,10 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
           <FloatingInput label="Full Name" name="fullName" />
           <FloatingInput label="WhatsApp Number" name="whatsapp" type="tel" />
         </div>
-        <FloatingInput label="City" name="city" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <FloatingInput label="Email Address" name="email" type="email" />
+          <FloatingInput label="City" name="city" />
+        </div>
         <div className="relative group">
           <motion.label
             initial={false}
@@ -85,6 +121,7 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
             Detailed Shipping Address
           </motion.label>
           <textarea
+            name="address"
             required
             rows={3}
             className="w-full rounded-2xl bg-white/[0.03] border border-white/10 px-6 pt-10 text-text-primary focus:outline-none focus:border-amber-500/50 transition-all duration-300 group-hover:bg-white/[0.05] resize-none"

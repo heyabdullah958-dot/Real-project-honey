@@ -1,7 +1,46 @@
+"use client";
+
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+        e.currentTarget.reset();
+      } else {
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Contact form error:", error);
+      alert("An error occurred. Please check your connection.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
@@ -18,29 +57,40 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
            {/* Contact Form */}
            <div className="glass-panel p-8 md:p-12 rounded-[3rem] border-amber-500/10">
-              <form className="flex flex-col gap-6">
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="flex flex-col gap-2">
-                       <label className="text-[10px] uppercase tracking-widest text-text-muted font-bold ml-4">Full Name</label>
-                       <input type="text" className="h-14 rounded-2xl bg-void border border-amber-900/20 px-6 text-text-primary focus:outline-none focus:border-amber-500 transition-all" />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                       <label className="text-[10px] uppercase tracking-widest text-text-muted font-bold ml-4">Email Address</label>
-                       <input type="email" className="h-14 rounded-2xl bg-void border border-amber-900/20 px-6 text-text-primary focus:outline-none focus:border-amber-500 transition-all" />
-                    </div>
-                 </div>
-                 <div className="flex flex-col gap-2">
-                    <label className="text-[10px] uppercase tracking-widest text-text-muted font-bold ml-4">Subject</label>
-                    <input type="text" className="h-14 rounded-2xl bg-void border border-amber-900/20 px-6 text-text-primary focus:outline-none focus:border-amber-500 transition-all" />
-                 </div>
-                 <div className="flex flex-col gap-2">
-                    <label className="text-[10px] uppercase tracking-widest text-text-muted font-bold ml-4">Message</label>
-                    <textarea className="h-40 rounded-2xl bg-void border border-amber-900/20 px-6 py-4 text-text-primary focus:outline-none focus:border-amber-500 transition-all resize-none"></textarea>
-                 </div>
-                 <Button size="lg" className="h-14 mt-4 flex gap-2">
-                    <Send className="w-4 h-4" /> Send Message
-                 </Button>
-              </form>
+              {isSuccess ? (
+                <div className="flex flex-col items-center justify-center h-full text-center gap-6 py-10">
+                  <div className="w-20 h-20 bg-amber-500/10 rounded-full flex items-center justify-center text-amber-500">
+                    <Send className="w-10 h-10" />
+                  </div>
+                  <h3 className="text-3xl font-display font-bold text-text-primary">Message Sent!</h3>
+                  <p className="text-text-secondary">Thank you for reaching out. Our team will get back to you shortly.</p>
+                  <Button variant="outline" onClick={() => setIsSuccess(false)}>Send Another Message</Button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="flex flex-col gap-2">
+                        <label className="text-[10px] uppercase tracking-widest text-text-muted font-bold ml-4">Full Name</label>
+                        <input name="name" required type="text" className="h-14 rounded-2xl bg-void border border-amber-900/20 px-6 text-text-primary focus:outline-none focus:border-amber-500 transition-all" />
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <label className="text-[10px] uppercase tracking-widest text-text-muted font-bold ml-4">Email Address</label>
+                        <input name="email" required type="email" className="h-14 rounded-2xl bg-void border border-amber-900/20 px-6 text-text-primary focus:outline-none focus:border-amber-500 transition-all" />
+                      </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                      <label className="text-[10px] uppercase tracking-widest text-text-muted font-bold ml-4">Subject</label>
+                      <input name="subject" required type="text" className="h-14 rounded-2xl bg-void border border-amber-900/20 px-6 text-text-primary focus:outline-none focus:border-amber-500 transition-all" />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                      <label className="text-[10px] uppercase tracking-widest text-text-muted font-bold ml-4">Message</label>
+                      <textarea name="message" required className="h-40 rounded-2xl bg-void border border-amber-900/20 px-6 py-4 text-text-primary focus:outline-none focus:border-amber-500 transition-all resize-none"></textarea>
+                  </div>
+                  <Button disabled={isLoading} size="lg" className="h-14 mt-4 flex gap-2">
+                      <Send className="w-4 h-4" /> {isLoading ? "Sending..." : "Send Message"}
+                  </Button>
+                </form>
+              )}
            </div>
 
            {/* Info */}

@@ -32,10 +32,10 @@ export async function POST(req: Request) {
     };
 
     // 1. Send Email to Admin
-    console.log('Attempting to send admin email to:', process.env.ADMIN_EMAIL || 'heyabdullah958@gmail.com');
+    console.log('Attempting to send admin email to:', process.env.ADMIN_EMAIL || 'abdullahhere958@gmail.com');
     const adminRes = await resend.emails.send({
       from: 'Amazing Natures <onboarding@resend.dev>',
-      to: process.env.ADMIN_EMAIL || 'heyabdullah958@gmail.com',
+      to: process.env.ADMIN_EMAIL || 'abdullahhere958@gmail.com',
       subject: `🍯 New COD Order ${orderId} — ${fullName}`,
       html: getAdminOrderEmail(orderData),
     });

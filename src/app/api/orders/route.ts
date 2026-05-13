@@ -2,10 +2,17 @@ import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import { getAdminOrderEmail, getCustomerOrderEmail } from '@/lib/email-templates';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Prevent build-time crash if API key is missing
+const resend = process.env.RESEND_API_KEY 
+  ? new Resend(process.env.RESEND_API_KEY) 
+  : null;
 
 export async function POST(req: Request) {
   try {
+    if (!resend) {
+      console.error('Resend API key is missing');
+      return NextResponse.json({ success: false, message: 'Configuration error' }, { status: 500 });
+    }
     const body = await req.json();
     const { fullName, whatsapp, email, city, address, items, totalAmount, orderNote } = body;
 

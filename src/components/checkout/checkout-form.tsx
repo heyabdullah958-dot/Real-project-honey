@@ -151,6 +151,23 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
               <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
            </div>
         </div>
+        {/* Verification Map */}
+        <div className="px-6 py-4 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col gap-3">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <span className="text-[10px] uppercase tracking-widest font-bold text-text-muted">Ships from Sydney, NSW</span>
+          </div>
+          <div className="w-full h-32 rounded-xl overflow-hidden grayscale opacity-50">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.898246877969!2d151.2073!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae401e8b983f%3A0x5017d6816329200!2sSydney%20NSW!5e0!3m2!1sen!2sau!4v1715560000000!5m2!1sen!2sau" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen 
+                loading="lazy"
+            ></iframe>
+          </div>
+        </div>
       </div>
 
       {/* Sustainable Shipping Info */}

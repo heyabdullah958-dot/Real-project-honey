@@ -71,6 +71,23 @@ export default function AboutPage() {
               Amazing Natures was born from a simple belief: that nature holds the ultimate power for healing and wellness. Our journey began in the pristine wilderness of Australia, where the unique Manuka flower blooms.
             </p>
             
+            {/* Australian Heritage Map */}
+            <div className="flex flex-col gap-4">
+              <span className="text-amber-500 font-bold tracking-widest uppercase text-[10px] flex items-center gap-2">
+                <MapPin className="w-3 h-3" /> Our Australian Origin
+              </span>
+              <div className="w-full h-48 rounded-3xl overflow-hidden border border-amber-500/10 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-700">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.898246877969!2d151.2073!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae401e8b983f%3A0x5017d6816329200!2sSydney%20NSW!5e0!3m2!1sen!2sau!4v1715560000000!5m2!1sen!2sau" 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen 
+                    loading="lazy"
+                  ></iframe>
+              </div>
+            </div>
+
             <div className="grid grid-cols-2 gap-6">
               <div className="flex flex-col gap-4 p-8 glass-panel rounded-3xl border-amber-500/10">
                  <div className="w-12 h-12 amber-gradient rounded-2xl flex items-center justify-center text-void">

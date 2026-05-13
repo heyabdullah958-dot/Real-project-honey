@@ -130,8 +130,20 @@ const Footer = () => {
 
         {/* Newsletter Section */}
         <div className="relative flex flex-col items-center md:items-start w-full max-w-sm">
+          <h4 className="text-amber-500 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Location</h4>
+          <div className="w-full h-32 rounded-2xl overflow-hidden border border-amber-900/20 grayscale hover:grayscale-0 transition-all duration-700 mb-6">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.898246877969!2d151.2073!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae401e8b983f%3A0x5017d6816329200!2sSydney%20NSW!5e0!3m2!1sen!2sau!4v1715560000000!5m2!1sen!2sau" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen 
+                loading="lazy"
+            ></iframe>
+          </div>
+          
           <h4 className="text-amber-500 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Newsletter</h4>
-          <p className="text-text-muted text-sm mb-6 text-center md:text-left">Join our wellness community for 10% off your first order.</p>
+          <p className="text-text-muted text-sm mb-6 text-center md:text-left">Join our community for updates.</p>
           
           <motion.div 
             className="group relative w-full"

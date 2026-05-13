@@ -75,7 +75,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 src={product.image}
                 alt={product.name}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-105 mix-blend-multiply"
                 priority
               />
               <div className="absolute top-6 left-6">
@@ -88,7 +88,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <div className="grid grid-cols-4 gap-4">
               {[...Array(4)].map((_, i) => (
                 <div key={i} className="aspect-square glass-panel rounded-2xl overflow-hidden opacity-50 hover:opacity-100 transition-opacity cursor-pointer relative">
-                   <Image src={product.image} alt={`${product.name} view ${i + 1}`} fill className="object-cover" />
+                   <Image src={product.image} alt={`${product.name} view ${i + 1}`} fill className="object-cover mix-blend-multiply" />
                 </div>
               ))}
             </div>

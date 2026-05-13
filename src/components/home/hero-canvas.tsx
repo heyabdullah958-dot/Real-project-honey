@@ -21,6 +21,7 @@ const splitChars = (text: string) => {
 export const HeroCanvas = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const lastFrameRef = useRef(0);
   const [images, setImages] = useState<HTMLImageElement[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -70,7 +71,7 @@ export const HeroCanvas = () => {
     if (!context) return;
 
     const canvas = canvasRef.current;
-    const scrollObj = { frame: 0 };
+    const scrollObj = { frame: lastFrameRef.current };
 
     let resizeTimer: ReturnType<typeof setTimeout>;
     const updateCanvasSize = () => {
@@ -86,6 +87,7 @@ export const HeroCanvas = () => {
 
     const renderFrame = (index: number) => {
       const idx = Math.min(FRAME_COUNT - 1, Math.max(0, index));
+      lastFrameRef.current = idx;
       const img = images[idx];
       if (!img || !img.complete) return;
       
@@ -99,45 +101,69 @@ export const HeroCanvas = () => {
     window.addEventListener("resize", handleResize);
     updateCanvasSize();
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "+=600%",
-        pin: true,
-        scrub: 1.5,
-        invalidateOnRefresh: true,
-        onUpdate: () => {
-          renderFrame(Math.round(scrollObj.frame));
-        }
+    // Auto-scroll utility
+    const scrollPastHero = () => {
+      const nextSection = containerRef.current?.nextElementSibling;
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth' });
       }
+    };
+
+    const scrollBackToTop = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // ① Build free-running, paused timeline
+    const tl = gsap.timeline({ 
+      paused: true, 
+      onComplete: scrollPastHero,
+      onReverseComplete: scrollBackToTop 
     });
 
-    tl.to(scrollObj, { frame: FRAME_COUNT - 1, ease: "none", duration: 1 }, 0);
+    tl.to(scrollObj, { 
+      frame: FRAME_COUNT - 1, 
+      ease: "none", 
+      duration: 4.5,
+      onUpdate: () => renderFrame(Math.round(scrollObj.frame))
+    }, 0);
 
-    tl.fromTo(".act-1-block", { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, ease: "power2.out", duration: 0.15 }, 0)
-    .fromTo(".act-1-chars .char", { y: 60, opacity: 0, filter: "blur(8px)" }, { y: 0, opacity: 1, filter: "blur(0px)", stagger: 0.02, ease: "power4.out", duration: 0.2 }, 0.05)
-    .to(".act-1-block", { y: -80, opacity: 0, ease: "power2.in", duration: 0.1 }, 0.2);
+    tl.fromTo(".act-1-block", { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, ease: "power2.out", duration: 0.5 }, 0)
+    .fromTo(".act-1-chars .char", { y: 60, opacity: 0, filter: "blur(8px)" }, { y: 0, opacity: 1, filter: "blur(0px)", stagger: 0.05, ease: "power4.out", duration: 1 }, 0.2)
+    .to(".act-1-block", { y: -80, opacity: 0, ease: "power2.in", duration: 0.5 }, 1.2);
 
-    tl.fromTo(".act-2-block", { opacity: 0, y: 40 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.15 }, 0.25)
-    .fromTo(".act-2-eyebrow", { opacity: 0, x: -30 }, { opacity: 1, x: 0, ease: "expo.out", duration: 0.15 }, 0.28)
-    .fromTo(".act-2-heading", { opacity: 0, x: -100 }, { opacity: 1, x: 0, ease: "expo.out", duration: 0.2 }, 0.3)
-    .fromTo(".act-2-clip", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", ease: "power3.inOut", duration: 0.2 }, 0.35)
-    .to(".act-2-block", { x: -60, opacity: 0, filter: "blur(4px)", ease: "power3.in", duration: 0.15 }, 0.5);
+    tl.fromTo(".act-2-block", { opacity: 0, y: 40 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.6 }, 1.5)
+    .fromTo(".act-2-eyebrow", { opacity: 0, x: -30 }, { opacity: 1, x: 0, ease: "expo.out", duration: 0.6 }, 1.6)
+    .fromTo(".act-2-heading", { opacity: 0, x: -100 }, { opacity: 1, x: 0, ease: "expo.out", duration: 0.8 }, 1.7)
+    .fromTo(".act-2-clip", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", ease: "power3.inOut", duration: 0.8 }, 1.9)
+    .to(".act-2-block", { x: -60, opacity: 0, filter: "blur(4px)", ease: "power3.in", duration: 0.6 }, 2.5);
 
-    tl.fromTo(".act-3-block", { opacity: 0, y: 40 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.15 }, 0.55)
-    .fromTo(".act-3-line-1", { x: 120, opacity: 0 }, { x: 0, opacity: 1, ease: "expo.out", duration: 0.2 }, 0.58)
-    .fromTo(".act-3-line-2", { x: 120, opacity: 0 }, { x: 0, opacity: 1, ease: "expo.out", duration: 0.2 }, 0.62)
-    .fromTo(".act-3-bullets li", { opacity: 0, x: 20 }, { opacity: 1, x: 0, stagger: 0.1, ease: "power2.out", duration: 0.2 }, 0.65)
-    .to(".act-3-block", { scale: 0.9, opacity: 0, duration: 0.15 }, 0.8);
+    tl.fromTo(".act-3-block", { opacity: 0, y: 40 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.6 }, 2.8)
+    .fromTo(".act-3-line-1", { x: 120, opacity: 0 }, { x: 0, opacity: 1, ease: "expo.out", duration: 0.7 }, 2.9)
+    .fromTo(".act-3-line-2", { x: 120, opacity: 0 }, { x: 0, opacity: 1, ease: "expo.out", duration: 0.7 }, 3.1)
+    .fromTo(".act-3-bullets li", { opacity: 0, x: 20 }, { opacity: 1, x: 0, stagger: 0.2, ease: "power2.out", duration: 0.6 }, 3.3)
+    .to(".act-3-block", { scale: 0.9, opacity: 0, duration: 0.6 }, 4.0);
 
-    tl.fromTo(".act-4-block", { opacity: 0, scale: 1.1 }, { opacity: 1, scale: 1, ease: "power4.out", duration: 0.2 }, 0.85)
-    .fromTo(".act-4-content", { y: 60, opacity: 0 }, { y: 0, opacity: 1, ease: "expo.out", duration: 0.2 }, 0.88);
+    tl.fromTo(".act-4-block", { opacity: 0, scale: 1.1 }, { opacity: 1, scale: 1, ease: "power4.out", duration: 0.8 }, 4.2)
+    .fromTo(".act-4-content", { y: 60, opacity: 0 }, { y: 0, opacity: 1, ease: "expo.out", duration: 0.8 }, 4.3);
+
+    // ② Tiny sentinel ScrollTrigger — catches scroll intent only
+    const trigger = ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top top",
+      end: "+=80px",
+      pin: true,
+      onEnter: () => {
+        if (tl.progress() < 1) tl.play();
+      },
+      onEnterBack: () => {
+        if (tl.progress() > 0) tl.reverse();
+      },
+    });
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      trigger.kill();
       tl.kill();
-      ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, [isLoaded, images]);
 

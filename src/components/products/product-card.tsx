@@ -100,7 +100,7 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
               alt={product.name}
               width={400}
               height={400}
-              className="object-contain"
+              className="object-contain mix-blend-multiply"
               priority
             />
             {/* Subtle Reflection Overlay */}

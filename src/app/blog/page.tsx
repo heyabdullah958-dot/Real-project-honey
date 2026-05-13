@@ -53,7 +53,7 @@ export default function BlogPage() {
            {blogPosts.map((post) => (
              <article key={post.id} className="glass-panel rounded-[2.5rem] overflow-hidden group flex flex-col">
                 <div className="relative aspect-video overflow-hidden">
-                   <Image src={post.image} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                   <Image src={post.image} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110 mix-blend-multiply" />
                    <div className="absolute top-4 left-4">
                       <span className="bg-void/80 backdrop-blur-md text-amber-500 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
                         Nutrition

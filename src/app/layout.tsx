@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import CartDrawer from "@/components/layout/cart-drawer";
 import CookieConsent from "@/components/layout/cookie-consent";
+import { SmoothScroll } from "@/components/layout/smooth-scroll";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -83,6 +84,7 @@ export default function RootLayout({
       className={`${inter.variable} ${cormorant.variable} ${outfit.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-void text-text-primary selection:bg-amber-500/30">
+        <SmoothScroll />
         <Navbar />
         <main className="flex-grow pt-20">
           {children}

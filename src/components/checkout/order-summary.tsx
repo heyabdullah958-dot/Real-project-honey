@@ -34,7 +34,7 @@ export const OrderSummary = () => {
             <div key={item.id} className="flex justify-between items-center">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-earth/30 rounded-xl flex items-center justify-center border border-white/5 overflow-hidden">
-                   <img src={item.image} alt={item.name} className="w-10 h-10 object-contain" />
+                   <img src={item.image} alt={item.name} className="w-10 h-10 object-contain mix-blend-multiply" />
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-text-primary">{item.name}</h4>

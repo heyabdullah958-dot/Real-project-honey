@@ -15,6 +15,7 @@
 ## Current State
 - All functional phases from the implementation plan are complete.
 - Science section features 192-frame Cinematic Pour Canvas animation.
+- Product images use `mix-blend-multiply` CSS trick to hide white backgrounds on dark theme.
 - Build is passing and verified.
 - SEO and Schema markup are integrated.
 

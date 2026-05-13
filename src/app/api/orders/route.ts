@@ -32,21 +32,25 @@ export async function POST(req: Request) {
     };
 
     // 1. Send Email to Admin
-    await resend.emails.send({
+    console.log('Attempting to send admin email to:', process.env.ADMIN_EMAIL || 'heyabdullah958@gmail.com');
+    const adminRes = await resend.emails.send({
       from: 'Amazing Natures <onboarding@resend.dev>',
       to: process.env.ADMIN_EMAIL || 'heyabdullah958@gmail.com',
       subject: `🍯 New COD Order ${orderId} — ${fullName}`,
       html: getAdminOrderEmail(orderData),
     });
+    console.log('Admin email response:', adminRes);
 
     // 2. Send Email to Customer (if email provided)
     if (email) {
-      await resend.emails.send({
+      console.log('Attempting to send customer email to:', email);
+      const customerRes = await resend.emails.send({
         from: 'Amazing Natures <onboarding@resend.dev>',
         to: email,
         subject: `Your Amazing Natures order is confirmed! (${orderId})`,
         html: getCustomerOrderEmail(orderData),
       });
+      console.log('Customer email response:', customerRes);
     }
 
     return NextResponse.json({ 

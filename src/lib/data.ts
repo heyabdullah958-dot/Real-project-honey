@@ -16,7 +16,7 @@ export const products: Product[] = [
     bestFor: "Daily Use",
     antibacterial: "Low",
     taste: "Mild",
-    image: "/assets/products/WhatsApp Image 2026-05-10 at 5.26.08 AM.jpeg",
+    image: "/assets/products/npa 5.jpeg",
     color: "#C8A96E",
   },
   {
@@ -34,7 +34,7 @@ export const products: Product[] = [
     bestFor: "Wellness",
     antibacterial: "Moderate",
     taste: "Mild-Med",
-    image: "/assets/products/WhatsApp Image 2026-05-10 at 5.26.09 AM.jpeg",
+    image: "/assets/products/npa 10.jpeg",
     color: "#C49A2A",
   },
   {
@@ -52,7 +52,7 @@ export const products: Product[] = [
     bestFor: "Immunity",
     antibacterial: "High",
     taste: "Medium",
-    image: "/assets/products/3.jpeg",
+    image: "/assets/products/npa 13.jpeg",
     color: "#D4930A",
   },
   {
@@ -70,7 +70,7 @@ export const products: Product[] = [
     bestFor: "Gut/Wound",
     antibacterial: "Very High",
     taste: "Strong",
-    image: "/assets/products/4.jpeg",
+    image: "/assets/products/npa 20.jpeg",
     color: "#B87800",
   },
   {
@@ -88,7 +88,7 @@ export const products: Product[] = [
     bestFor: "Clinical",
     antibacterial: "Exceptional",
     taste: "Intense",
-    image: "/assets/products/3.jpeg", // Reusing 3.jpeg for now as I only have 4 product images
+    image: "/assets/products/npa 20.jpeg",
     color: "#9B6500",
   },
 ];

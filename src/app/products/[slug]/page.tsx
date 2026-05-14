@@ -67,30 +67,24 @@ export default async function ProductDetailPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left: Image Gallery */}
-          <div className="flex flex-col gap-6">
-            <div className="relative aspect-square glass-panel rounded-[2.5rem] overflow-hidden group">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105 mix-blend-multiply"
-                priority
-              />
-              <div className="absolute top-6 left-6">
-                 <span className="amber-gradient text-void px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.8fr,1.2fr] gap-16 items-center">
+          {/* Left: Product Image */}
+          <div className="w-full flex justify-center lg:justify-start">
+            <div className="relative w-full max-w-[500px] aspect-square bg-white rounded-[3rem] border border-amber-900/5 p-12 md:p-16 flex items-center justify-center shadow-2xl shadow-amber-900/5 group">
+              <div className="relative w-full h-full">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
+                  priority
+                />
+              </div>
+              <div className="absolute top-8 left-8">
+                 <span className="amber-gradient text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
                    MGO {product.mgo}
                  </span>
               </div>
-            </div>
-            
-            <div className="grid grid-cols-4 gap-4">
-              {[...Array(4)].map((_, i) => (
-                <div key={i} className="aspect-square glass-panel rounded-2xl overflow-hidden opacity-50 hover:opacity-100 transition-opacity cursor-pointer relative">
-                   <Image src={product.image} alt={`${product.name} view ${i + 1}`} fill className="object-cover mix-blend-multiply" />
-                </div>
-              ))}
             </div>
           </div>
 

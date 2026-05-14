@@ -10,7 +10,7 @@ const blogPosts = [
     date: "May 10, 2026",
     author: "Dr. Amy Wells",
     readTime: "5 min read",
-    image: "/assets/products/4.jpeg",
+    image: "/assets/products/mgo-800.png",
     slug: "why-mgo-ratings-matter"
   },
   {
@@ -20,7 +20,7 @@ const blogPosts = [
     date: "May 8, 2026",
     author: "Sarah Jenkins",
     readTime: "4 min read",
-    image: "/assets/products/3.jpeg",
+    image: "/assets/products/mgo-400.png",
     slug: "manuka-skincare-routine"
   },
   {
@@ -30,7 +30,7 @@ const blogPosts = [
     date: "May 5, 2026",
     author: "Marcus Thorne",
     readTime: "6 min read",
-    image: "/assets/products/WhatsApp Image 2026-05-10 at 5.26.08 AM.jpeg",
+    image: "/assets/products/mgo-100.png",
     slug: "truth-about-cold-extraction"
   }
 ];
@@ -52,8 +52,15 @@ export default function BlogPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
            {blogPosts.map((post) => (
              <article key={post.id} className="glass-panel rounded-[2.5rem] overflow-hidden group flex flex-col">
-                <div className="relative aspect-video overflow-hidden">
-                   <Image src={post.image} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110 mix-blend-multiply" />
+                <div className="relative aspect-video overflow-hidden bg-white p-10 flex items-center justify-center">
+                   <div className="relative w-full h-full max-h-[80%]">
+                      <Image 
+                        src={post.image} 
+                        alt={post.title} 
+                        fill 
+                        className="object-contain transition-transform duration-700 group-hover:scale-110" 
+                      />
+                   </div>
                    <div className="absolute top-4 left-4">
                       <span className="bg-white/80 backdrop-blur-md text-amber-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
                         Nutrition

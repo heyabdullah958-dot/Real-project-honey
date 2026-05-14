@@ -156,8 +156,6 @@ export const HeroCanvas = () => {
         className="block w-full h-full object-cover"
         style={{
           willChange: 'transform',
-          maskImage: 'radial-gradient(ellipse 80% 90% at 50% 55%, black 30%, transparent 100%)',
-          WebkitMaskImage: 'radial-gradient(ellipse 80% 90% at 50% 55%, black 30%, transparent 100%)',
         }}
       />
       <div className="absolute inset-0 z-10 pointer-events-none">
@@ -183,7 +181,7 @@ export const HeroCanvas = () => {
               <span className="act-3-line-1 block">The Science</span>
               <span className="act-3-line-2 block text-amber-500">of MGO.</span>
             </h2>
-            <ul className="act-3-bullets space-y-4 text-amber-100/70 font-medium tracking-wide">
+            <ul className="act-3-bullets space-y-4 text-text-secondary/80 font-medium tracking-wide">
               <li>• Lab-Tested Bioactivity</li>
               <li>• Pure Monofloral Source</li>
               <li>• Cold-Extraction Process</li>
@@ -193,13 +191,13 @@ export const HeroCanvas = () => {
         <div className="act-4-block absolute inset-0 flex flex-col items-center justify-center opacity-0">
           <div className="act-4-content text-center px-6">
             <h2 className="text-5xl md:text-8xl font-display font-bold text-[#FBF5E9] mb-12">Secure Your <br /><span className="text-amber-500">Liquid Gold.</span></h2>
-            <Link href="/products" className="inline-block bg-amber-500 text-void font-bold uppercase tracking-[0.2em] px-12 py-6 rounded-2xl hover:bg-amber-400 transition-all shadow-2xl shadow-amber-500/20 hover:scale-105 active:scale-95 pointer-events-auto">Shop Collection</Link>
+            <Link href="/products" className="inline-block bg-amber-500 text-void font-bold uppercase tracking-[0.2em] px-12 py-6 rounded-2xl hover:bg-amber-400 transition-all shadow-xl hover:scale-105 active:scale-95 pointer-events-auto">Shop Collection</Link>
           </div>
         </div>
       </div>
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-4">
-        <div className="w-[1px] h-12 bg-gradient-to-b from-amber-500 to-transparent animate-pulse" />
-        <span className="text-[10px] text-amber-500/50 uppercase tracking-[0.3em] font-bold">Scroll to explore</span>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-text-primary/20 to-transparent animate-pulse" />
+        <span className="text-[10px] text-text-muted/50 uppercase tracking-[0.3em] font-bold">Scroll to explore</span>
       </div>
       {!isLoaded && (
         <div className="absolute inset-0 bg-[#FBF5E9] flex items-center justify-center z-50">

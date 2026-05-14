@@ -13,7 +13,7 @@ const ProductGrid = () => {
             Find Your Perfect <span className="text-amber-700">MGO</span> Match
           </h2>
           <p className="text-text-secondary max-w-2xl leading-relaxed">
-            From daily wellness to premium bioactive grade, explore our range of laboratory-tested Australian Manuka honey.
+            From daily wellness to premium bioactive grade, explore our range of scientifically verified Australian Manuka honey.
           </p>
         </div>
 

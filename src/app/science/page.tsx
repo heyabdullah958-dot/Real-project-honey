@@ -35,9 +35,9 @@ export default function SciencePage() {
            
            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {[
-                { icon: ShieldCheck, title: "Immunity", text: "Supports natural defense systems." },
-                { icon: Beaker, title: "Gut Health", text: "Helps balance digestive bacteria." },
-                { icon: Microscope, title: "Wellness Support", text: "Premium bioactive properties." },
+                { icon: ShieldCheck, title: "Natural Support", text: "Supports overall wellness profile." },
+                { icon: Beaker, title: "Wellness Support", text: "Premium bioactive properties." },
+                { icon: Microscope, title: "Scientifically Verified", text: "Verified activity levels." },
                 { icon: Zap, title: "Energy", text: "Raw, natural glucose for stamina." }
               ].map((item, i) => (
                 <div key={i} className="glass-panel p-8 rounded-3xl flex flex-col gap-4">

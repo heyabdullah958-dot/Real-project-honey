@@ -20,7 +20,7 @@ export default function FAQPage() {
     },
     {
       q: "How do I know which MGO level is right for me?",
-      a: "We recommend taking our Wellness Quiz! Generally, MGO 30-100 is for daily use, MGO 263-400 is for immunity and gut health, and MGO 800+ is for targeted premium bioactive grade support."
+      a: "We recommend taking our Wellness Quiz! Generally, MGO 30-100 is for daily use, MGO 263-400 is for consistent wellness support, and MGO 800+ is for our most premium bioactive grade experience."
     }
   ];
 

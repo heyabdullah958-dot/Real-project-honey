@@ -182,9 +182,9 @@ export const HeroCanvas = () => {
               <span className="act-3-line-2 block text-amber-700">of MGO.</span>
             </h2>
             <ul className="act-3-bullets space-y-4 text-text-secondary/80 font-medium tracking-wide">
-              <li>• Lab-Tested Bioactivity</li>
-              <li>• Pure Monofloral Source</li>
-              <li>• Cold-Extraction Process</li>
+              <li>• Quality Assured Profile</li>
+              <li>• Wild-Sourced Origin</li>
+              <li>• Ethically Harvested</li>
             </ul>
           </div>
         </div>

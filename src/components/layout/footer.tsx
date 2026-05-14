@@ -98,7 +98,7 @@ const Footer = () => {
             </span>
           </Link>
           <p className="text-text-secondary text-sm leading-relaxed mb-6 max-w-xs">
-            Nature&apos;s most robust bioactive superfood, cold-extracted from the pristine wilderness of Australia.
+            Nature&apos;s most robust bioactive profile, ethically harvested from the pristine wilderness of Australia.
           </p>
           <div className="flex gap-4 justify-center md:justify-start">
             <SocialIcon icon={Mail} href="mailto:zeeshan.ahmed2691@gmail.com" />

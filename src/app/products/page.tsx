@@ -2,10 +2,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Shop All Manuka Honey | Amazing Natures Australia",
-  description: "Browse our premium range of Australian Manuka honey. From daily wellness MGO 30 to premium bioactive grade MGO 800+, all independently tested and cold-extracted.",
+  description: "Browse our premium range of Australian Manuka honey. From daily wellness MGO 30 to premium reserve grade MGO 800+, all quality assured and ethically harvested.",
   openGraph: {
     title: "Shop All Manuka Honey | Amazing Natures Australia",
-    description: "Premium Australian Manuka honey, cold-extracted and independently verified.",
+    description: "Premium Australian Manuka honey, ethically harvested and quality assured.",
     images: [{ url: "/assets/products/mgo-400.png" }],
   },
 };
@@ -27,7 +27,7 @@ export default function ProductsPage() {
             </h1>
           </div>
           <p className="text-text-muted max-w-md leading-relaxed text-lg">
-            Discover the perfect balance of taste and activity level. Every jar is sustainably sourced and independently certified for MGO content.
+            Discover the perfect balance of taste and bioactive profile. Every jar is wild-sourced and quality assured for MGO content.
           </p>
         </div>
 

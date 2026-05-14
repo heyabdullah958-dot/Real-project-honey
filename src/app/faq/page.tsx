@@ -4,11 +4,11 @@ export default function FAQPage() {
   const faqs = [
     {
       q: "What does MGO stand for?",
-      a: "MGO stands for Methylglyoxal, the naturally occurring compound that makes Manuka honey unique. The MGO rating indicates the level of bioactive activity in the honey."
+      a: "MGO stands for Methylglyoxal, the naturally occurring compound that makes Manuka honey unique. The MGO rating defines the bioactive profile of the honey."
     },
     {
       q: "Is your honey raw and unpasteurized?",
-      a: "Yes, all Amazing Natures honey is 100% raw and cold-extracted. We never heat our honey above hive temperatures, preserving all natural enzymes and health benefits."
+      a: "Yes, all Amazing Natures honey is 100% raw and ethically harvested. We never heat our honey above hive temperatures, preserving all natural enzymes and bioactive properties."
     },
     {
       q: "How should I store my Manuka honey?",

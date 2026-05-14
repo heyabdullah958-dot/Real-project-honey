@@ -57,7 +57,7 @@ export default function Home() {
                 Which Manuka is <br /> right for you?
               </h3>
               <p className="text-text-muted text-lg mb-12 max-w-xl mx-auto leading-relaxed">
-                Unlock the full potential of your health. Take our expert-designed quiz to find your ideal MGO rating based on your unique wellness goals.
+                Experience the gold standard of natural bioactivity. Find your ideal MGO rating based on your unique wellness profile.
               </p>
               <Link 
                 href="/wellness-quiz"

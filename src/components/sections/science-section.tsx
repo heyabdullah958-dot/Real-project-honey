@@ -245,8 +245,8 @@ export const ScienceSection = () => {
               <ScienceItem
                 index={0}
                 icon={Beaker}
-                title="Scientifically Verified MGO"
-                description="MGO is the compound that gives Manuka its distinctive bioactive profile. We verify every jar for precision."
+                title="The Gold Standard Profile"
+                description="MGO is the compound that gives Manuka its distinctive bioactive profile. Our premium reserve is naturally concentrated for excellence."
                 active={activeIndex === null ? null : activeIndex === 0}
                 onHover={() => setActiveIndex(0)}
                 onLeave={() => setActiveIndex(null)}
@@ -254,8 +254,8 @@ export const ScienceSection = () => {
               <ScienceItem
                 index={1}
                 icon={ShieldCheck}
-                title="100% Raw & Unfiltered"
-                description="Cold-pressed to preserve the vital enzymes and bio-active nutrients that industrial heating destroys."
+                title="Ethically Harvested"
+                description="Naturally concentrated to preserve the vital enzymes and bioactive profile that industrial heating destroys."
                 active={activeIndex === null ? null : activeIndex === 1}
                 onHover={() => setActiveIndex(1)}
                 onLeave={() => setActiveIndex(null)}
@@ -263,8 +263,8 @@ export const ScienceSection = () => {
               <ScienceItem
                 index={2}
                 icon={Zap}
-                title="Maximum Bio-Activity"
-                description="Harvested from Australia's pristine Leptospermum forests for premium bioactive grade."
+                title="Dynamic Natural Activity"
+                description="Wild-sourced from Australia's pristine Leptospermum forests for a superior bioactive profile."
                 active={activeIndex === null ? null : activeIndex === 2}
                 onHover={() => setActiveIndex(2)}
                 onLeave={() => setActiveIndex(null)}
@@ -314,7 +314,7 @@ export const ScienceSection = () => {
                   <div className="flex items-end justify-between">
                     <div>
                       <span className="text-amber-700 font-bold text-5xl block mb-2 tracking-tighter">800+</span>
-                      <span className="text-text-primary font-bold uppercase tracking-widest text-xs">Premium Grade MGO</span>
+                      <span className="text-text-primary font-bold uppercase tracking-widest text-xs">Premium Reserve MGO</span>
                     </div>
                     <div className="h-1.5 w-32 bg-amber-700/10 rounded-full overflow-hidden border border-amber-700/5">
                       <motion.div 

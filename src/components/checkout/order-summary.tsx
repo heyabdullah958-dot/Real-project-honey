@@ -105,7 +105,7 @@ export const OrderSummary = () => {
       <div className="grid grid-cols-1 gap-4">
         {[
           { icon: ShieldCheck, text: "Authenticity Guaranteed" },
-          { icon: Award, text: "Scientifically Verified" },
+          { icon: Award, text: "Quality Assured" },
           { icon: Truck, text: "Insured Shipping" }
         ].map((badge, i) => (
           <div key={i} className="flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/[0.02] border border-white/5">

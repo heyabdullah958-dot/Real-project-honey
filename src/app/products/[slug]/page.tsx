@@ -121,18 +121,18 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <ProductBuyActions product={product} />
 
             <div className="grid grid-cols-3 gap-4 pt-8 border-t border-amber-900/10">
-               <div className="flex flex-col items-center gap-2 text-center">
-                  <Beaker className="w-5 h-5 text-amber-700" />
-                  <span className="text-[10px] uppercase tracking-tighter text-text-muted">Scientifically Verified</span>
-               </div>
-               <div className="flex flex-col items-center gap-2 text-center">
-                  <Leaf className="w-5 h-5 text-amber-700" />
-                  <span className="text-[10px] uppercase tracking-tighter text-text-muted">Cold Extracted</span>
-               </div>
-               <div className="flex flex-col items-center gap-2 text-center">
-                  <ArrowRight className="w-5 h-5 text-amber-700" />
-                  <span className="text-[10px] uppercase tracking-tighter text-text-muted">Pure Australian</span>
-               </div>
+              <div className="flex flex-col items-center gap-2 text-center">
+                <Beaker className="w-5 h-5 text-amber-700" />
+                <span className="text-[10px] uppercase tracking-tighter text-text-muted">Quality Assured</span>
+              </div>
+              <div className="flex flex-col items-center gap-2 text-center">
+                <Leaf className="w-5 h-5 text-amber-700" />
+                <span className="text-[10px] uppercase tracking-tighter text-text-muted">Ethically Harvested</span>
+              </div>
+              <div className="flex flex-col items-center gap-2 text-center">
+                <MapPin className="w-5 h-5 text-amber-700" />
+                <span className="text-[10px] uppercase tracking-tighter text-text-muted">Australian Origin</span>
+              </div>
             </div>
           </div>
         </div>

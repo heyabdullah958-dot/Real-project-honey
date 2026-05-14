@@ -105,7 +105,7 @@ export default function AboutPage() {
                  <div className="w-12 h-12 amber-gradient rounded-2xl flex items-center justify-center text-void">
                    <ShieldCheck className="w-6 h-6" />
                  </div>
-                 <h4 className="font-bold text-text-primary uppercase tracking-widest text-[10px]">Scientifically Verified</h4>
+                 <h4 className="font-bold text-text-primary uppercase tracking-widest text-[10px]">Quality Assured</h4>
               </div>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function AboutPage() {
           <div className="relative aspect-[4/5] glass-panel rounded-[4rem] overflow-hidden group">
              <Image
                src="/assets/about-hive.jpg"
-               alt="Beekeeping Process"
+               alt="Ethically Harvested Process"
                fill
                className="object-cover transition-transform duration-1000 group-hover:scale-105"
              />
@@ -126,14 +126,14 @@ export default function AboutPage() {
              <ShieldCheck className="w-10 h-10 text-amber-700" />
              <h3 className="text-2xl font-display font-bold text-text-primary">Uncompromising Purity</h3>
              <p className="text-text-secondary text-sm leading-relaxed">
-               We never compromise on the quality of our honey. No additives, no excessive heating—just pure, raw Manuka exactly as nature intended.
+               We never compromise on the quality of our honey. No additives, no excessive heating—just pure, wild-sourced Manuka exactly as nature intended.
              </p>
           </div>
           <div className="flex flex-col gap-6 p-10 glass-panel rounded-[2.5rem] border-amber-700/20">
              <Beaker className="w-10 h-10 text-amber-700" />
-             <h3 className="text-2xl font-display font-bold text-text-primary">Scientifically Verified</h3>
+             <h3 className="text-2xl font-display font-bold text-text-primary">Quality Assured</h3>
              <p className="text-text-secondary text-sm leading-relaxed">
-               Every batch is scientifically verified to verify its MGO content, ensuring you receive the bioactive profile you pay for.
+               Every batch is quality assured to verify its MGO content, ensuring you receive the bioactive profile you pay for.
              </p>
           </div>
           <div className="flex flex-col gap-6 p-10 glass-panel rounded-[2.5rem]">

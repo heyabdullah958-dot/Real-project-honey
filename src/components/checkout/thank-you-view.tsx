@@ -126,7 +126,7 @@ export const ThankYouView = () => {
           </div>
           <div className="flex flex-col items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-amber-700" />
-            <span className="text-[10px] uppercase tracking-widest text-text-muted font-bold">Independently Tested</span>
+            <span className="text-[10px] uppercase tracking-widest text-text-muted font-bold">Quality Assured</span>
           </div>
           <div className="flex flex-col items-center gap-2">
             <Award className="w-5 h-5 text-amber-700" />

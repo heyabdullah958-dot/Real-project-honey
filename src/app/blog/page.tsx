@@ -5,8 +5,8 @@ import { Clock, User, ArrowRight } from "lucide-react";
 const blogPosts = [
   {
     id: 1,
-    title: "Why MGO Ratings Matter for Your Health",
-    excerpt: "Discover the science behind Methylglyoxal and how it differentiates Manuka from regular honey.",
+    title: "Why MGO Ratings Matter for Your Bioactive Profile",
+    excerpt: "Discover the natural compound Methylglyoxal and how it defines the gold standard of Manuka.",
     date: "May 10, 2026",
     author: "Dr. Amy Wells",
     readTime: "5 min read",
@@ -16,7 +16,7 @@ const blogPosts = [
   {
     id: 2,
     title: "5 Ways to Use Manuka Honey in Your Skincare Routine",
-    excerpt: "From face masks to spot treatments, learn why Manuka is a beauty editor's best kept secret.",
+    excerpt: "From face masks to spot care, learn why Manuka is a beauty editor's best kept secret for a naturally concentrated glow.",
     date: "May 8, 2026",
     author: "Sarah Jenkins",
     readTime: "4 min read",
@@ -25,8 +25,8 @@ const blogPosts = [
   },
   {
     id: 3,
-    title: "The Truth About Cold Extraction",
-    excerpt: "Why heat is the enemy of raw honey and how our process preserves nature's vital enzymes.",
+    title: "The Truth About Ethical Harvesting",
+    excerpt: "Why heat is the enemy of raw honey and how our wild-sourced process preserves nature's vital enzymes.",
     date: "May 5, 2026",
     author: "Marcus Thorne",
     readTime: "6 min read",

@@ -35,8 +35,8 @@ export const metadata: Metadata = {
     default: "Amazing Natures | Premium Australian Manuka Honey",
     template: "%s | Amazing Natures"
   },
-  description: "Nature's purity, bottled in gold. Discover the most trusted source for raw, cold-extracted Australian Manuka honey.",
-  keywords: ["Manuka Honey", "Australian Honey", "MGO 800", "Cold Extracted Honey", "Raw Honey Australia"],
+  description: "Nature's purity, bottled in liquid gold. Experience the gold standard of natural bioactivity with raw, ethically harvested Australian Manuka.",
+  keywords: ["Manuka Honey", "Australian Honey", "MGO 800", "Ethically Harvested Honey", "Raw Honey Australia"],
   authors: [{ name: "Amazing Natures" }],
   creator: "Amazing Natures",
   publisher: "Amazing Natures",
@@ -51,20 +51,20 @@ export const metadata: Metadata = {
     url: "https://amazing-natures-beta.vercel.app",
     siteName: "Amazing Natures",
     title: "Amazing Natures | Premium Australian Manuka Honey",
-    description: "Nature's purity, bottled in gold. Premium cold-extracted Australian Manuka.",
+    description: "Nature's purity, bottled in liquid gold. The gold standard of natural bioactivity.",
     images: [
       {
         url: "/assets/products/mgo-800.png",
         width: 1200,
         height: 630,
-        alt: "Amazing Natures Premium Manuka Honey",
+        alt: "Amazing Natures Liquid Gold",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Amazing Natures | Premium Australian Manuka Honey",
-    description: "Premium cold-extracted Australian Manuka.",
+    description: "Experience the gold standard of natural bioactivity.",
     images: ["/assets/products/mgo-800.png"],
   },
   robots: {

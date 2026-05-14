@@ -30,20 +30,19 @@ const Navbar = () => {
   const totalItems = mounted ? getTotalItems() : 0;
 
   const navLinks = [
+    { name: "Home", href: "/" },
     { name: "Shop", href: "/products" },
     { name: "About", href: "/about" },
     { name: "Science", href: "/science" },
     { name: "Quiz", href: "/wellness-quiz" },
     { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-        isScrolled 
-          ? "bg-[#FBF5E9]/90 backdrop-blur-lg border-b border-amber-900/10 py-3" 
-          : "bg-transparent"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-3 bg-[#FBF5E9]/90 backdrop-blur-lg border-b border-amber-900/10"
       )}
       aria-label="Main Navigation"
     >
@@ -53,7 +52,7 @@ const Navbar = () => {
           <div className={cn(
             "relative transition-all duration-500 ease-in-out rounded-xl p-1 bg-white",
             "ring-2 ring-amber-700/20 group-hover:ring-amber-700/60 shadow-[0_0_24px_rgba(155,101,0,0.15)] group-hover:shadow-[0_0_32px_rgba(155,101,0,0.35)]",
-            isScrolled ? "w-12 h-12" : "w-16 h-16"
+            "w-12 h-12"
           )}>
             <Image 
               src="/assets/brand/Amazing_Natures_logo_design_202605111144.jpeg" 
@@ -63,8 +62,7 @@ const Navbar = () => {
             />
           </div>
           <span className={cn(
-            "font-display font-bold tracking-tight text-text-primary hidden sm:inline-block transition-all duration-500",
-            isScrolled ? "text-xl" : "text-2xl"
+            "font-display font-bold tracking-tight text-text-primary hidden sm:inline-block transition-all duration-500 text-xl"
           )}>
             AMAZING <span className="text-amber-700">NATURES</span>
           </span>

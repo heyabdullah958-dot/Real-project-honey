@@ -70,7 +70,7 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
         transformStyle: "preserve-3d",
       }}
       className={cn(
-        "group relative glass-panel rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:border-amber-700/40",
+        "group relative glass-panel rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:border-amber-700/40 flex flex-col h-full",
         className
       )}
     >
@@ -84,7 +84,7 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
       />
 
       {/* Product Image Section */}
-      <Link href={`/products/${product.slug}`} className="block relative aspect-square overflow-hidden group/image bg-white">
+      <Link href={`/products/${product.slug}`} className="block relative aspect-square overflow-hidden group/image bg-white shrink-0">
         {/* BASE LAYER: Product Image */}
         <div className="absolute inset-0 p-8 flex items-center justify-center">
           <motion.div
@@ -118,8 +118,8 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
       </Link>
 
       {/* Content */}
-      <div className="p-8 flex flex-col gap-5 relative z-10">
-        <div>
+      <div className="p-8 flex flex-col gap-5 relative z-10 flex-grow">
+        <div className="flex-grow">
           <span className="text-[10px] text-amber-700/70 uppercase tracking-[0.2em] font-bold block mb-2">
             {product.tagline}
           </span>
@@ -144,7 +144,7 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between mt-2">
+        <div className="flex items-center justify-between mt-auto">
           <div className="flex flex-col">
             <span className="text-3xl font-bold text-text-primary tracking-tight">
               ${product.price}

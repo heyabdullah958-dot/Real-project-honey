@@ -34,19 +34,19 @@ const CinematicSection = () => {
 
       <div className="absolute bottom-12 left-12 right-12 flex flex-col md:flex-row justify-between items-end gap-8">
         <div className="max-w-xl text-left">
-          <span className="text-amber-700 font-bold uppercase tracking-[0.5em] text-[10px] mb-4 block">
+          <span className="text-amber-300 font-bold uppercase tracking-[0.5em] text-[10px] mb-4 block">
             The Source of Life
           </span>
-          <h2 className="text-4xl md:text-6xl font-display font-bold text-text-primary">
+          <h2 className="text-4xl md:text-6xl font-display font-bold text-white">
             A Sanctuary of <br />
-            <span className="text-amber-700">Pure Bio-Activity.</span>
+            <span className="text-amber-300">Pure Bio-Activity.</span>
           </h2>
         </div>
         <div className="flex flex-col items-end">
-          <p className="text-text-muted text-sm max-w-xs text-right mb-6 leading-relaxed">
+          <p className="text-white/90 text-sm max-w-xs text-right mb-6 leading-relaxed font-medium">
             Every drop is a testament to the untamed beauty of the Australian wilderness and the power of monofloral excellence.
           </p>
-          <div className="w-12 h-[1px] bg-amber-700/50" />
+          <div className="w-12 h-[1px] bg-amber-300/50" />
         </div>
       </div>
     </div>

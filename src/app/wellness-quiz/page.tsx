@@ -7,7 +7,7 @@ import { products } from "@/lib/data";
 import { Product } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, RefreshCw, Zap, Shield, Info } from "lucide-react";
+import { ArrowRight, RefreshCw, Zap, ShieldCheck, Info } from "lucide-react";
 import confetti from "canvas-confetti";
 
 const steps = [

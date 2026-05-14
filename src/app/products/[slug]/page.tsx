@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { Star, ShieldCheck, Beaker, Leaf, ArrowRight } from "lucide-react";
+import { Star, ShieldCheck, Beaker, Leaf, ArrowRight, MapPin } from "lucide-react";
 import { products } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { ProductBuyActions } from "@/components/products/product-buy-actions";

@@ -34,7 +34,7 @@ export const products: Product[] = [
     bestFor: "Wellness",
     activity: "Moderate",
     taste: "Mild-Med",
-    image: "/assets/products/mgo-30.png",
+    image: "/assets/products/mgo-100.png",
     color: "#C49A2A",
   },
   {
@@ -52,7 +52,7 @@ export const products: Product[] = [
     bestFor: "Wellness Support",
     activity: "High",
     taste: "Medium",
-    image: "/assets/products/mgo-30.png",
+    image: "/assets/products/mgo-263.png",
     color: "#D4930A",
   },
   {
@@ -70,7 +70,7 @@ export const products: Product[] = [
     bestFor: "Gut/Skin Wellness",
     activity: "Very High",
     taste: "Strong",
-    image: "/assets/products/mgo-30.png",
+    image: "/assets/products/mgo-400.png",
     color: "#B87800",
   },
   {
@@ -88,7 +88,7 @@ export const products: Product[] = [
     bestFor: "Targeted Support",
     activity: "Exceptional",
     taste: "Intense",
-    image: "/assets/products/mgo-30.png",
+    image: "/assets/products/mgo-800.png",
     color: "#9B6500",
   },
 ];

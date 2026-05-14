@@ -18,11 +18,11 @@ const AnimatedLink = ({ href, children }: { href: string; children: string }) =>
           <motion.span
             key={i}
             variants={{
-              rest: { y: 0, opacity: 0.7, color: "#C8A96E" }, // warm champagne
+              rest: { y: 0, opacity: 1, color: "var(--text-secondary)" },
               hover: { 
                 y: [0, -2, 0], 
                 opacity: 1, 
-                color: "#f59e0b", // amber-500
+                color: "#d97706", // amber-600
                 transition: { 
                   duration: 0.4, 
                   delay: i * 0.02,
@@ -30,7 +30,7 @@ const AnimatedLink = ({ href, children }: { href: string; children: string }) =>
                 }
               }
             }}
-            className="inline-block whitespace-pre"
+            className="inline-block whitespace-pre text-sm"
           >
             {char}
           </motion.span>
@@ -55,12 +55,12 @@ const SocialIcon = ({ icon: Icon, href = "#" }: { icon: React.ElementType; href?
   <motion.a
     href={href}
     whileHover={{ scale: 1.15 }}
-    className="relative group p-2 text-amber-200/60 hover:text-amber-500 transition-colors duration-300"
+    className="relative group p-2 text-amber-800 hover:text-amber-500 transition-colors duration-300"
   >
     <Icon className="w-5 h-5 relative z-10" />
     <AnimatePresence>
       <motion.div
-        className="absolute inset-0 bg-amber-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+        className="absolute inset-0 bg-amber-500/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
         initial={{ scale: 0 }}
         whileHover={{ scale: 1.5, opacity: 1 }}
         exit={{ scale: 0, opacity: 0 }}
@@ -97,7 +97,7 @@ const Footer = () => {
               AMAZING <span className="text-amber-500">NATURES</span>
             </span>
           </Link>
-          <p className="text-text-muted text-sm leading-relaxed mb-6 max-w-xs">
+          <p className="text-text-secondary text-sm leading-relaxed mb-6 max-w-xs">
             Nature&apos;s most robust bioactive superfood, cold-extracted from the pristine wilderness of Australia.
           </p>
           <div className="flex gap-4 justify-center md:justify-start">
@@ -109,7 +109,7 @@ const Footer = () => {
 
         {/* Links */}
         <div className="flex flex-col items-center md:items-start">
-          <h4 className="text-amber-500 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Shop</h4>
+          <h4 className="text-amber-600 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Shop</h4>
           <ul className="space-y-4 flex flex-col items-center md:items-start">
             <li><AnimatedLink href="/products">All Honey</AnimatedLink></li>
             <li><AnimatedLink href="/products/mgo-800">Premium MGO 800+</AnimatedLink></li>
@@ -119,7 +119,7 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col items-center md:items-start">
-          <h4 className="text-amber-500 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Information</h4>
+          <h4 className="text-amber-600 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Information</h4>
           <ul className="space-y-4 flex flex-col items-center md:items-start">
             <li><AnimatedLink href="/about">Our Story</AnimatedLink></li>
             <li><AnimatedLink href="/science">Science of MGO</AnimatedLink></li>
@@ -130,7 +130,7 @@ const Footer = () => {
 
         {/* Newsletter Section */}
         <div className="relative flex flex-col items-center md:items-start w-full max-w-sm">
-          <h4 className="text-amber-500 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Location</h4>
+          <h4 className="text-amber-600 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Location</h4>
           <div className="w-full h-32 rounded-2xl overflow-hidden border border-amber-900/20 grayscale hover:grayscale-0 transition-all duration-700 mb-6">
             <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.898246877969!2d151.2073!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae401e8b983f%3A0x5017d6816329200!2sSydney%20NSW!5e0!3m2!1sen!2sau!4v1715560000000!5m2!1sen!2sau" 
@@ -142,8 +142,8 @@ const Footer = () => {
             ></iframe>
           </div>
           
-          <h4 className="text-amber-500 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Newsletter</h4>
-          <p className="text-amber-200/60 text-sm mb-6 text-center md:text-left">Join our community for updates.</p>
+          <h4 className="text-amber-600 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Newsletter</h4>
+          <p className="text-amber-900/70 text-sm mb-6 text-center md:text-left">Join our community for updates.</p>
           
           <motion.div 
             className="group relative w-full"
@@ -180,7 +180,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto pt-8 border-t border-amber-900/5 flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
-        <p className="text-text-muted text-[10px] uppercase tracking-[0.3em] font-bold text-center">
+        <p className="text-text-secondary/80 text-[10px] uppercase tracking-[0.3em] font-bold text-center">
           &copy; {currentYear} AMAZING NATURES. PROUDLY AUSTRALIAN MADE.
         </p>
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">

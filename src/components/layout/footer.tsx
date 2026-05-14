@@ -67,7 +67,7 @@ const SocialIcon = ({ icon: Icon, href = "#" }: { icon: React.ElementType; href?
       />
     </AnimatePresence>
     <motion.div
-      className="absolute inset-0 drop-shadow-[0_0_8px_rgba(245,158,11,0.5)] opacity-0 group-hover:opacity-100 transition-opacity"
+      className="absolute inset-0 drop-shadow-[0_0_12px_rgba(217,119,6,0.7)] opacity-0 group-hover:opacity-100 transition-opacity"
     />
   </motion.a>
 );
@@ -150,11 +150,11 @@ const Footer = () => {
             whileHover="active"
           >
             <motion.div
-              className="absolute -inset-4 bg-amber-500/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 pointer-events-none"
+              className="absolute -inset-4 bg-amber-500/25 blur-3xl rounded-full opacity-0 group-hover:opacity-100 pointer-events-none"
               variants={{
                 active: {
                   scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.6, 0.3],
+                  opacity: [0.5, 0.9, 0.5],
                   transition: { duration: 4, repeat: Infinity, ease: "easeInOut" }
                 }
               }}
@@ -164,7 +164,7 @@ const Footer = () => {
               <input 
                 type="email" 
                 placeholder="Email address" 
-                className="bg-amber-500/5 border border-amber-900/10 rounded-2xl px-5 py-4 text-sm text-text-primary focus:outline-none focus:border-amber-500 w-full transition-all duration-500 placeholder:text-text-muted h-14"
+                className="bg-amber-500/10 border border-amber-900/10 rounded-2xl px-5 py-4 text-sm text-text-primary focus:outline-none focus:border-amber-500 w-full transition-all duration-500 placeholder:text-text-muted h-14"
               />
               <motion.button 
                 whileHover={{ scale: 1.05 }}

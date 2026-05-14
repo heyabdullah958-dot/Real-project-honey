@@ -73,9 +73,14 @@ export default function AboutPage() {
             
             {/* Australian Heritage Map */}
             <div className="flex flex-col gap-4">
-              <span className="text-amber-700 font-bold tracking-widest uppercase text-[10px] flex items-center gap-2">
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=Amazing+Natures+Manuka+Honey+Sydney+NSW+Australia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-700 font-bold tracking-widest uppercase text-[10px] flex items-center gap-2 w-fit hover:text-amber-900 transition-colors"
+              >
                 <MapPin className="w-3 h-3" /> Our Australian Origin
-              </span>
+              </a>
               <div className="w-full h-48 rounded-3xl overflow-hidden border border-amber-700/10 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-700">
                   <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.898246877969!2d151.2073!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae401e8b983f%3A0x5017d6816329200!2sSydney%20NSW!5e0!3m2!1sen!2sau!4v1715560000000!5m2!1sen!2sau" 
@@ -84,6 +89,7 @@ export default function AboutPage() {
                     style={{ border: 0 }} 
                     allowFullScreen 
                     loading="lazy"
+                    title="Amazing Natures Australian Origin Map"
                   ></iframe>
               </div>
             </div>

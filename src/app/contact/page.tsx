@@ -112,9 +112,14 @@ export default function ContactPage() {
                  </div>
               </div>
 
-              <div className="glass-panel p-8 rounded-3xl border-amber-700/10">
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=Amazing+Natures+Manuka+Honey+Sydney+NSW+Australia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-panel p-8 rounded-3xl border-amber-700/10 hover:border-amber-700/30 transition-all group block"
+              >
                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-10 h-10 bg-amber-700/10 rounded-xl flex items-center justify-center text-amber-700">
+                    <div className="w-10 h-10 bg-amber-700/10 rounded-xl flex items-center justify-center text-amber-700 group-hover:bg-amber-700 group-hover:text-white transition-all">
                        <MapPin className="w-5 h-5" />
                     </div>
                     <h4 className="font-bold text-text-primary uppercase tracking-widest text-sm">Our Hives</h4>
@@ -127,7 +132,7 @@ export default function ContactPage() {
                         Australia
                     </p>
                     {/* Google Maps Embed */}
-                    <div className="w-full h-64 rounded-2xl overflow-hidden border border-amber-700/10 grayscale-[0.8] hover:grayscale-0 transition-all duration-700">
+                    <div className="w-full h-64 rounded-2xl overflow-hidden border border-amber-700/10 grayscale-[0.8] group-hover:grayscale-0 transition-all duration-700">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.898246877969!2d151.2073!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae401e8b983f%3A0x5017d6816329200!2sSydney%20NSW!5e0!3m2!1sen!2sau!4v1715560000000!5m2!1sen!2sau" 
                             width="100%" 
@@ -136,10 +141,11 @@ export default function ContactPage() {
                             allowFullScreen 
                             loading="lazy" 
                             referrerPolicy="no-referrer-when-downgrade"
+                            title="Amazing Natures Sydney HQ Location"
                         ></iframe>
                     </div>
                  </div>
-              </div>
+              </a>
 
               <div className="bg-amber-700/5 p-8 rounded-3xl border border-amber-700/10">
                  <h4 className="font-bold text-text-primary uppercase tracking-widest text-xs mb-4">Support Hours</h4>

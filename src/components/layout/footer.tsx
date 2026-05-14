@@ -102,7 +102,7 @@ const Footer = () => {
           </p>
           <div className="flex gap-4 justify-center md:justify-start">
             <SocialIcon icon={Mail} href="mailto:zeeshan.ahmed2691@gmail.com" />
-            <SocialIcon icon={MapPin} />
+            <SocialIcon icon={MapPin} href="https://www.google.com/maps/search/?api=1&query=Amazing+Natures+Manuka+Honey+Sydney+NSW+Australia" />
             <SocialIcon icon={ArrowRight} />
           </div>
         </div>

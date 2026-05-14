@@ -101,7 +101,7 @@ const Footer = () => {
             Nature&apos;s most robust bioactive superfood, cold-extracted from the pristine wilderness of Australia.
           </p>
           <div className="flex gap-4 justify-center md:justify-start">
-            <SocialIcon icon={Mail} />
+            <SocialIcon icon={Mail} href="mailto:zeeshan.ahmed2691@gmail.com" />
             <SocialIcon icon={MapPin} />
             <SocialIcon icon={ArrowRight} />
           </div>
@@ -139,6 +139,7 @@ const Footer = () => {
                 style={{ border: 0 }} 
                 allowFullScreen 
                 loading="lazy"
+                title="Amazing Natures Sydney HQ Location"
             ></iframe>
           </div>
           

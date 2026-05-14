@@ -206,7 +206,7 @@ const ResultCard = ({ result, onReset }: { result: Product; onReset: () => void 
             </motion.div>
             <motion.div variants={itemVariants} className="mb-8 flex flex-wrap gap-3">
               <div className="px-6 py-3 rounded-2xl bg-amber-500 text-void font-bold text-lg flex items-center gap-2 shadow-lg shadow-amber-500/20 animate-pulse">
-                <Zap className="w-5 h-5 fill-void" /> MGO {result.potency * 100}+ Activity Level
+                <Zap className="w-5 h-5 fill-void" /> MGO {result.mgo}+ Activity Level
               </div>
               <div className="px-6 py-3 rounded-2xl bg-earth/30 border border-amber-500/20 text-text-primary font-bold text-sm flex items-center gap-2">
                 <Shield className="w-4 h-4 text-amber-500" /> Scientifically Verified

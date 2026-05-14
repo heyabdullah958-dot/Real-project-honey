@@ -7,15 +7,15 @@ import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#050505]">
+    <main className="min-h-screen">
       {/* Cinematic Hero Canvas Sequence */}
       <HeroCanvas />
 
-      {/* Narrative Section: The Science of Potency */}
+      {/* Narrative Section: The Science of Activity */}
       <ScienceSection />
 
       {/* Product Grid Section */}
-      <section className="py-32 px-6 bg-earth/5 relative">
+      <section className="py-32 px-6 bg-amber-900/[0.04] relative">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
             <div className="max-w-2xl">
@@ -23,7 +23,7 @@ export default function Home() {
                 The Core Range
               </span>
               <h2 className="text-4xl md:text-6xl font-display font-bold text-text-primary mb-6">
-                Choose Your <span className="text-amber-500">Potency.</span>
+                Choose Your <span className="text-amber-500">Activity Level.</span>
               </h2>
             </div>
             <Link 
@@ -61,7 +61,7 @@ export default function Home() {
               </p>
               <Link 
                 href="/wellness-quiz"
-                className="inline-block bg-amber-500 text-void font-bold uppercase tracking-[0.2em] px-12 py-6 rounded-2xl hover:bg-amber-400 transition-all shadow-2xl shadow-amber-500/20 hover:scale-105 active:scale-95"
+                className="inline-block bg-amber-500 text-white font-bold uppercase tracking-[0.2em] px-12 py-6 rounded-2xl hover:bg-amber-400 transition-all shadow-2xl shadow-amber-500/20 hover:scale-105 active:scale-95"
               >
                 Find My Match
               </Link>

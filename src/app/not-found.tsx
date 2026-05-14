@@ -7,9 +7,9 @@ import { ArrowLeft, Home } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden bg-[#050505]">
+    <div className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden bg-white">
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
       
       <div className="relative z-10 text-center max-w-2xl">
         <motion.div
@@ -28,7 +28,7 @@ export default function NotFound() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/">
-              <Button size="lg" className="h-14 px-8 bg-amber-500 text-void hover:bg-amber-400 font-bold uppercase tracking-widest flex items-center gap-2">
+              <Button size="lg" className="h-14 px-8 bg-amber-500 text-white hover:bg-amber-400 font-bold uppercase tracking-widest flex items-center gap-2">
                 <Home className="w-5 h-5" /> Back to Home
               </Button>
             </Link>

@@ -188,8 +188,8 @@ export const ScienceSection = () => {
       const x = (canvas.width / 2) - (img.width / 2) * scale;
       const y = (canvas.height / 2) - (img.height / 2) * scale;
       
-      // Clear with background color before drawing
-      context.fillStyle = "#050505";
+      // Clear with white background color before drawing
+      context.fillStyle = "#FFFFFF";
       context.fillRect(0, 0, canvas.width, canvas.height);
       context.drawImage(img, x, y, img.width * scale, img.height * scale);
     };
@@ -224,7 +224,8 @@ export const ScienceSection = () => {
   }, [isLoaded, images]);
 
   return (
-    <section ref={sectionRef} className="relative py-32 px-6 overflow-hidden bg-[#050505] min-h-[150vh]">
+    <section ref={sectionRef} className="relative py-32 px-6 overflow-hidden bg-[#F7F4EF] min-h-[150vh] rounded-t-[3rem]">
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white to-[#F7F4EF] pointer-events-none z-0" />
       {/* Decorative elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
@@ -245,7 +246,7 @@ export const ScienceSection = () => {
                 index={0}
                 icon={Beaker}
                 title="Certified Methylglyoxal"
-                description="MGO is the compound that gives Manuka its unique antibacterial power. We certify every jar for precision."
+                description="MGO is the compound that gives Manuka its distinctive bioactive profile. We certify every jar for precision."
                 active={activeIndex === null ? null : activeIndex === 0}
                 onHover={() => setActiveIndex(0)}
                 onLeave={() => setActiveIndex(null)}
@@ -263,7 +264,7 @@ export const ScienceSection = () => {
                 index={2}
                 icon={Zap}
                 title="Maximum Bio-Activity"
-                description="Harvested from Australia's pristine Leptospermum forests for clinical-grade antibacterial potency."
+                description="Harvested from Australia's pristine Leptospermum forests for premium bioactive grade."
                 active={activeIndex === null ? null : activeIndex === 2}
                 onHover={() => setActiveIndex(2)}
                 onLeave={() => setActiveIndex(null)}
@@ -272,12 +273,12 @@ export const ScienceSection = () => {
           </motion.div>
 
           <div className="relative lg:sticky lg:top-32 h-[500px] md:h-[600px] w-full">
-            <div className="w-full h-full rounded-[3rem] overflow-hidden border border-amber-500/20 glass-panel p-2 group bg-[#050505]">
-              <div className="w-full h-full rounded-[2.5rem] bg-[#050505] relative overflow-hidden flex items-center justify-center">
+            <div className="w-full h-full rounded-[3rem] overflow-hidden border border-amber-500/20 glass-panel p-2 group bg-white">
+              <div className="w-full h-full rounded-[2.5rem] bg-white relative overflow-hidden flex items-center justify-center">
                 {!isLoaded ? (
                   <Image 
                     src="/honey-frames/00001.jpg" 
-                    alt="Manuka Honey Potency Fallback" 
+                    alt="Manuka Honey Activity Level Fallback" 
                     fill
                     className="object-contain opacity-60 grayscale group-hover:grayscale-0 transition-all duration-700"
                     priority
@@ -286,7 +287,7 @@ export const ScienceSection = () => {
                   <canvas 
                     ref={canvasRef} 
                     className="w-full h-full object-contain"
-                    style={{ background: '#050505' }}
+                    style={{ background: '#FFFFFF' }}
                   />
                 )}
                 
@@ -307,13 +308,13 @@ export const ScienceSection = () => {
                   <div className="absolute inset-0 bg-white/40 blur-[1px] rounded-full scale-50 -translate-x-1" />
                 </motion.div>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent pointer-events-none" />
                 
                 <div className="absolute bottom-12 left-12 right-12 z-30 pointer-events-none">
                   <div className="flex items-end justify-between">
                     <div>
                       <span className="text-amber-500 font-bold text-5xl block mb-2 tracking-tighter">800+</span>
-                      <span className="text-text-primary font-bold uppercase tracking-widest text-xs">Clinical MGO Grade</span>
+                      <span className="text-text-primary font-bold uppercase tracking-widest text-xs">Premium Grade MGO</span>
                     </div>
                     <div className="h-1.5 w-32 bg-amber-500/10 rounded-full overflow-hidden border border-amber-500/5">
                       <motion.div 

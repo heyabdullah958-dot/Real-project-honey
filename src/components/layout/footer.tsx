@@ -18,7 +18,7 @@ const AnimatedLink = ({ href, children }: { href: string; children: string }) =>
           <motion.span
             key={i}
             variants={{
-              rest: { y: 0, opacity: 0.7, color: "#9ca3af" }, // text-text-secondary
+              rest: { y: 0, opacity: 0.7, color: "#C8A96E" }, // warm champagne
               hover: { 
                 y: [0, -2, 0], 
                 opacity: 1, 
@@ -55,7 +55,7 @@ const SocialIcon = ({ icon: Icon, href = "#" }: { icon: React.ElementType; href?
   <motion.a
     href={href}
     whileHover={{ scale: 1.15 }}
-    className="relative group p-2 text-text-secondary hover:text-amber-500 transition-colors duration-300"
+    className="relative group p-2 text-amber-200/60 hover:text-amber-500 transition-colors duration-300"
   >
     <Icon className="w-5 h-5 relative z-10" />
     <AnimatePresence>
@@ -76,7 +76,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#050505] border-t border-white/10 pt-16 pb-8 px-8 overflow-hidden">
+    <footer className="bg-white relative pt-16 pb-8 px-8 mt-12 overflow-visible border-t border-amber-900/10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 relative z-10 text-center md:text-left justify-items-center md:justify-items-start">
         {/* Brand */}
         <div className="col-span-1 md:col-span-1 flex flex-col items-center md:items-start">
@@ -98,7 +98,7 @@ const Footer = () => {
             </span>
           </Link>
           <p className="text-text-muted text-sm leading-relaxed mb-6 max-w-xs">
-            Nature&apos;s most potent healing honey, cold-extracted from the pristine wilderness of Australia.
+            Nature&apos;s most robust bioactive superfood, cold-extracted from the pristine wilderness of Australia.
           </p>
           <div className="flex gap-4 justify-center md:justify-start">
             <SocialIcon icon={Mail} />
@@ -143,7 +143,7 @@ const Footer = () => {
           </div>
           
           <h4 className="text-amber-500 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Newsletter</h4>
-          <p className="text-text-muted text-sm mb-6 text-center md:text-left">Join our community for updates.</p>
+          <p className="text-amber-200/60 text-sm mb-6 text-center md:text-left">Join our community for updates.</p>
           
           <motion.div 
             className="group relative w-full"
@@ -164,12 +164,12 @@ const Footer = () => {
               <input 
                 type="email" 
                 placeholder="Email address" 
-                className="bg-earth/30 border border-amber-900/20 rounded-2xl px-5 py-4 text-sm text-text-primary focus:outline-none focus:border-amber-500 w-full transition-all duration-500 placeholder:text-text-muted/50 h-14"
+                className="bg-amber-500/5 border border-amber-900/10 rounded-2xl px-5 py-4 text-sm text-text-primary focus:outline-none focus:border-amber-500 w-full transition-all duration-500 placeholder:text-text-muted h-14"
               />
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-14 h-14 amber-gradient rounded-2xl flex items-center justify-center text-void shadow-lg shadow-amber-500/10 shrink-0"
+                className="w-full sm:w-14 h-14 amber-gradient rounded-2xl flex items-center justify-center text-white shadow-lg shadow-amber-500/10 shrink-0"
               >
                 <ArrowRight className="w-5 h-5" />
               </motion.button>
@@ -179,7 +179,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
+      <div className="max-w-7xl mx-auto pt-8 border-t border-amber-900/5 flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
         <p className="text-text-muted text-[10px] uppercase tracking-[0.3em] font-bold text-center">
           &copy; {currentYear} AMAZING NATURES. PROUDLY AUSTRALIAN MADE.
         </p>

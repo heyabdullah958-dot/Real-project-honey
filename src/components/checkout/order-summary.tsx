@@ -70,10 +70,10 @@ export const OrderSummary = () => {
             <ShieldCheck className="w-5 h-5" />
           </div>
           <div>
-            <h5 className="text-[10px] uppercase tracking-widest font-bold text-text-primary">Verified Lab Report</h5>
+            <h5 className="text-[10px] uppercase tracking-widest font-bold text-text-primary">Verified Activity Report</h5>
             <p className="text-[9px] text-amber-500/70 uppercase tracking-wider font-medium group-hover:text-amber-500 transition-colors">
               Batch-Tested in Australia. <br />
-              Click to view MGO 800+ potency certificate
+              Click to view MGO 800+ activity level certificate
             </p>
           </div>
         </motion.div>
@@ -82,7 +82,7 @@ export const OrderSummary = () => {
       <div className="grid grid-cols-1 gap-4">
         {[
           { icon: ShieldCheck, text: "Authenticity Guaranteed" },
-          { icon: Award, text: "Lab Certified MGO" },
+          { icon: Award, text: "Independently Tested" },
           { icon: Truck, text: "Insured Shipping" }
         ].map((badge, i) => (
           <div key={i} className="flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/[0.02] border border-white/5">

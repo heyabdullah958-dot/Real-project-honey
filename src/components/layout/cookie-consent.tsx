@@ -31,7 +31,7 @@ export default function CookieConsent() {
           exit={{ y: 100, opacity: 0 }}
           className="fixed bottom-6 left-6 right-6 z-[100] md:left-auto md:w-[400px]"
         >
-          <div className="glass-panel p-6 rounded-3xl border-amber-500/20 shadow-2xl relative overflow-hidden bg-[#050505]/95">
+          <div className="glass-panel p-6 rounded-3xl border-amber-500/20 shadow-2xl relative overflow-hidden bg-white">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">
                 <Shield className="w-5 h-5 text-amber-500" />
@@ -45,7 +45,7 @@ export default function CookieConsent() {
                   </Link>.
                 </p>
                 <div className="flex gap-3">
-                  <Button onClick={acceptCookies} size="sm" className="bg-amber-500 text-void hover:bg-amber-400 font-bold px-6">
+                  <Button onClick={acceptCookies} size="sm" className="bg-amber-500 text-white hover:bg-amber-400 font-bold px-6">
                     Accept
                   </Button>
                   <Button 

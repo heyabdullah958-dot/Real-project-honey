@@ -16,7 +16,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050505] pt-12 pb-24 px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-white pt-12 pb-24 px-6 relative overflow-hidden">
       {/* Subtle Amber Glow */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/[0.03] blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-amber-500/[0.02] blur-[100px] rounded-full pointer-events-none" />

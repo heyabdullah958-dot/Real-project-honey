@@ -71,20 +71,20 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="flex flex-col gap-2">
                         <label className="text-[10px] uppercase tracking-widest text-text-muted font-bold ml-4">Full Name</label>
-                        <input name="name" required type="text" className="h-14 rounded-2xl bg-void border border-amber-900/20 px-6 text-text-primary focus:outline-none focus:border-amber-500 transition-all" />
+                        <input name="name" required type="text" className="h-14 rounded-2xl bg-white border border-amber-900/20 px-6 text-text-primary focus:outline-none focus:border-amber-500 transition-all" />
                       </div>
                       <div className="flex flex-col gap-2">
                         <label className="text-[10px] uppercase tracking-widest text-text-muted font-bold ml-4">Email Address</label>
-                        <input name="email" required type="email" className="h-14 rounded-2xl bg-void border border-amber-900/20 px-6 text-text-primary focus:outline-none focus:border-amber-500 transition-all" />
+                        <input name="email" required type="email" className="h-14 rounded-2xl bg-white border border-amber-900/20 px-6 text-text-primary focus:outline-none focus:border-amber-500 transition-all" />
                       </div>
                   </div>
                   <div className="flex flex-col gap-2">
                       <label className="text-[10px] uppercase tracking-widest text-text-muted font-bold ml-4">Subject</label>
-                      <input name="subject" required type="text" className="h-14 rounded-2xl bg-void border border-amber-900/20 px-6 text-text-primary focus:outline-none focus:border-amber-500 transition-all" />
+                      <input name="subject" required type="text" className="h-14 rounded-2xl bg-white border border-amber-900/20 px-6 text-text-primary focus:outline-none focus:border-amber-500 transition-all" />
                   </div>
                   <div className="flex flex-col gap-2">
                       <label className="text-[10px] uppercase tracking-widest text-text-muted font-bold ml-4">Message</label>
-                      <textarea name="message" required className="h-40 rounded-2xl bg-void border border-amber-900/20 px-6 py-4 text-text-primary focus:outline-none focus:border-amber-500 transition-all resize-none"></textarea>
+                      <textarea name="message" required className="h-40 rounded-2xl bg-white border border-amber-900/20 px-6 py-4 text-text-primary focus:outline-none focus:border-amber-500 transition-all resize-none"></textarea>
                   </div>
                   <Button disabled={isLoading} size="lg" className="h-14 mt-4 flex gap-2">
                       <Send className="w-4 h-4" /> {isLoading ? "Sending..." : "Send Message"}

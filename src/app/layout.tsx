@@ -54,10 +54,10 @@ export const metadata: Metadata = {
     description: "Nature's purity, bottled in gold. Premium cold-extracted Australian Manuka.",
     images: [
       {
-        url: "/assets/products/4.jpeg",
+        url: "/assets/products/mgo-800.png",
         width: 1200,
         height: 630,
-        alt: "Amazing Natures Manuka Honey",
+        alt: "Amazing Natures Premium Manuka Honey",
       },
     ],
   },
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Amazing Natures | Premium Australian Manuka Honey",
     description: "Premium cold-extracted Australian Manuka.",
-    images: ["/assets/products/4.jpeg"],
+    images: ["/assets/products/mgo-800.png"],
   },
   robots: {
     index: true,
@@ -81,9 +81,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${cormorant.variable} ${outfit.variable} h-full antialiased dark`}
+      className={`${inter.variable} ${cormorant.variable} ${outfit.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-void text-text-primary selection:bg-amber-500/30">
+      <body className="min-h-full flex flex-col bg-[#FBF5E9] text-text-primary selection:bg-amber-500/30">
         <SmoothScroll />
         <Navbar />
         <main className="flex-grow">

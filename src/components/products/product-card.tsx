@@ -84,7 +84,7 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
       />
 
       {/* Product Image Section */}
-      <Link href={`/products/${product.slug}`} className="block relative aspect-square overflow-hidden">
+      <Link href={`/products/${product.slug}`} className="block relative aspect-square overflow-hidden group/image bg-white">
         {/* BASE LAYER: Product Image */}
         <div className="absolute inset-0 p-8 flex items-center justify-center">
           <motion.div

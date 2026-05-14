@@ -42,7 +42,7 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
         isScrolled 
-          ? "bg-void/80 backdrop-blur-lg border-b border-white/10 py-3" 
+          ? "bg-[#FBF5E9]/90 backdrop-blur-lg border-b border-amber-900/10 py-3" 
           : "bg-transparent"
       )}
       aria-label="Main Navigation"
@@ -51,7 +51,7 @@ const Navbar = () => {
         {/* Logo - Centered on mobile absolute */}
         <Link href="/" className="flex items-center gap-3 group relative z-20" aria-label="Amazing Natures Home">
           <div className={cn(
-            "relative transition-all duration-500 ease-in-out rounded-xl p-1",
+            "relative transition-all duration-500 ease-in-out rounded-xl p-1 bg-white",
             "ring-2 ring-amber-500/20 group-hover:ring-amber-500/60 shadow-[0_0_24px_rgba(245,158,11,0.15)] group-hover:shadow-[0_0_32px_rgba(245,158,11,0.35)]",
             isScrolled ? "w-12 h-12" : "w-16 h-16"
           )}>
@@ -94,7 +94,7 @@ const Navbar = () => {
           >
             <ShoppingCart className="w-5 h-5" />
             {totalItems > 0 && (
-              <span className="absolute top-1 right-1 w-4 h-4 bg-amber-500 text-void text-[10px] font-bold rounded-full flex items-center justify-center">
+              <span className="absolute top-1 right-1 w-4 h-4 bg-amber-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
                 {totalItems}
               </span>
             )}
@@ -117,7 +117,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-void border-b border-amber-900/20 p-6 md:hidden animate-in slide-in-from-top duration-300">
+        <div className="absolute top-full left-0 right-0 bg-[#FBF5E9] border-b border-amber-900/10 shadow-lg p-6 md:hidden animate-in slide-in-from-top duration-300">
           <div className="flex flex-col gap-6">
             {navLinks.map((link) => (
               <Link

@@ -55,7 +55,7 @@ const CinematicSection = () => {
 
 export default function AboutPage() {
   return (
-    <div className="py-24 px-8 bg-[#050505] min-h-screen">
+    <div className="py-24 px-8 min-h-screen">
       <div className="max-w-7xl mx-auto">
         <CinematicSection />
 
@@ -99,7 +99,7 @@ export default function AboutPage() {
                  <div className="w-12 h-12 amber-gradient rounded-2xl flex items-center justify-center text-void">
                    <ShieldCheck className="w-6 h-6" />
                  </div>
-                 <h4 className="font-bold text-text-primary uppercase tracking-widest text-[10px]">Lab Certified</h4>
+                 <h4 className="font-bold text-text-primary uppercase tracking-widest text-[10px]">Independently Tested</h4>
               </div>
             </div>
           </div>
@@ -127,7 +127,7 @@ export default function AboutPage() {
              <Beaker className="w-10 h-10 text-amber-500" />
              <h3 className="text-2xl font-display font-bold text-text-primary">Science Verified</h3>
              <p className="text-text-secondary text-sm leading-relaxed">
-               Every batch is laboratory tested to verify its MGO content, ensuring you receive the therapeutic potency you pay for.
+               Every batch is scientifically verified to verify its MGO content, ensuring you receive the therapeutic activity level you pay for.
              </p>
           </div>
           <div className="flex flex-col gap-6 p-10 glass-panel rounded-[2.5rem]">

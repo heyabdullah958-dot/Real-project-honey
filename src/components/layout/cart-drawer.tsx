@@ -20,7 +20,7 @@ const CartDrawer = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-void/60 backdrop-blur-sm z-[60]"
+            className="fixed inset-0 bg-[#050505]/40 backdrop-blur-sm z-[60]"
           />
 
           {/* Drawer */}
@@ -29,7 +29,7 @@ const CartDrawer = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 h-full w-full max-w-md bg-void border-l border-amber-900/20 z-[70] shadow-2xl flex flex-col"
+            className="fixed top-0 right-0 h-full w-full max-w-md bg-white border-l border-amber-900/20 z-[70] shadow-2xl flex flex-col"
           >
             {/* Header */}
             <div className="p-6 border-b border-amber-900/10 flex items-center justify-between">
@@ -39,7 +39,7 @@ const CartDrawer = () => {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 hover:bg-white/5 rounded-full transition-colors text-text-muted hover:text-text-primary"
+                className="p-2 hover:bg-amber-500/5 rounded-full transition-colors text-text-muted hover:text-text-primary"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -49,7 +49,7 @@ const CartDrawer = () => {
             <div className="flex-grow overflow-y-auto p-6 flex flex-col gap-6">
               {items.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-center gap-6 opacity-40">
-                   <div className="w-20 h-20 amber-gradient rounded-full flex items-center justify-center text-void">
+                   <div className="w-20 h-20 amber-gradient rounded-full flex items-center justify-center text-white">
                      <ShoppingBag className="w-10 h-10" />
                    </div>
                    <p className="text-text-secondary uppercase tracking-widest text-xs font-bold">Your cart is empty</p>
@@ -59,7 +59,7 @@ const CartDrawer = () => {
                 items.map((item) => (
                   <div key={item.id} className="flex gap-4 group">
                     <div className="relative w-24 h-24 rounded-2xl overflow-hidden glass-panel border-amber-900/10">
-                      <Image src={item.image} alt={item.name} fill className="object-cover mix-blend-multiply" />
+                      <Image src={item.image} alt={item.name} fill className="object-cover" />
                     </div>
                     <div className="flex-grow flex flex-col justify-between py-1">
                       <div>
@@ -80,7 +80,7 @@ const CartDrawer = () => {
                       </div>
                       
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3 bg-earth/50 rounded-lg p-1 border border-amber-900/10">
+                        <div className="flex items-center gap-3 bg-[#F7F4EF] rounded-lg p-1 border border-amber-900/10">
                           <button 
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
                             className="w-6 h-6 flex items-center justify-center text-text-muted hover:text-amber-500 transition-colors"
@@ -105,7 +105,7 @@ const CartDrawer = () => {
 
             {/* Footer */}
             {items.length > 0 && (
-              <div className="p-6 border-t border-amber-900/10 bg-night/50 flex flex-col gap-6">
+              <div className="p-6 border-t border-amber-900/10 bg-[#F7F4EF] flex flex-col gap-6">
                 <div className="flex justify-between items-center">
                   <span className="text-text-muted uppercase tracking-[0.2em] text-xs font-bold">Subtotal</span>
                   <span className="text-2xl font-display font-bold text-amber-500">${getTotalPrice()}.00</span>

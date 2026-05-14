@@ -100,7 +100,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <div className="flex items-center gap-2 mb-2">
                  {[...Array(5)].map((_, i) => (
                    <Star key={i} className={cn("w-4 h-4", i < product.rating ? "fill-amber-500 text-amber-500" : "text-text-muted")} />
-                 ))}                 <span className="text-xs text-text-muted uppercase tracking-widest ml-2">Verified Potency</span>
+                 ))}                 <span className="text-xs text-text-muted uppercase tracking-widest ml-2">Verified Activity Level</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-text-primary">
                 {product.name}
@@ -113,13 +113,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
             </p>
 
             <div className="flex flex-col gap-4">
-               <div className="flex items-center gap-4 p-4 rounded-2xl bg-earth/50 border border-amber-900/10">
+               <div className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-amber-900/10">
                   <div className="w-10 h-10 amber-gradient rounded-xl flex items-center justify-center text-void">
                     <ShieldCheck className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-text-primary uppercase tracking-wider">Potency Grade</h4>
-                    <p className="text-xs text-text-muted">{product.antibacterial} Antibacterial Activity</p>
+                    <h4 className="text-sm font-bold text-text-primary uppercase tracking-wider">Activity Grade</h4>
+                    <p className="text-xs text-text-muted">{product.activity} Bio-Active Profile</p>
                   </div>
                </div>
             </div>
@@ -129,7 +129,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <div className="grid grid-cols-3 gap-4 pt-8 border-t border-amber-900/10">
                <div className="flex flex-col items-center gap-2 text-center">
                   <Beaker className="w-5 h-5 text-amber-500" />
-                  <span className="text-[10px] uppercase tracking-tighter text-text-muted">Lab Tested</span>
+                  <span className="text-[10px] uppercase tracking-tighter text-text-muted">Scientifically Verified</span>
                </div>
                <div className="flex flex-col items-center gap-2 text-center">
                   <Leaf className="w-5 h-5 text-amber-500" />

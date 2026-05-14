@@ -4,7 +4,7 @@ export default function FAQPage() {
   const faqs = [
     {
       q: "What does MGO stand for?",
-      a: "MGO stands for Methylglyoxal, the naturally occurring compound that makes Manuka honey unique. The MGO rating indicates the level of antibacterial activity in the honey."
+      a: "MGO stands for Methylglyoxal, the naturally occurring compound that makes Manuka honey unique. The MGO rating indicates the level of bioactive activity in the honey."
     },
     {
       q: "Is your honey raw and unpasteurized?",
@@ -20,7 +20,7 @@ export default function FAQPage() {
     },
     {
       q: "How do I know which MGO level is right for me?",
-      a: "We recommend taking our Wellness Quiz! Generally, MGO 30-100 is for daily use, MGO 263-400 is for immunity and gut health, and MGO 800+ is for targeted clinical support."
+      a: "We recommend taking our Wellness Quiz! Generally, MGO 30-100 is for daily use, MGO 263-400 is for immunity and gut health, and MGO 800+ is for targeted premium bioactive grade support."
     }
   ];
 

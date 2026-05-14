@@ -1,4 +1,5 @@
 import { Beaker, ShieldCheck, Microscope, Zap } from "lucide-react";
+import Link from "next/link";
 
 export default function SciencePage() {
   return (
@@ -77,16 +78,18 @@ export default function SciencePage() {
         </div>
 
         {/* Lab Reports CTA */}
-        <div className="mt-32 flex flex-col md:flex-row items-center justify-between gap-12 bg-earth/30 p-12 rounded-[3rem] border border-amber-900/10">
-           <div className="flex flex-col gap-2">
-              <h3 className="text-3xl font-display font-bold text-text-primary">Ready to See the Proof?</h3>
-              <p className="text-text-secondary">Download our latest independent batch reports.</p>
+        <div className="mt-32 flex flex-col items-center text-center gap-10 bg-earth/30 p-16 rounded-[4rem] border border-amber-900/10">
+           <div className="flex flex-col gap-3">
+              <h3 className="text-4xl md:text-5xl font-display font-bold text-text-primary">The Gold Standard</h3>
+              <p className="text-text-secondary text-lg">Unwavering commitment to quality in every drop.</p>
            </div>
-           <button className="h-14 px-10 rounded-full bg-transparent border border-amber-500 text-amber-500 font-bold hover:bg-amber-500/10 transition-all uppercase tracking-widest text-xs">
-             Download Independent Reports (PDF)
-           </button>
-        </div>
-      </div>
+           <Link 
+             href="/products" 
+             className="h-14 px-10 rounded-full bg-transparent border border-amber-500 text-amber-500 font-bold hover:bg-amber-500/10 transition-all uppercase tracking-widest text-xs flex items-center justify-center"
+           >
+             EXPLORE THE COLLECTION
+           </Link>
+        </div>      </div>
     </div>
   );
 }

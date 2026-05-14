@@ -220,16 +220,19 @@ const ResultCard = ({ result, onReset }: { result: Product; onReset: () => void 
                     <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} className="absolute inset-0 bg-white/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Button>
                </Link>
-               <div className="flex flex-col items-center md:items-start gap-4 mt-4">
-                 <Link href="/science" className="flex items-center gap-2 text-text-muted hover:text-amber-500 transition-colors text-xs uppercase tracking-[0.2em] font-bold group">
-                   <Info className="w-4 h-4" /> Why we matched this for you
-                   <div className="h-[1px] w-0 group-hover:w-full bg-amber-500 transition-all duration-300" />
-                 </Link>
-                 <button onClick={onReset} className="flex items-center gap-2 text-text-muted/50 hover:text-text-primary transition-colors text-[10px] uppercase tracking-[0.3em]">
+               <div className="flex flex-col items-center md:items-start gap-4 mt-6 pt-6 border-t border-amber-500/10">
+                 <div className="flex flex-col items-center md:items-start gap-3">
+                   <div className="flex items-center gap-2 text-amber-500 text-[10px] uppercase tracking-[0.2em] font-bold">
+                     <Info className="w-4 h-4" /> Why we matched this for you
+                   </div>
+                   <p className="text-text-muted text-xs leading-relaxed max-w-sm text-center md:text-left">
+                     Our selection algorithm analyzed your wellness focus and activity requirements. This specific bioactive profile was chosen to align with your daily ritual, providing the optimal balance of intensity and natural support for your lifestyle goals.
+                   </p>
+                 </div>
+                 <button onClick={onReset} className="flex items-center gap-2 text-text-muted/50 hover:text-text-primary transition-colors text-[10px] uppercase tracking-[0.3em] mt-2">
                    <RefreshCw className="w-3 h-3" /> Re-calibrating Match
                  </button>
-               </div>
-            </motion.div>
+               </div>            </motion.div>
           </div>
         </motion.div>
       </div>

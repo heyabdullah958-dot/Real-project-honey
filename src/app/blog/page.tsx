@@ -52,8 +52,8 @@ export default function BlogPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
            {blogPosts.map((post) => (
              <article key={post.id} className="glass-panel rounded-[2.5rem] overflow-hidden group flex flex-col">
-                <div className="relative aspect-video overflow-hidden bg-white p-8 flex items-center justify-center">
-                   <div className="relative w-full h-full max-h-[90%]">
+                <div className="relative aspect-video overflow-hidden bg-white p-4 flex items-center justify-center">
+                   <div className="relative w-full h-full scale-105">
                       <Image 
                         src={post.image} 
                         alt={post.title} 

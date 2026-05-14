@@ -86,24 +86,24 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
       {/* Product Image Section */}
       <Link href={`/products/${product.slug}`} className="block relative aspect-square overflow-hidden group/image bg-white shrink-0">
         {/* BASE LAYER: Product Image */}
-        <div className="absolute inset-0 p-8 flex items-center justify-center">
+        <div className="absolute inset-0 p-4 flex items-center justify-center">
           <motion.div
             animate={{ 
-              scale: isHovered ? 1.05 : 1,
+              scale: isHovered 
+                ? (product.id === "mgo-30" ? 1.2 : 1.1) 
+                : (product.id === "mgo-30" ? 1.15 : 1.05),
               y: isHovered ? -5 : 0
             }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
             className="relative w-full h-full flex items-center justify-center"
           >
-            <div className="relative w-full h-full max-h-[90%] flex items-center justify-center">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              className="object-contain"
+              priority
+            />
           </motion.div>
         </div>
 

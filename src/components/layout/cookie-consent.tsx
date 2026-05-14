@@ -31,21 +31,21 @@ export default function CookieConsent() {
           exit={{ y: 100, opacity: 0 }}
           className="fixed bottom-6 left-6 right-6 z-[100] md:left-auto md:w-[400px]"
         >
-          <div className="glass-panel p-6 rounded-3xl border-amber-500/20 shadow-2xl relative overflow-hidden bg-white">
+          <div className="glass-panel p-6 rounded-3xl border-amber-700/20 shadow-2xl relative overflow-hidden bg-white">
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">
-                <Shield className="w-5 h-5 text-amber-500" />
+              <div className="w-10 h-10 rounded-xl bg-amber-700/10 flex items-center justify-center shrink-0">
+                <Shield className="w-5 h-5 text-amber-700" />
               </div>
               <div className="flex-1">
                 <h4 className="text-text-primary font-bold mb-2">Respecting Your Privacy</h4>
                 <p className="text-text-muted text-xs leading-relaxed mb-4">
                   We use cookies to enhance your experience and analyze our traffic. By clicking "Accept", you consent to our use of cookies. Read our{" "}
-                  <Link href="/privacy-policy" className="text-amber-500 underline underline-offset-4">
+                  <Link href="/privacy-policy" className="text-amber-700 underline underline-offset-4">
                     Privacy Policy
                   </Link>.
                 </p>
                 <div className="flex gap-3">
-                  <Button onClick={acceptCookies} size="sm" className="bg-amber-500 text-white hover:bg-amber-400 font-bold px-6">
+                  <Button onClick={acceptCookies} size="sm" className="bg-amber-700 text-white hover:bg-amber-400 font-bold px-6">
                     Accept
                   </Button>
                   <Button 
@@ -60,7 +60,7 @@ export default function CookieConsent() {
               </div>
             </div>
             {/* Subtle glow */}
-            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-amber-500/5 blur-3xl rounded-full pointer-events-none" />
+            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-amber-700/5 blur-3xl rounded-full pointer-events-none" />
           </div>
         </motion.div>
       )}

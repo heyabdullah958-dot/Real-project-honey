@@ -70,7 +70,7 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
         transformStyle: "preserve-3d",
       }}
       className={cn(
-        "group relative glass-panel rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:border-amber-500/40",
+        "group relative glass-panel rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:border-amber-700/40",
         className
       )}
     >
@@ -120,11 +120,11 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
       {/* Content */}
       <div className="p-8 flex flex-col gap-5 relative z-10">
         <div>
-          <span className="text-[10px] text-amber-500/70 uppercase tracking-[0.2em] font-bold block mb-2">
+          <span className="text-[10px] text-amber-700/70 uppercase tracking-[0.2em] font-bold block mb-2">
             {product.tagline}
           </span>
           <h3 className="text-2xl font-display font-bold text-text-primary leading-tight">
-            <Link href={`/products/${product.slug}`} className="hover:text-amber-500 transition-colors">
+            <Link href={`/products/${product.slug}`} className="hover:text-amber-700 transition-colors">
               {product.name}
             </Link>
           </h3>
@@ -134,7 +134,7 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
                 key={i}
                 className={cn(
                   "w-3 h-3 transition-colors duration-300",
-                  i < product.rating ? "fill-amber-500 text-amber-500" : "text-text-muted/30"
+                  i < product.rating ? "fill-amber-700 text-amber-700" : "text-text-muted/30"
                 )}
               />
             ))}
@@ -164,7 +164,7 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
 
         <Link 
           href={`/products/${product.slug}`}
-          className="text-[10px] text-center text-text-muted hover:text-amber-500 transition-colors uppercase tracking-[0.3em] font-bold mt-2"
+          className="text-[10px] text-center text-text-muted hover:text-amber-700 transition-colors uppercase tracking-[0.3em] font-bold mt-2"
         >
           Explore the science
         </Link>

@@ -37,7 +37,7 @@ const AnimatedLink = ({ href, children }: { href: string; children: string }) =>
         ))}
         {/* Shimmer Overlay */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-500/20 to-transparent w-full h-full skew-x-12"
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-700/20 to-transparent w-full h-full skew-x-12"
           variants={{
             rest: { x: "-100%" },
             hover: { 
@@ -55,12 +55,12 @@ const SocialIcon = ({ icon: Icon, href = "#" }: { icon: React.ElementType; href?
   <motion.a
     href={href}
     whileHover={{ scale: 1.15 }}
-    className="relative group p-2 text-amber-800 hover:text-amber-500 transition-colors duration-300"
+    className="relative group p-2 text-amber-900/80 hover:text-amber-700 transition-colors duration-300"
   >
     <Icon className="w-5 h-5 relative z-10" />
     <AnimatePresence>
       <motion.div
-        className="absolute inset-0 bg-amber-500/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+        className="absolute inset-0 bg-amber-700/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
         initial={{ scale: 0 }}
         whileHover={{ scale: 1.5, opacity: 1 }}
         exit={{ scale: 0, opacity: 0 }}
@@ -94,7 +94,7 @@ const Footer = () => {
               />
             </motion.div>
             <span className="text-xl font-display font-bold tracking-tight text-text-primary">
-              AMAZING <span className="text-amber-500">NATURES</span>
+              AMAZING <span className="text-amber-700">NATURES</span>
             </span>
           </Link>
           <p className="text-text-secondary text-sm leading-relaxed mb-6 max-w-xs">
@@ -143,14 +143,14 @@ const Footer = () => {
           </div>
           
           <h4 className="text-amber-600 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Newsletter</h4>
-          <p className="text-amber-900/70 text-sm mb-6 text-center md:text-left">Join our community for updates.</p>
+          <p className="text-amber-800 text-sm mb-6 text-center md:text-left">Join our community for updates.</p>
           
           <motion.div 
             className="group relative w-full"
             whileHover="active"
           >
             <motion.div
-              className="absolute -inset-4 bg-amber-500/25 blur-3xl rounded-full opacity-0 group-hover:opacity-100 pointer-events-none"
+              className="absolute -inset-4 bg-amber-700/25 blur-3xl rounded-full opacity-0 group-hover:opacity-100 pointer-events-none"
               variants={{
                 active: {
                   scale: [1, 1.2, 1],
@@ -164,12 +164,12 @@ const Footer = () => {
               <input 
                 type="email" 
                 placeholder="Email address" 
-                className="bg-amber-500/10 border border-amber-900/10 rounded-2xl px-5 py-4 text-sm text-text-primary focus:outline-none focus:border-amber-500 w-full transition-all duration-500 placeholder:text-text-muted h-14"
+                className="bg-amber-700/10 border border-amber-900/10 rounded-2xl px-5 py-4 text-sm text-text-primary focus:outline-none focus:border-amber-700 w-full transition-all duration-500 placeholder:text-text-muted h-14"
               />
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-14 h-14 amber-gradient rounded-2xl flex items-center justify-center text-white shadow-lg shadow-amber-500/10 shrink-0"
+                className="w-full sm:w-14 h-14 amber-gradient rounded-2xl flex items-center justify-center text-white shadow-lg shadow-amber-700/10 shrink-0"
               >
                 <ArrowRight className="w-5 h-5" />
               </motion.button>

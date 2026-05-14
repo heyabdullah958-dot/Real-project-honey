@@ -12,7 +12,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const variants = {
       primary: "amber-gradient text-white hover:brightness-110 shadow-lg shadow-amber-900/20",
       secondary: "bg-earth text-amber-300 hover:bg-bark border border-amber-900/30",
-      outline: "bg-transparent border border-amber-500 text-amber-500 hover:bg-amber-500/10",
+      outline: "bg-transparent border border-amber-700 text-amber-700 hover:bg-amber-700/10",
       ghost: "bg-transparent text-text-secondary hover:text-text-primary hover:bg-white/5",
     };
 

@@ -28,9 +28,9 @@ export default function FAQPage() {
     <div className="py-24 px-6 min-h-screen">
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-col gap-6 mb-20 text-center">
-           <span className="text-amber-500 font-medium tracking-[0.3em] uppercase text-xs">Knowledge Base</span>
+           <span className="text-amber-700 font-medium tracking-[0.3em] uppercase text-xs">Knowledge Base</span>
            <h1 className="text-5xl md:text-7xl font-display font-bold text-text-primary">
-             Common <span className="text-amber-500">Questions</span>
+             Common <span className="text-amber-700">Questions</span>
            </h1>
            <p className="text-xl text-text-secondary leading-relaxed max-w-2xl mx-auto">
              Everything you need to know about our premium Australian Manuka honey.
@@ -39,10 +39,10 @@ export default function FAQPage() {
 
         <div className="flex flex-col gap-6">
            {faqs.map((faq, i) => (
-             <div key={i} className="glass-panel p-8 rounded-3xl border-amber-500/10 hover:border-amber-500/30 transition-all cursor-default group">
+             <div key={i} className="glass-panel p-8 rounded-3xl border-amber-700/10 hover:border-amber-700/30 transition-all cursor-default group">
                 <div className="flex items-center justify-between mb-4">
-                   <h3 className="text-xl font-display font-bold text-text-primary group-hover:text-amber-500 transition-colors">{faq.q}</h3>
-                   <Plus className="w-5 h-5 text-amber-500" />
+                   <h3 className="text-xl font-display font-bold text-text-primary group-hover:text-amber-700 transition-colors">{faq.q}</h3>
+                   <Plus className="w-5 h-5 text-amber-700" />
                 </div>
                 <p className="text-text-secondary leading-relaxed">
                    {faq.a}

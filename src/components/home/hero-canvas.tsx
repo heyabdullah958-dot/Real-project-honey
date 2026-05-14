@@ -161,25 +161,25 @@ export const HeroCanvas = () => {
       <div className="absolute inset-0 z-10 pointer-events-none">
         <div className="act-1-block absolute inset-0 flex flex-col items-center justify-center opacity-0">
           <div className="text-center px-6">
-            <span className="text-amber-500 font-bold uppercase tracking-[0.5em] text-[10px] mb-4 block">Pure Australian Gold</span>
+            <span className="text-amber-700 font-bold uppercase tracking-[0.5em] text-[10px] mb-4 block">Pure Australian Gold</span>
             <h1 className="act-1-chars text-6xl md:text-9xl font-display font-semibold text-[#FBF5E9] leading-display">
               <span className="block">{splitChars("Amazing")}</span>
-              <span className="text-amber-500">{splitChars("Natures")}</span>
+              <span className="text-amber-700">{splitChars("Natures")}</span>
             </h1>
           </div>
         </div>
         <div className="act-2-block absolute inset-0 flex items-center justify-start px-12 md:px-24 opacity-0">
           <div className="max-w-xl">
-            <span className="act-2-eyebrow text-amber-500 font-bold text-[10px] uppercase tracking-eyebrow mb-4 block">Engineered by Nature</span>
-            <h2 className="act-2-heading text-5xl md:text-8xl font-display font-semibold text-[#FBF5E9] leading-display">Bio-Active <br /><span className="act-2-clip text-amber-500 inline-block">Activity.</span></h2>
+            <span className="act-2-eyebrow text-amber-700 font-bold text-[10px] uppercase tracking-eyebrow mb-4 block">Engineered by Nature</span>
+            <h2 className="act-2-heading text-5xl md:text-8xl font-display font-semibold text-[#FBF5E9] leading-display">Bio-Active <br /><span className="act-2-clip text-amber-700 inline-block">Activity.</span></h2>
           </div>
         </div>
         <div className="act-3-block absolute inset-0 flex items-center justify-end px-12 md:px-24 opacity-0">
           <div className="text-right max-w-xl">
-            <span className="text-amber-500 font-bold text-[10px] uppercase tracking-eyebrow mb-4 block">Molecular Excellence</span>
+            <span className="text-amber-700 font-bold text-[10px] uppercase tracking-eyebrow mb-4 block">Molecular Excellence</span>
             <h2 className="text-5xl md:text-8xl font-display font-semibold text-[#FBF5E9] leading-display mb-8">
               <span className="act-3-line-1 block">The Science</span>
-              <span className="act-3-line-2 block text-amber-500">of MGO.</span>
+              <span className="act-3-line-2 block text-amber-700">of MGO.</span>
             </h2>
             <ul className="act-3-bullets space-y-4 text-text-secondary/80 font-medium tracking-wide">
               <li>• Lab-Tested Bioactivity</li>
@@ -190,8 +190,8 @@ export const HeroCanvas = () => {
         </div>
         <div className="act-4-block absolute inset-0 flex flex-col items-center justify-center opacity-0">
           <div className="act-4-content text-center px-6">
-            <h2 className="text-5xl md:text-8xl font-display font-bold text-[#FBF5E9] mb-12">Secure Your <br /><span className="text-amber-500">Liquid Gold.</span></h2>
-            <Link href="/products" className="inline-block bg-amber-500 text-void font-bold uppercase tracking-[0.2em] px-12 py-6 rounded-2xl hover:bg-amber-400 transition-all shadow-xl hover:scale-105 active:scale-95 pointer-events-auto">Shop Collection</Link>
+            <h2 className="text-5xl md:text-8xl font-display font-bold text-[#FBF5E9] mb-12">Secure Your <br /><span className="text-amber-700">Liquid Gold.</span></h2>
+            <Link href="/products" className="inline-block bg-amber-700 text-void font-bold uppercase tracking-[0.2em] px-12 py-6 rounded-2xl hover:bg-amber-400 transition-all shadow-xl hover:scale-105 active:scale-95 pointer-events-auto">Shop Collection</Link>
           </div>
         </div>
       </div>
@@ -202,8 +202,8 @@ export const HeroCanvas = () => {
       {!isLoaded && (
         <div className="absolute inset-0 bg-[#FBF5E9] flex items-center justify-center z-50">
           <div className="flex flex-col items-center gap-4">
-            <div className="w-12 h-12 border-2 border-amber-500/20 border-t-amber-500 rounded-full animate-spin" />
-            <span className="text-xs text-amber-500 font-bold uppercase tracking-widest">Charging Activity...</span>
+            <div className="w-12 h-12 border-2 border-amber-700/20 border-t-amber-700 rounded-full animate-spin" />
+            <span className="text-xs text-amber-700 font-bold uppercase tracking-widest">Charging Activity...</span>
           </div>
         </div>
       )}

@@ -78,7 +78,7 @@ const MGOScanner = ({ onComplete }: { onComplete: () => void }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="glass-panel p-16 md:p-24 rounded-[4rem] border-amber-500/20 text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[500px]"
+      className="glass-panel p-16 md:p-24 rounded-[4rem] border-amber-700/20 text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[500px]"
     >
       <HexagonGrid />
       
@@ -86,15 +86,15 @@ const MGOScanner = ({ onComplete }: { onComplete: () => void }) => {
         <motion.div 
           animate={{ rotate: 360 }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 border-4 border-amber-500/20 border-t-amber-500 rounded-full"
+          className="absolute inset-0 border-4 border-amber-700/20 border-t-amber-700 rounded-full"
         />
         <motion.div 
           animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.5, 0.2] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 bg-amber-500 rounded-full blur-2xl"
+          className="absolute inset-0 bg-amber-700 rounded-full blur-2xl"
         />
         <div className="absolute inset-0 flex items-center justify-center">
-          <Zap className="w-10 h-10 text-amber-500 animate-pulse" />
+          <Zap className="w-10 h-10 text-amber-700 animate-pulse" />
         </div>
       </div>
 
@@ -110,7 +110,7 @@ const MGOScanner = ({ onComplete }: { onComplete: () => void }) => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="text-amber-500 font-bold uppercase tracking-[0.4em] text-xs"
+          className="text-amber-700 font-bold uppercase tracking-[0.4em] text-xs"
         >
           {copies[copyIndex]}
         </motion.p>
@@ -174,30 +174,30 @@ const ResultCard = ({ result, onReset }: { result: Product; onReset: () => void 
       transition={{ type: "spring", stiffness: 100, damping: 20 }}
       className="relative w-full max-w-4xl"
     >
-      <div className="absolute -inset-20 bg-radial-gradient from-amber-500/10 to-transparent blur-3xl pointer-events-none opacity-50" />
+      <div className="absolute -inset-20 bg-radial-gradient from-amber-700/10 to-transparent blur-3xl pointer-events-none opacity-50" />
       <div 
         ref={cardRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="glass-panel p-8 md:p-16 rounded-[4rem] border-amber-500/20 relative overflow-hidden transition-transform duration-200 ease-out"
+        className="glass-panel p-8 md:p-16 rounded-[4rem] border-amber-700/20 relative overflow-hidden transition-transform duration-200 ease-out"
       >
         <motion.div 
           animate={{ x: ["-100%", "200%"] }}
           transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-amber-500/10 to-transparent skew-x-12 pointer-events-none"
+          className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-amber-700/10 to-transparent skew-x-12 pointer-events-none"
         />
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="flex flex-col md:flex-row items-center gap-12">
           <motion.div variants={itemVariants} className="w-full md:w-1/2 flex justify-center">
             <div className="relative group">
-              <div className="absolute -inset-4 bg-amber-500/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-              <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="relative z-10 w-64 h-80 bg-earth/10 rounded-3xl border border-amber-500/10 flex items-center justify-center p-8 overflow-hidden">
+              <div className="absolute -inset-4 bg-amber-700/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+              <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="relative z-10 w-64 h-80 bg-earth/10 rounded-3xl border border-amber-700/10 flex items-center justify-center p-8 overflow-hidden">
                  <Image src={result.image} alt={result.name} width={200} height={200} className="object-contain w-full h-full mix-blend-multiply drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
               </motion.div>
             </div>
           </motion.div>
           <div className="w-full md:w-1/2 text-left flex flex-col items-center md:items-start">
             <motion.div variants={itemVariants} className="mb-6 flex flex-col items-center md:items-start">
-              <span className="text-amber-500 font-bold uppercase tracking-[0.5em] text-[10px] mb-4 block">Your Match Found</span>
+              <span className="text-amber-700 font-bold uppercase tracking-[0.5em] text-[10px] mb-4 block">Your Match Found</span>
               <h2 className="text-4xl md:text-6xl font-display font-bold text-text-primary mb-2 overflow-hidden flex">
                 {result.name.split("").map((char, i) => (
                   <motion.span key={i} initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ delay: i * 0.02 + 0.5, duration: 0.5, ease: "circOut" }} className="inline-block whitespace-pre">{char}</motion.span>
@@ -205,28 +205,28 @@ const ResultCard = ({ result, onReset }: { result: Product; onReset: () => void 
               </h2>
             </motion.div>
             <motion.div variants={itemVariants} className="mb-8 flex flex-wrap gap-3">
-              <div className="px-6 py-3 rounded-2xl bg-amber-500 text-void font-bold text-lg flex items-center gap-2 shadow-lg shadow-amber-500/20 animate-pulse">
+              <div className="px-6 py-3 rounded-2xl bg-amber-700 text-void font-bold text-lg flex items-center gap-2 shadow-lg shadow-amber-700/20 animate-pulse">
                 <Zap className="w-5 h-5 fill-void" /> MGO {result.mgo}+ Activity Level
               </div>
-              <div className="px-6 py-3 rounded-2xl bg-earth/30 border border-amber-500/20 text-text-primary font-bold text-sm flex items-center gap-2">
-                <Shield className="w-4 h-4 text-amber-500" /> Scientifically Verified
+              <div className="px-6 py-3 rounded-2xl bg-earth/30 border border-amber-700/20 text-text-primary font-bold text-sm flex items-center gap-2">
+                <Shield className="w-4 h-4 text-amber-700" /> Scientifically Verified
               </div>
             </motion.div>
             <motion.p variants={itemVariants} className="text-text-muted text-lg mb-10 leading-relaxed text-center md:text-left">{result.description}</motion.p>
             <motion.div variants={itemVariants} className="flex flex-col gap-4 w-full">
                <Link href={`/products/${result.slug}`} className="w-full">
-                  <Button size="lg" className="w-full h-14 text-lg tracking-widest bg-amber-500 text-void hover:bg-amber-400 shadow-2xl shadow-amber-500/20 relative group overflow-hidden">
+                  <Button size="lg" className="w-full h-14 text-lg tracking-widest bg-amber-700 text-void hover:bg-amber-400 shadow-2xl shadow-amber-700/20 relative group overflow-hidden">
                     <span className="relative z-10 flex items-center gap-2 justify-center uppercase font-bold">Shop Now <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" /></span>
                     <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} className="absolute inset-0 bg-white/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Button>
                </Link>
-               <div className="flex flex-col items-center md:items-start gap-4 mt-6 pt-6 border-t border-amber-500/10">
+               <div className="flex flex-col items-center md:items-start gap-4 mt-6 pt-6 border-t border-amber-700/10">
                  <div className="flex flex-col items-center md:items-start gap-3">
-                   <div className="flex items-center gap-2 text-amber-500 text-[10px] uppercase tracking-[0.2em] font-bold">
+                   <div className="flex items-center gap-2 text-amber-700 text-[10px] uppercase tracking-[0.2em] font-bold">
                      <Info className="w-4 h-4" /> Why we matched this for you
                    </div>
                    <p className="text-text-muted text-xs leading-relaxed max-w-sm text-center md:text-left">
-                     Our selection algorithm analyzed your wellness focus and activity requirements. This specific bioactive profile was chosen to align with your daily ritual, providing the optimal balance of intensity and natural support for your lifestyle goals.
+                     Matched to align with your specific wellness focus and activity requirements for optimal natural support.
                    </p>
                  </div>
                  <button onClick={onReset} className="flex items-center gap-2 text-text-muted/50 hover:text-text-primary transition-colors text-[10px] uppercase tracking-[0.3em] mt-2">
@@ -281,17 +281,17 @@ export default function WellnessQuizPage() {
       <div className="max-w-4xl w-full relative z-10">
         <AnimatePresence mode="wait">
           {!isAnalyzing && !result ? (
-            <motion.div key="quiz" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20, scale: 0.95 }} className="glass-panel p-10 md:p-16 rounded-[3rem] border-amber-500/10 text-center relative overflow-hidden">
+            <motion.div key="quiz" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20, scale: 0.95 }} className="glass-panel p-10 md:p-16 rounded-[3rem] border-amber-700/10 text-center relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-earth/20">
-                 <motion.div className="h-full bg-amber-500 shadow-[0_0_15px_rgba(212,147,10,0.5)]" initial={{ width: 0 }} animate={{ width: `${((currentStep + 1) / steps.length) * 100}%` }} />
+                 <motion.div className="h-full bg-amber-700 shadow-[0_0_15px_rgba(212,147,10,0.5)]" initial={{ width: 0 }} animate={{ width: `${((currentStep + 1) / steps.length) * 100}%` }} />
               </div>
               <div className="mb-12">
-                <span className="text-amber-500 font-bold text-[10px] uppercase tracking-[0.4em]">Analysis Step {currentStep + 1} of {steps.length}</span>
+                <span className="text-amber-700 font-bold text-[10px] uppercase tracking-[0.4em]">Analysis Step {currentStep + 1} of {steps.length}</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-display font-bold text-text-primary mb-12 leading-tight">{steps[currentStep].question}</h2>
               <div className="grid grid-cols-1 gap-4 max-w-lg mx-auto">
                 {steps[currentStep].options.map((option) => (
-                  <button key={option.value} onClick={() => handleAnswer(option.value)} className="p-8 rounded-3xl bg-earth/30 border border-amber-900/10 text-text-secondary hover:text-text-primary hover:border-amber-500 hover:bg-amber-500/5 transition-all text-left flex items-center justify-between group">
+                  <button key={option.value} onClick={() => handleAnswer(option.value)} className="p-8 rounded-3xl bg-earth/30 border border-amber-900/10 text-text-secondary hover:text-text-primary hover:border-amber-700 hover:bg-amber-700/5 transition-all text-left flex items-center justify-between group">
                     <span className="font-bold tracking-wide">{option.label}</span>
                     <ArrowRight className="w-5 h-5 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                   </button>

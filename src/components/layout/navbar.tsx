@@ -52,7 +52,7 @@ const Navbar = () => {
         <Link href="/" className="flex items-center gap-3 group relative z-20" aria-label="Amazing Natures Home">
           <div className={cn(
             "relative transition-all duration-500 ease-in-out rounded-xl p-1 bg-white",
-            "ring-2 ring-amber-500/20 group-hover:ring-amber-500/60 shadow-[0_0_24px_rgba(245,158,11,0.15)] group-hover:shadow-[0_0_32px_rgba(245,158,11,0.35)]",
+            "ring-2 ring-amber-700/20 group-hover:ring-amber-700/60 shadow-[0_0_24px_rgba(155,101,0,0.15)] group-hover:shadow-[0_0_32px_rgba(155,101,0,0.35)]",
             isScrolled ? "w-12 h-12" : "w-16 h-16"
           )}>
             <Image 
@@ -66,7 +66,7 @@ const Navbar = () => {
             "font-display font-bold tracking-tight text-text-primary hidden sm:inline-block transition-all duration-500",
             isScrolled ? "text-xl" : "text-2xl"
           )}>
-            AMAZING <span className="text-amber-500">NATURES</span>
+            AMAZING <span className="text-amber-700">NATURES</span>
           </span>
         </Link>
 
@@ -76,7 +76,7 @@ const Navbar = () => {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-text-secondary hover:text-amber-500 transition-colors uppercase tracking-widest"
+              className="text-sm font-medium text-text-secondary hover:text-amber-700 transition-colors uppercase tracking-widest"
             >
               {link.name}
             </Link>
@@ -94,7 +94,7 @@ const Navbar = () => {
           >
             <ShoppingCart className="w-5 h-5" />
             {totalItems > 0 && (
-              <span className="absolute top-1 right-1 w-4 h-4 bg-amber-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+              <span className="absolute top-1 right-1 w-4 h-4 bg-amber-700 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
                 {totalItems}
               </span>
             )}

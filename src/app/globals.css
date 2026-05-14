@@ -4,8 +4,8 @@
   /* Amazing Natures Design System - Colors */
   --color-amber-100: #FFF8E8;
   --color-amber-300: #F5C842;
-  --color-amber-500: #D4930A;
-  --color-amber-700: #9B6500;
+  --color-amber-500: #9B6500;
+  --color-amber-700: #784E00;
   --color-amber-900: #5A3A00;
 
   --color-void: #0A0705;
@@ -14,7 +14,7 @@
   --color-bark: #2D2010;
 
   --color-surface: #F7F4EF;
-  --color-gold-glow: rgba(213, 147, 10, 0.10);
+  --color-gold-glow: rgba(155, 101, 0, 0.10);
   --color-cream: #FAF4E8;
   
   --color-border: rgba(180, 130, 20, 0.18);
@@ -48,7 +48,7 @@
 
 @layer base {
   * {
-    border-color: rgba(213, 147, 10, 0.1);
+    border-color: rgba(155, 101, 0, 0.1);
   }
   body {
     background-color: var(--background);
@@ -75,12 +75,12 @@
 @utility glass-panel {
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(213, 147, 10, 0.15);
+  border: 1px solid rgba(155, 101, 0, 0.15);
   box-shadow: 0 4px 32px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0,0,0,0.04);
 }
 
 @utility amber-gradient {
-  background: linear-gradient(135deg, #D4930A 0%, #9B6500 100%);
+  background: linear-gradient(135deg, #9B6500 0%, #5A3A00 100%);
 }
 
 @keyframes shimmer {

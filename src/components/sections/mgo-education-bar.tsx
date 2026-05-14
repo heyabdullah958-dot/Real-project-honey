@@ -6,7 +6,7 @@ const MGOEducationBar = () => {
   const mgoLevels = [
     { level: 30, color: "bg-amber-100", label: "Daily Wellness" },
     { level: 100, color: "bg-amber-300", label: "General Health" },
-    { level: 263, color: "bg-amber-500", label: "Immunity Support" },
+    { level: 263, color: "bg-amber-700", label: "Immunity Support" },
     { level: 400, color: "bg-amber-700", label: "Premium Bioactive" },
     { level: 800, color: "bg-amber-900", label: "Advanced Bioactive" },
   ];
@@ -40,7 +40,7 @@ const MGOEducationBar = () => {
                 </div>
               </motion.div>
             ))}
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-100/10 via-amber-500/10 to-amber-900/10 rounded-full" />
+            <div className="absolute inset-0 bg-gradient-to-r from-amber-100/10 via-amber-700/10 to-amber-900/10 rounded-full" />
           </div>
         </div>
       </div>

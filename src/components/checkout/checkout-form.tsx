@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight, ShieldCheck } from "lucide-react";
+import { ChevronRight, ShieldCheck, Lock } from "lucide-react";
 import { useCartStore } from "@/store/use-cart-store";
 
 interface FloatingInputProps {
@@ -36,7 +36,7 @@ const FloatingInput = ({ label, name, type = "text", required = true }: Floating
         animate={{
           y: isFocused || value ? -28 : 0,
           scale: isFocused || value ? 0.8 : 1,
-          color: isFocused ? "#f59e0b" : "#9ca3af",
+          color: isFocused ? "#f59e0b" : "#111111B3", // text-text-primary/70
           x: isFocused || value ? -10 : 0,
         }}
         className="absolute left-6 top-4 pointer-events-none text-sm font-medium origin-top-left z-10"
@@ -51,7 +51,7 @@ const FloatingInput = ({ label, name, type = "text", required = true }: Floating
         onChange={handleChange}
         onFocus={() => setIsFocused(true)}
         onBlur={handleBlur}
-        className="w-full h-14 rounded-2xl bg-white/[0.03] border border-white/10 px-6 pt-4 text-text-primary focus:outline-none focus:border-amber-500/50 transition-all duration-300 group-hover:bg-white/[0.05]"
+        className="w-full h-14 rounded-2xl bg-white/[0.03] border border-white/10 px-6 pt-4 text-text-primary/70 focus:outline-none focus:border-amber-700/50 transition-all duration-300 group-hover:bg-white/[0.05]"
       />
     </div>
   );
@@ -104,7 +104,7 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-10">
       <div className="flex flex-col gap-6">
-        <h3 className="text-[10px] uppercase tracking-[0.4em] font-bold text-amber-500/70 ml-4">Shipping Information</h3>
+        <h3 className="text-[10px] uppercase tracking-[0.4em] font-bold text-amber-700/70 ml-4">Shipping Information</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FloatingInput label="Full Name" name="fullName" />
           <FloatingInput label="WhatsApp Number" name="whatsapp" type="tel" />
@@ -116,7 +116,7 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
         <div className="relative group">
           <motion.label
             initial={false}
-            className="absolute left-6 top-4 pointer-events-none text-sm font-medium text-text-muted z-10"
+            className="absolute left-6 top-4 pointer-events-none text-sm font-medium text-text-primary/70 z-10"
           >
             Detailed Shipping Address
           </motion.label>
@@ -124,69 +124,47 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
             name="address"
             required
             rows={3}
-            className="w-full rounded-2xl bg-white/[0.03] border border-white/10 px-6 pt-10 text-text-primary focus:outline-none focus:border-amber-500/50 transition-all duration-300 group-hover:bg-white/[0.05] resize-none"
+            className="w-full rounded-2xl bg-white/[0.03] border border-white/10 px-6 pt-10 text-text-primary/70 focus:outline-none focus:border-amber-700/50 transition-all duration-300 group-hover:bg-white/[0.05] resize-none"
           />
         </div>
       </div>
 
       <div className="flex flex-col gap-6">
         <div className="flex items-center justify-between ml-4">
-           <h3 className="text-[10px] uppercase tracking-[0.4em] font-bold text-amber-500/70">Payment Method</h3>
-           <span className="text-[10px] text-amber-500 font-bold px-3 py-1 bg-amber-500/10 rounded-full border border-amber-500/20 uppercase">Arrival Payment</span>
+           <h3 className="text-[10px] uppercase tracking-[0.4em] font-bold text-amber-800">PREMIUM PAY-ON-ARRIVAL</h3>
         </div>
-        <div className="glass-panel p-6 rounded-[2rem] border-amber-500/20 bg-amber-500/[0.02] flex items-center justify-between group cursor-default">
+        <div className="glass-panel p-8 rounded-[2rem] border-amber-700/20 bg-amber-700/[0.02] flex flex-col gap-4 group cursor-default">
            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500">
-                 <ShieldCheck className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-full bg-amber-700/10 flex items-center justify-center text-amber-700">
+                 <Lock className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold text-text-primary text-sm uppercase tracking-widest">White-Glove Pay-on-Arrival</h4>
-                <p className="text-[10px] text-text-muted uppercase tracking-wider leading-relaxed mt-1">
-                  Inspect your liquid gold at your doorstep before you pay. <br />
-                  We trust our quality, and we trust you.
+                <h4 className="font-bold text-text-primary text-sm uppercase tracking-widest">Premium Pay-on-Arrival</h4>
+                <p className="text-[10px] text-text-secondary uppercase tracking-wider leading-relaxed mt-1">
+                  Inspect your liquid gold at your doorstep before you pay. We trust our quality, and we trust you.
                 </p>
               </div>
            </div>
-           <div className="w-5 h-5 rounded-full border-2 border-amber-500 flex items-center justify-center">
-              <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-           </div>
-        </div>
-        {/* Verification Map */}
-        <div className="px-6 py-4 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col gap-3">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-[10px] uppercase tracking-widest font-bold text-text-muted">Ships from Sydney, NSW</span>
-          </div>
-          <div className="w-full h-32 rounded-xl overflow-hidden grayscale opacity-50">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.898246877969!2d151.2073!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae401e8b983f%3A0x5017d6816329200!2sSydney%20NSW!5e0!3m2!1sen!2sau!4v1715560000000!5m2!1sen!2sau" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy"
-            ></iframe>
-          </div>
         </div>
       </div>
 
       {/* Sustainable Shipping Info */}
       <div className="px-6 py-5 rounded-2xl bg-white/[0.02] border border-white/5 flex items-start gap-4">
         <div className="mt-1">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-amber-500">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-amber-800">
             <path d="M21 8L12 3L3 8V16L12 21L21 16V8Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M12 21V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M3 8L12 13L21 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M7 5.5L11 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
             <path d="M12 13V17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
             <path d="M17 12L12 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M12 8C12 8 13.5 6 15.5 6C17.5 6 18 7.5 18 8C18 10 12 13 12 13Z" fill="#f59e0b" fillOpacity="0.3"/>
+            <path d="M12 8C12 8 13.5 6 15.5 6C17.5 6 18 7.5 18 8C18 10 12 13 12 13Z" fill="#9B6500" fillOpacity="0.3"/>
           </svg>
         </div>
         <div>
-          <h5 className="text-[10px] uppercase tracking-widest font-bold text-text-primary mb-1">100% Carbon-Neutral, Plastic-Free Shipping</h5>
+          <h5 className="text-[10px] uppercase tracking-widest font-bold text-amber-800 mb-1">100% Carbon-Neutral, Plastic-Free Shipping</h5>
           <p className="text-[10px] text-text-muted leading-relaxed">
-            Every jar is packed in sustainable wood-wool or recycled honeycomb paper for ultimate protection and environmental care.
+            Every jar is meticulously packed in sustainable wood-wool or recycled honeycomb paper for ultimate protection and environmental care.
           </p>
         </div>
       </div>
@@ -196,7 +174,7 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           disabled={isLoading}
-          className="relative w-full h-16 rounded-2xl overflow-hidden amber-gradient text-void font-bold uppercase tracking-[0.3em] text-xs shadow-2xl shadow-amber-500/20 group"
+          className="relative w-full h-16 rounded-2xl overflow-hidden amber-gradient text-void font-bold uppercase tracking-[0.3em] text-xs shadow-2xl shadow-amber-700/20 group"
         >
           {/* Shimmer Effect */}
           <motion.div 
@@ -205,13 +183,10 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           />
           <span className="relative z-10 flex items-center justify-center gap-2">
-            {isLoading ? "Validating Sanctuary..." : "Secure My Jar"}
+            {isLoading ? "Validating Sanctuary..." : "Proceed to Secure Payment"}
             {!isLoading && <ChevronRight className="w-4 h-4" />}
           </span>
         </motion.button>
-        <p className="text-center text-[10px] text-text-muted uppercase tracking-widest font-medium">
-          By clicking, you agree to receive a brief Concierge Outreach for verification.
-        </p>
       </div>
     </form>
   );

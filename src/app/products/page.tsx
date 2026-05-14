@@ -19,11 +19,11 @@ export default function ProductsPage() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
           <div className="flex flex-col gap-4">
-            <span className="text-amber-500 font-bold tracking-[0.4em] uppercase text-[10px]">
+            <span className="text-amber-700 font-bold tracking-[0.4em] uppercase text-[10px]">
               The Full Collection
             </span>
             <h1 className="text-5xl md:text-7xl font-display font-bold text-text-primary leading-tight">
-              Purity In <br /> Every <span className="text-amber-500">Grade.</span>
+              Purity In <br /> Every <span className="text-amber-700">Grade.</span>
             </h1>
           </div>
           <p className="text-text-muted max-w-md leading-relaxed text-lg">
@@ -54,7 +54,7 @@ export default function ProductsPage() {
             <tbody className="divide-y divide-amber-900/5">
               {products.map((p) => (
                 <tr key={p.id} className="group hover:bg-amber-900/5 transition-colors">
-                  <td className="py-6 font-display font-bold text-amber-500">MGO {p.mgo}</td>
+                  <td className="py-6 font-display font-bold text-amber-700">MGO {p.mgo}</td>
                   <td className="py-6 text-sm text-text-secondary">{p.bestFor}</td>
                   <td className="py-6 text-sm text-text-secondary">{p.activity}</td>
                   <td className="py-6 text-sm text-text-secondary">{p.taste}</td>

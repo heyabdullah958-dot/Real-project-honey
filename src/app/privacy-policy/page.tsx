@@ -8,10 +8,10 @@ export default function PrivacyPolicyPage() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="glass-panel p-8 md:p-16 rounded-[3rem] border-amber-500/10"
+        className="glass-panel p-8 md:p-16 rounded-[3rem] border-amber-700/10"
       >
         <h1 className="text-4xl md:text-6xl font-display font-bold text-text-primary mb-8 text-center">
-          Privacy <span className="text-amber-500">Policy</span>
+          Privacy <span className="text-amber-700">Policy</span>
         </h1>
         
         <div className="prose prose-invert prose-amber max-w-none space-y-8 text-text-muted">

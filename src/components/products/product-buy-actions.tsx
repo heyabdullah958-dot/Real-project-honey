@@ -18,7 +18,7 @@ export const ProductBuyActions = ({ product }: ProductBuyActionsProps) => {
 
   return (
     <div className="flex flex-col gap-4 pt-4">
-      <div className="flex gap-4">
+      <div className="flex flex-col sm:flex-row gap-4">
         <div className="flex-grow">
           <Button 
             size="lg" 
@@ -28,7 +28,7 @@ export const ProductBuyActions = ({ product }: ProductBuyActionsProps) => {
             Add to Cart
           </Button>
         </div>
-        <Button variant="secondary" size="lg" className="px-10 h-14">
+        <Button variant="secondary" size="lg" className="w-full sm:w-auto sm:px-10 h-14">
           Subscribe & Save 15%
         </Button>
       </div>

@@ -69,8 +69,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[0.8fr,1.2fr] gap-16 items-center">
           {/* Left: Product Image */}
-          <div className="w-full flex justify-center lg:justify-start">
-            <div className="relative w-full max-w-[500px] aspect-square bg-white rounded-[3rem] border border-amber-900/5 p-12 md:p-16 flex items-center justify-center shadow-2xl shadow-amber-900/5 group">
+          <div className="w-full flex justify-center">
+            <div className="relative w-full max-w-[420px] aspect-square bg-white rounded-[3rem] border border-amber-900/5 p-12 md:p-16 flex items-center justify-center shadow-2xl shadow-amber-900/5 group">
               <div className="relative w-full h-full">
                 <Image
                   src={product.image}
@@ -93,13 +93,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2 mb-2">
                  {[...Array(5)].map((_, i) => (
-                   <Star key={i} className={cn("w-4 h-4", i < product.rating ? "fill-amber-500 text-amber-500" : "text-text-muted")} />
+                   <Star key={i} className={cn("w-4 h-4", i < product.rating ? "fill-amber-700 text-amber-700" : "text-text-muted")} />
                  ))}                 <span className="text-xs text-text-muted uppercase tracking-widest ml-2">Verified Activity Level</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-text-primary">
                 {product.name}
               </h1>
-              <p className="text-3xl font-bold text-amber-500 mt-2">${product.price}.00 AUD</p>
+              <p className="text-3xl font-bold text-amber-700 mt-2">${product.price}.00 AUD</p>
             </div>
 
             <p className="text-lg text-text-secondary leading-relaxed">
@@ -122,15 +122,15 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
             <div className="grid grid-cols-3 gap-4 pt-8 border-t border-amber-900/10">
                <div className="flex flex-col items-center gap-2 text-center">
-                  <Beaker className="w-5 h-5 text-amber-500" />
+                  <Beaker className="w-5 h-5 text-amber-700" />
                   <span className="text-[10px] uppercase tracking-tighter text-text-muted">Scientifically Verified</span>
                </div>
                <div className="flex flex-col items-center gap-2 text-center">
-                  <Leaf className="w-5 h-5 text-amber-500" />
+                  <Leaf className="w-5 h-5 text-amber-700" />
                   <span className="text-[10px] uppercase tracking-tighter text-text-muted">Cold Extracted</span>
                </div>
                <div className="flex flex-col items-center gap-2 text-center">
-                  <ArrowRight className="w-5 h-5 text-amber-500" />
+                  <ArrowRight className="w-5 h-5 text-amber-700" />
                   <span className="text-[10px] uppercase tracking-tighter text-text-muted">Pure Australian</span>
                </div>
             </div>
@@ -144,7 +144,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <ul className="grid grid-cols-1 gap-4">
                 {product.benefits.map((benefit, i) => (
                   <li key={i} className="flex items-center gap-4 text-text-secondary">
-                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-amber-700" />
                     {benefit}
                   </li>
                 ))}

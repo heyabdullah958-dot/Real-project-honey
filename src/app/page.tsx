@@ -19,16 +19,16 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
             <div className="max-w-2xl">
-              <span className="text-amber-500 font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block">
+              <span className="text-amber-700 font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block">
                 The Core Range
               </span>
               <h2 className="text-4xl md:text-6xl font-display font-bold text-text-primary mb-6">
-                Choose Your <span className="text-amber-500">Activity Level.</span>
+                Choose Your <span className="text-amber-700">Activity Level.</span>
               </h2>
             </div>
             <Link 
               href="/products" 
-              className="group flex items-center gap-3 text-sm font-bold uppercase tracking-[0.2em] text-amber-500 border-b border-amber-500/20 pb-2 hover:border-amber-500 transition-all"
+              className="group flex items-center gap-3 text-sm font-bold uppercase tracking-[0.2em] text-amber-700 border-b border-amber-700/20 pb-2 hover:border-amber-700 transition-all"
             >
               Shop Full Collection
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
@@ -46,11 +46,11 @@ export default function Home() {
       {/* Wellness Quiz CTA */}
       <section className="py-32 px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="glass-panel p-16 md:p-24 rounded-[4rem] border-amber-500/20 text-center relative overflow-hidden group">
-            <div className="absolute inset-0 bg-amber-500/0 group-hover:bg-amber-500/[0.02] transition-colors duration-700" />
+          <div className="glass-panel p-16 md:p-24 rounded-[4rem] border-amber-700/20 text-center relative overflow-hidden group">
+            <div className="absolute inset-0 bg-amber-700/0 group-hover:bg-amber-700/[0.02] transition-colors duration-700" />
             
             <div className="relative z-10">
-              <span className="text-amber-500 font-bold uppercase tracking-[0.5em] text-[10px] mb-8 block">
+              <span className="text-amber-700 font-bold uppercase tracking-[0.5em] text-[10px] mb-8 block">
                 Personalized Wellness
               </span>
               <h3 className="text-4xl md:text-6xl font-display font-bold text-text-primary mb-8">
@@ -61,7 +61,7 @@ export default function Home() {
               </p>
               <Link 
                 href="/wellness-quiz"
-                className="inline-block bg-amber-500 text-white font-bold uppercase tracking-[0.2em] px-12 py-6 rounded-2xl hover:bg-amber-400 transition-all shadow-2xl shadow-amber-500/20 hover:scale-105 active:scale-95"
+                className="inline-block bg-amber-700 text-white font-bold uppercase tracking-[0.2em] px-12 py-6 rounded-2xl hover:bg-amber-400 transition-all shadow-2xl shadow-amber-700/20 hover:scale-105 active:scale-95"
               >
                 Find My Match
               </Link>

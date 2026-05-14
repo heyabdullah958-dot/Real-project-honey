@@ -6,11 +6,11 @@ const ProductGrid = () => {
     <section className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center text-center gap-4 mb-16">
-          <span className="text-amber-500 font-medium tracking-[0.3em] uppercase text-xs">
+          <span className="text-amber-700 font-medium tracking-[0.3em] uppercase text-xs">
             The Collection
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-text-primary">
-            Find Your Perfect <span className="text-amber-500">MGO</span> Match
+            Find Your Perfect <span className="text-amber-700">MGO</span> Match
           </h2>
           <p className="text-text-secondary max-w-2xl leading-relaxed">
             From daily wellness to premium bioactive grade, explore our range of laboratory-tested Australian Manuka honey.

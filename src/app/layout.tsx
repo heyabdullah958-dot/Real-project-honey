@@ -83,7 +83,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${cormorant.variable} ${outfit.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#FBF5E9] text-text-primary selection:bg-amber-500/30">
+      <body className="min-h-full flex flex-col bg-[#FBF5E9] text-text-primary selection:bg-amber-700/30">
         <SmoothScroll />
         <Navbar />
         <main className="flex-grow">

@@ -41,14 +41,14 @@ const TestimonialsCarousel = () => {
     <section className="py-24 px-6 overflow-hidden relative">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         <div className="flex flex-col items-center text-center gap-4 mb-16">
-          <span className="text-amber-500 font-medium tracking-[0.3em] uppercase text-xs">Testimonials</span>
+          <span className="text-amber-700 font-medium tracking-[0.3em] uppercase text-xs">Testimonials</span>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-text-primary">
-            Trusted by <span className="text-amber-500">Thousands</span>
+            Trusted by <span className="text-amber-700">Thousands</span>
           </h2>
         </div>
 
         <div className="relative w-full max-w-4xl">
-          <div className="absolute -top-10 -left-10 text-amber-500/10">
+          <div className="absolute -top-10 -left-10 text-amber-700/10">
             <Quote className="w-32 h-32 fill-current" />
           </div>
 
@@ -58,11 +58,11 @@ const TestimonialsCarousel = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              className="glass-panel p-8 md:p-16 rounded-[3rem] border-amber-500/10 text-center relative z-10"
+              className="glass-panel p-8 md:p-16 rounded-[3rem] border-amber-700/10 text-center relative z-10"
             >
               <div className="flex justify-center gap-1 mb-8">
                 {[...Array(testimonials[current].rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-amber-500 text-amber-500" />
+                  <Star key={i} className="w-5 h-5 fill-amber-700 text-amber-700" />
                 ))}
               </div>
               
@@ -85,13 +85,13 @@ const TestimonialsCarousel = () => {
           <div className="flex justify-center gap-4 mt-12">
             <button 
               onClick={prev}
-              className="w-12 h-12 rounded-full border border-amber-900/20 flex items-center justify-center text-text-secondary hover:text-amber-500 hover:border-amber-500 transition-all"
+              className="w-12 h-12 rounded-full border border-amber-900/20 flex items-center justify-center text-text-secondary hover:text-amber-700 hover:border-amber-700 transition-all"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button 
               onClick={next}
-              className="w-12 h-12 rounded-full border border-amber-900/20 flex items-center justify-center text-text-secondary hover:text-amber-500 hover:border-amber-500 transition-all"
+              className="w-12 h-12 rounded-full border border-amber-900/20 flex items-center justify-center text-text-secondary hover:text-amber-700 hover:border-amber-700 transition-all"
             >
               <ChevronRight className="w-6 h-6" />
             </button>

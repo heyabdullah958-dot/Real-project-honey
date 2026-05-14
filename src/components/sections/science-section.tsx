@@ -85,14 +85,14 @@ const ScienceItem = ({
       <div className="relative flex-shrink-0">
         <motion.div
           whileHover={{ scale: 1.1 }}
-          className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center relative z-10"
+          className="w-12 h-12 rounded-2xl bg-amber-700/10 border border-amber-700/20 flex items-center justify-center relative z-10"
         >
-          <Icon className="w-6 h-6 text-amber-500" />
+          <Icon className="w-6 h-6 text-amber-700" />
         </motion.div>
         {/* Pulsing Ambient Glow */}
         <AnimatePresence>
           <motion.div
-            className="absolute inset-0 bg-amber-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100"
+            className="absolute inset-0 bg-amber-700/20 blur-xl rounded-full opacity-0 group-hover:opacity-100"
             animate={{ 
               scale: [1, 1.2, 1],
               opacity: [0.2, 0.4, 0.2]
@@ -111,7 +111,7 @@ const ScienceItem = ({
           </h4>
           {/* Shimmer Overlay */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-500/10 to-transparent w-full h-full skew-x-12 pointer-events-none"
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-700/10 to-transparent w-full h-full skew-x-12 pointer-events-none"
             initial={{ x: "-100%" }}
             whileHover={{ 
               x: "200%",
@@ -227,26 +227,26 @@ export const ScienceSection = () => {
     <section ref={sectionRef} className="relative py-32 px-6 overflow-hidden bg-[#F7F4EF] min-h-[150vh] rounded-t-[3rem]">
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white to-[#F7F4EF] pointer-events-none z-0" />
       {/* Decorative elements */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-700/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-700/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <motion.div initial="initial" whileInView="animate" viewport={{ once: true }} className="sticky top-32">
-            <span className="text-amber-500 font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">
+            <span className="text-amber-700 font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">
               <StaggerText text="The Science of MGO" />
             </span>
             <h2 className="text-4xl md:text-6xl font-display font-bold text-text-primary mb-8 leading-tight">
               <StaggerText text="Not All Honey" /><br />
-              <StaggerText text="Is Created" /> <span className="text-amber-500"><StaggerText text="Equal." /></span>
+              <StaggerText text="Is Created" /> <span className="text-amber-700"><StaggerText text="Equal." /></span>
             </h2>
 
             <div className="space-y-8">
               <ScienceItem
                 index={0}
                 icon={Beaker}
-                title="Certified Methylglyoxal"
-                description="MGO is the compound that gives Manuka its distinctive bioactive profile. We certify every jar for precision."
+                title="Scientifically Verified MGO"
+                description="MGO is the compound that gives Manuka its distinctive bioactive profile. We verify every jar for precision."
                 active={activeIndex === null ? null : activeIndex === 0}
                 onHover={() => setActiveIndex(0)}
                 onLeave={() => setActiveIndex(null)}
@@ -273,7 +273,7 @@ export const ScienceSection = () => {
           </motion.div>
 
           <div className="relative lg:sticky lg:top-32 h-[500px] md:h-[600px] w-full">
-            <div className="w-full h-full rounded-[3rem] overflow-hidden border border-amber-500/20 glass-panel p-2 group bg-white">
+            <div className="w-full h-full rounded-[3rem] overflow-hidden border border-amber-700/20 glass-panel p-2 group bg-white">
               <div className="w-full h-full rounded-[2.5rem] bg-white relative overflow-hidden flex items-center justify-center">
                 {!isLoaded ? (
                   <Image 
@@ -293,7 +293,7 @@ export const ScienceSection = () => {
                 
                 {/* Glowing Drop Animation Overlay */}
                 <motion.div
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-6 bg-amber-500 rounded-full blur-[2px] z-20"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-6 bg-amber-700 rounded-full blur-[2px] z-20"
                   animate={{
                     y: [0, 100, 100],
                     opacity: [0, 1, 0],
@@ -313,12 +313,12 @@ export const ScienceSection = () => {
                 <div className="absolute bottom-12 left-12 right-12 z-30 pointer-events-none">
                   <div className="flex items-end justify-between">
                     <div>
-                      <span className="text-amber-500 font-bold text-5xl block mb-2 tracking-tighter">800+</span>
+                      <span className="text-amber-700 font-bold text-5xl block mb-2 tracking-tighter">800+</span>
                       <span className="text-text-primary font-bold uppercase tracking-widest text-xs">Premium Grade MGO</span>
                     </div>
-                    <div className="h-1.5 w-32 bg-amber-500/10 rounded-full overflow-hidden border border-amber-500/5">
+                    <div className="h-1.5 w-32 bg-amber-700/10 rounded-full overflow-hidden border border-amber-700/5">
                       <motion.div 
-                        className="h-full bg-amber-500"
+                        className="h-full bg-amber-700"
                         animate={{
                           x: ["-100%", "100%"]
                         }}
@@ -335,7 +335,7 @@ export const ScienceSection = () => {
             </div>
             
             {/* Ambient Background Glow for Image */}
-            <div className="absolute -inset-10 bg-amber-500/5 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+            <div className="absolute -inset-10 bg-amber-700/5 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
           </div>
         </div>
       </div>

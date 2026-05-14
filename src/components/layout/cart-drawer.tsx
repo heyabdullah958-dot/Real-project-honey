@@ -34,12 +34,12 @@ const CartDrawer = () => {
             {/* Header */}
             <div className="p-6 border-b border-amber-900/10 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <ShoppingBag className="w-5 h-5 text-amber-500" />
+                <ShoppingBag className="w-5 h-5 text-amber-700" />
                 <h2 className="text-xl font-display font-bold text-text-primary">Your Cart</h2>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 hover:bg-amber-500/5 rounded-full transition-colors text-text-muted hover:text-text-primary"
+                className="p-2 hover:bg-amber-700/5 rounded-full transition-colors text-text-muted hover:text-text-primary"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -64,7 +64,7 @@ const CartDrawer = () => {
                     <div className="flex-grow flex flex-col justify-between py-1">
                       <div>
                         <div className="flex justify-between items-start mb-1">
-                          <h4 className="text-sm font-bold text-text-primary group-hover:text-amber-500 transition-colors uppercase tracking-tight">
+                          <h4 className="text-sm font-bold text-text-primary group-hover:text-amber-700 transition-colors uppercase tracking-tight">
                             {item.name}
                           </h4>
                           <button 
@@ -83,19 +83,19 @@ const CartDrawer = () => {
                         <div className="flex items-center gap-3 bg-[#F7F4EF] rounded-lg p-1 border border-amber-900/10">
                           <button 
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                            className="w-6 h-6 flex items-center justify-center text-text-muted hover:text-amber-500 transition-colors"
+                            className="w-6 h-6 flex items-center justify-center text-text-muted hover:text-amber-700 transition-colors"
                           >
                             <Minus className="w-3 h-3" />
                           </button>
                           <span className="text-xs font-bold w-4 text-center">{item.quantity}</span>
                           <button 
                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                             className="w-6 h-6 flex items-center justify-center text-text-muted hover:text-amber-500 transition-colors"
+                             className="w-6 h-6 flex items-center justify-center text-text-muted hover:text-amber-700 transition-colors"
                           >
                             <Plus className="w-3 h-3" />
                           </button>
                         </div>
-                        <span className="text-sm font-bold text-amber-500">${item.price * item.quantity}.00</span>
+                        <span className="text-sm font-bold text-amber-700">${item.price * item.quantity}.00</span>
                       </div>
                     </div>
                   </div>
@@ -108,7 +108,7 @@ const CartDrawer = () => {
               <div className="p-6 border-t border-amber-900/10 bg-[#F7F4EF] flex flex-col gap-6">
                 <div className="flex justify-between items-center">
                   <span className="text-text-muted uppercase tracking-[0.2em] text-xs font-bold">Subtotal</span>
-                  <span className="text-2xl font-display font-bold text-amber-500">${getTotalPrice()}.00</span>
+                  <span className="text-2xl font-display font-bold text-amber-700">${getTotalPrice()}.00</span>
                 </div>
                 <div className="flex flex-col gap-3">
                   <Link href="/checkout" onClick={() => setIsOpen(false)}>

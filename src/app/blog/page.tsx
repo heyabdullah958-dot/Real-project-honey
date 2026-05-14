@@ -40,9 +40,9 @@ export default function BlogPage() {
     <div className="py-24 px-6 min-h-screen">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col gap-6 mb-20">
-           <span className="text-amber-500 font-medium tracking-[0.3em] uppercase text-xs">Wellness Blog</span>
+           <span className="text-amber-700 font-medium tracking-[0.3em] uppercase text-xs">Wellness Blog</span>
            <h1 className="text-5xl md:text-7xl font-display font-bold text-text-primary leading-[1.1]">
-             Latest <span className="text-amber-500">Insights</span>
+             Latest <span className="text-amber-700">Insights</span>
            </h1>
            <p className="text-xl text-text-secondary leading-relaxed max-w-2xl">
              Explore the latest research, recipes, and wellness tips from the world of Australian Manuka.
@@ -55,7 +55,7 @@ export default function BlogPage() {
                 <div className="relative aspect-video overflow-hidden">
                    <Image src={post.image} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110 mix-blend-multiply" />
                    <div className="absolute top-4 left-4">
-                      <span className="bg-white/80 backdrop-blur-md text-amber-500 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                      <span className="bg-white/80 backdrop-blur-md text-amber-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
                         Nutrition
                       </span>
                    </div>
@@ -68,7 +68,7 @@ export default function BlogPage() {
                    </div>
                    
                    <div className="flex flex-col gap-2">
-                      <h3 className="text-2xl font-display font-bold text-text-primary group-hover:text-amber-500 transition-colors">
+                      <h3 className="text-2xl font-display font-bold text-text-primary group-hover:text-amber-700 transition-colors">
                         {post.title}
                       </h3>
                       <p className="text-sm text-text-secondary leading-relaxed line-clamp-2">
@@ -76,7 +76,7 @@ export default function BlogPage() {
                       </p>
                    </div>
 
-                   <Link href={`/blog/${post.slug}`} className="mt-auto flex items-center gap-2 text-amber-500 text-xs font-bold uppercase tracking-[0.2em] group-hover:gap-4 transition-all">
+                   <Link href={`/blog/${post.slug}`} className="mt-auto flex items-center gap-2 text-amber-700 text-xs font-bold uppercase tracking-[0.2em] group-hover:gap-4 transition-all">
                       Read Article <ArrowRight className="w-4 h-4" />
                    </Link>
                 </div>

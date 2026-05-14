@@ -9,7 +9,7 @@ export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden bg-white">
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-700/5 blur-[120px] rounded-full pointer-events-none" />
       
       <div className="relative z-10 text-center max-w-2xl">
         <motion.div
@@ -17,9 +17,9 @@ export default function NotFound() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-amber-500 font-bold uppercase tracking-[0.5em] text-xs mb-6 block">Error 404</span>
+          <span className="text-amber-700 font-bold uppercase tracking-[0.5em] text-xs mb-6 block">Error 404</span>
           <h1 className="text-7xl md:text-9xl font-display font-bold text-text-primary mb-8">
-            Lost in the <br /><span className="text-amber-500">Nectar?</span>
+            Lost in the <br /><span className="text-amber-700">Nectar?</span>
           </h1>
           <p className="text-text-muted text-lg md:text-xl mb-12 leading-relaxed">
             The page you are looking for has either drifted away or never existed in our hive. 
@@ -28,13 +28,13 @@ export default function NotFound() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/">
-              <Button size="lg" className="h-14 px-8 bg-amber-500 text-white hover:bg-amber-400 font-bold uppercase tracking-widest flex items-center gap-2">
+              <Button size="lg" className="h-14 px-8 bg-amber-700 text-white hover:bg-amber-400 font-bold uppercase tracking-widest flex items-center gap-2">
                 <Home className="w-5 h-5" /> Back to Home
               </Button>
             </Link>
             <button 
               onClick={() => window.history.back()}
-              className="h-14 px-8 rounded-2xl border border-amber-500/20 text-text-primary hover:bg-amber-500/5 font-bold uppercase tracking-widest flex items-center gap-2 transition-all"
+              className="h-14 px-8 rounded-2xl border border-amber-700/20 text-text-primary hover:bg-amber-700/5 font-bold uppercase tracking-widest flex items-center gap-2 transition-all"
             >
               <ArrowLeft className="w-5 h-5" /> Go Back
             </button>
@@ -46,7 +46,7 @@ export default function NotFound() {
       {[...Array(6)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-amber-500/20 rounded-full blur-[1px]"
+          className="absolute w-2 h-2 bg-amber-700/20 rounded-full blur-[1px]"
           animate={{
             y: [0, -100, 0],
             x: [0, Math.random() * 50 - 25, 0],

@@ -58,9 +58,9 @@ export const ThankYouView = () => {
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="max-w-2xl w-full glass-panel p-12 md:p-16 rounded-[3rem] border-amber-500/20 text-center relative overflow-hidden"
+        className="max-w-2xl w-full glass-panel p-12 md:p-16 rounded-[3rem] border-amber-700/20 text-center relative overflow-hidden"
       >
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-amber-500/10 blur-[80px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-amber-700/10 blur-[80px] rounded-full pointer-events-none" />
         
         <motion.div 
           initial={{ scale: 0 }}
@@ -77,7 +77,7 @@ export const ThankYouView = () => {
           transition={{ delay: 0.4 }}
           className="text-4xl md:text-5xl font-display font-bold text-text-primary mb-6"
         >
-          Your Liquid Gold is <br /><span className="text-amber-500">Being Prepared.</span>
+          Your Liquid Gold is <br /><span className="text-amber-700">Being Prepared.</span>
         </motion.h1>
 
         <motion.p 
@@ -86,7 +86,7 @@ export const ThankYouView = () => {
           transition={{ delay: 0.5 }}
           className="text-lg text-text-secondary leading-relaxed mb-10 max-w-md mx-auto"
         >
-          G&apos;day! Your liquid gold is being prepared. Our concierge will reach out via WhatsApp/Call to coordinate the perfect delivery time that suits your schedule.
+          G&apos;day! Your liquid gold is being prepared. We will coordinate the delivery to suit your schedule.
         </motion.p>
 
         {/* WhatsApp Verification Button */}
@@ -100,7 +100,7 @@ export const ThankYouView = () => {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl overflow-hidden amber-gradient text-void font-bold uppercase tracking-[0.2em] text-xs shadow-2xl shadow-amber-500/30 group"
+            className="relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl overflow-hidden amber-gradient text-void font-bold uppercase tracking-[0.2em] text-xs shadow-2xl shadow-amber-700/30 group"
           >
             {/* Shimmer Effect */}
             <motion.div 
@@ -121,15 +121,15 @@ export const ThankYouView = () => {
           className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12"
         >
           <div className="flex flex-col items-center gap-2">
-            <Package className="w-5 h-5 text-amber-500" />
+            <Package className="w-5 h-5 text-amber-700" />
             <span className="text-[10px] uppercase tracking-widest text-text-muted font-bold">Fast Packing</span>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-amber-500" />
+            <ShieldCheck className="w-5 h-5 text-amber-700" />
             <span className="text-[10px] uppercase tracking-widest text-text-muted font-bold">Independently Tested</span>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <Award className="w-5 h-5 text-amber-500" />
+            <Award className="w-5 h-5 text-amber-700" />
             <span className="text-[10px] uppercase tracking-widest text-text-muted font-bold">100% Authentic</span>
           </div>
         </motion.div>
@@ -141,7 +141,7 @@ export const ThankYouView = () => {
         >
           <Link 
             href="/"
-            className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-bold text-text-muted hover:text-amber-500 transition-colors"
+            className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-bold text-text-muted hover:text-amber-700 transition-colors"
           >
             Continue Exploring <ArrowRight className="w-3 h-3" />
           </Link>

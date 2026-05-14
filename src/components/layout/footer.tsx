@@ -179,11 +179,15 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto pt-8 border-t border-amber-900/5 flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
-        <p className="text-text-secondary/80 text-[10px] uppercase tracking-[0.3em] font-bold text-center">
-          &copy; {currentYear} AMAZING NATURES. PROUDLY AUSTRALIAN MADE.
-        </p>
+        <div className="flex flex-col items-center md:items-start gap-1">
+          <p className="text-text-secondary/80 text-[10px] uppercase tracking-[0.3em] font-bold text-center">
+            &copy; {currentYear} AMAZING NATURES. PROUDLY AUSTRALIAN MADE.
+          </p>
+          <p className="text-amber-900/40 text-[9px] uppercase tracking-[0.2em] font-medium">
+            Crafted by SevenNodes B2B LLC
+          </p>
+        </div>
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
           <AnimatedLink href="/privacy-policy">Privacy Policy</AnimatedLink>
           <AnimatedLink href="/shipping-policy">Shipping & Returns</AnimatedLink>

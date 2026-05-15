@@ -239,7 +239,7 @@ export const ScienceSection = () => {
 
       <div className="max-w-7xl mx-auto relative z-10 px-0 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
-          <motion.div initial="initial" whileInView="animate" viewport={{ once: true }} className="sticky top-24 md:top-32">
+          <motion.div initial="initial" whileInView="animate" viewport={{ once: true }} className="sticky top-24 md:top-32 mb-20 lg:mb-0">
             <span className="text-amber-700 font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">
               <StaggerText text="The Science of MGO" />
             </span>
@@ -248,7 +248,7 @@ export const ScienceSection = () => {
               <StaggerText text="Is Created" /> <span className="text-amber-700"><StaggerText text="Equal." /></span>
             </h2>
 
-            <div className="space-y-8">
+            <div className="space-y-8 mb-12 lg:mb-0">
               <ScienceItem
                 index={0}
                 icon={Beaker}
@@ -279,7 +279,7 @@ export const ScienceSection = () => {
             </div>
           </motion.div>
 
-          <div className="relative lg:sticky lg:top-32 h-[400px] sm:h-[500px] md:h-[600px] w-full">
+          <div className="relative lg:sticky top-12 lg:top-32 h-[400px] sm:h-[500px] md:h-[600px] w-full">
             <div className="w-full h-full rounded-[3rem] overflow-hidden border border-amber-700/20 glass-panel p-2 group bg-white">
               <div className="w-full h-full rounded-[2.5rem] bg-white relative overflow-hidden flex items-center justify-center">
                 {!isLoaded ? (

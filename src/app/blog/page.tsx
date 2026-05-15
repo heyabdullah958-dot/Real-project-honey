@@ -22,7 +22,7 @@ const blogPosts = [
   {
     id: 2,
     title: "5 Ways to Use Manuka Honey in Your Skincare Routine",
-    excerpt: "From face masks to spot care, learn why Manuka is a beauty editor's best kept secret for a naturally concentrated glow.",
+    excerpt: "From face masks to daily skincare support, learn why Manuka is a beauty editor's best kept secret for a naturally concentrated glow.",
     date: "May 8, 2026",
     author: "Sarah Jenkins",
     readTime: "4 min read",

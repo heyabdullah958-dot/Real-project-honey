@@ -184,9 +184,22 @@ const Footer = () => {
           <p className="text-text-secondary/80 text-[10px] uppercase tracking-[0.3em] font-bold text-center">
             &copy; {currentYear} AMAZING NATURES. PROUDLY AUSTRALIAN MADE.
           </p>
-          <p className="text-amber-900/40 text-[9px] uppercase tracking-[0.2em] font-medium">
-            Crafted by SevenNodes B2B LLC
-          </p>
+          <div className="flex items-center gap-2">
+            <a 
+              href="mailto:Zaid@sevennodesb2b.com"
+              className="text-amber-900/60 text-[9px] uppercase tracking-[0.2em] font-bold hover:text-amber-700 transition-colors flex items-center gap-2"
+            >
+              Created by Zaid
+              <div className="w-6 h-6 relative shrink-0">
+                <Image 
+                  src="/assets/brand/SevennodesLogo_smallpdf.jpg" 
+                  alt="Seven Nodes Logo" 
+                  fill
+                  className="object-contain brightness-90"
+                />
+              </div>
+            </a>
+          </div>
         </div>
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
           <AnimatedLink href="/privacy-policy">Privacy Policy</AnimatedLink>

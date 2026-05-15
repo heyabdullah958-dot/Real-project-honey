@@ -140,7 +140,7 @@ export default function AboutPage() {
              <Heart className="w-10 h-10 text-amber-700" />
              <h3 className="text-2xl font-display font-bold text-text-primary">Wellness First</h3>
              <p className="text-text-secondary text-sm leading-relaxed">
-               Our goal is to support your health journey with a product that is as delicious as it is effective for immunity, skin, and digestion.
+               Our goal is to support your wellness journey with a product that is as delicious as it is versatile for daily life and holistic support.
              </p>
           </div>
         </div>

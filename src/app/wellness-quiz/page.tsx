@@ -15,10 +15,10 @@ const steps = [
     id: 1,
     question: "What is your primary wellness goal?",
     options: [
-      { label: "Daily Immunity", value: "immunity" },
-      { label: "Digestive Support", value: "digestion" },
-      { label: "Wound & Skin Care", value: "skin" },
-      { label: "General Wellness", value: "general" },
+      { label: "Daily Wellness", value: "general" },
+      { label: "Bioactive Support", value: "bioactive" },
+      { label: "Skin Wellness Support", value: "skin" },
+      { label: "Natural Vitality", value: "vitality" },
     ],
   },
   {
@@ -261,10 +261,10 @@ export default function WellnessQuizPage() {
     const goal = finalAnswers[0];
     const frequency = finalAnswers[1];
     let recommendedSlug = "mgo-100";
-    if (goal === "skin" || goal === "digestion") recommendedSlug = "mgo-400";
-    else if (goal === "immunity" && frequency === "daily") recommendedSlug = "mgo-263";
-    else if (goal === "general") recommendedSlug = "mgo-30";
-    else if (goal === "immunity" && frequency === "occasional") recommendedSlug = "mgo-800";
+    if (goal === "skin" || goal === "bioactive") recommendedSlug = "mgo-400";
+    else if (goal === "general" && frequency === "daily") recommendedSlug = "mgo-263";
+    else if (goal === "vitality") recommendedSlug = "mgo-30";
+    else if (goal === "general" && frequency === "occasional") recommendedSlug = "mgo-800";
     const product = products.find(p => p.slug === recommendedSlug);
     setResult(product || products[0]);
   };

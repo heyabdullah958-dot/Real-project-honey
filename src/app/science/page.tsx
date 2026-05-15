@@ -1,5 +1,16 @@
 import { Beaker, ShieldCheck, Microscope, Zap } from "lucide-react";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "The Science of Manuka | Amazing Natures",
+  description: "Learn about MGO, bioactivity, and the unique properties of Australian Manuka honey. Scientifically verified wellness support.",
+  openGraph: {
+    title: "The Science of Manuka | Amazing Natures",
+    description: "Understand the bioactive profile of our premium honey.",
+    images: [{ url: "/assets/products/mgo-800.png" }],
+  },
+};
 
 export default function SciencePage() {
   return (

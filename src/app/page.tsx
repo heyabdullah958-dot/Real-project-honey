@@ -8,6 +8,7 @@ import { ArrowRight } from "lucide-react";
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <h1 className="sr-only">Amazing Natures - Premium Australian Manuka Honey</h1>
       {/* Cinematic Hero Canvas Sequence */}
       <HeroCanvas />
 

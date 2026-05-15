@@ -16,6 +16,10 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { name, email, subject, message } = body;
 
+    if (!name || !email || !subject || !message) {
+      return NextResponse.json({ success: false, message: 'Missing required fields' }, { status: 400 });
+    }
+
     // Send Email to Admin
     await resend.emails.send({
       from: 'Amazing Natures <onboarding@resend.dev>',

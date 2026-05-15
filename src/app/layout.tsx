@@ -6,6 +6,7 @@ import Footer from "@/components/layout/footer";
 import CartDrawer from "@/components/layout/cart-drawer";
 import CookieConsent from "@/components/layout/cookie-consent";
 import { SmoothScroll } from "@/components/layout/smooth-scroll";
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -84,6 +85,19 @@ export default function RootLayout({
       className={`${inter.variable} ${cormorant.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#FBF5E9] text-text-primary selection:bg-amber-700/30">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-XXXXXXXXXX');
+          `}
+        </Script>
         <SmoothScroll />
         <Navbar />
         <main className="flex-grow">

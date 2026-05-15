@@ -1,6 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Clock, User, ArrowRight } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Wellness Blog | Amazing Natures",
+  description: "Explore the latest research, recipes, and wellness tips from the world of Australian Manuka honey.",
+};
 
 const blogPosts = [
   {

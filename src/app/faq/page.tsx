@@ -1,4 +1,10 @@
 import { Plus } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Frequently Asked Questions | Amazing Natures",
+  description: "Everything you need to know about our premium Australian Manuka honey, MGO ratings, and shipping.",
+};
 
 export default function FAQPage() {
   const faqs = [

@@ -11,7 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const FRAME_COUNT = 192;
-const PRIORITY_FRAMES = 10;
+const PRIORITY_FRAMES = 30;
 
 const StaggerText = ({ text, className, hover = false }: { text: string; className?: string; hover?: boolean }) => {
   const letters = text.split("");
@@ -165,6 +165,11 @@ export const ScienceSection = () => {
 
       setImages(imgs);
       setIsLoaded(true);
+
+      // Decodes remaining images in background to improve scroll smoothness
+      imgs.slice(PRIORITY_FRAMES).forEach(img => {
+        if (img.decode) img.decode().catch(() => {});
+      });
     };
 
     loadImages();

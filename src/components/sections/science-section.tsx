@@ -14,33 +14,35 @@ const FRAME_COUNT = 192;
 const PRIORITY_FRAMES = 30;
 
 const StaggerText = ({ text, className, hover = false }: { text: string; className?: string; hover?: boolean }) => {
-  const letters = text.split("");
+  const words = text.split(" ");
   
   return (
-    <motion.span className={cn("inline-flex flex-wrap", className)}>
-      {letters.map((char, i) => (char === " " ? (
-        <span key={i}>&nbsp;</span>
-      ) : (
-        <motion.span
-          key={i}
-          variants={{
-            initial: { y: 20, opacity: 0 },
-            animate: { 
-              y: 0, 
-              opacity: 1,
-              transition: { duration: 0.5, delay: i * 0.02, ease: [0.22, 1, 0.36, 1] }
-            },
-            hover: {
-              y: [0, -5, 0],
-              color: "#f59e0b",
-              transition: { duration: 0.4, delay: i * 0.01 }
-            }
-          }}
-          className="inline-block"
-        >
-          {char}
-        </motion.span>
-      )))}
+    <motion.span className={cn("inline-flex flex-wrap gap-x-[0.2em]", className)}>
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-flex whitespace-nowrap">
+          {word.split("").map((char, charIndex) => (
+            <motion.span
+              key={charIndex}
+              variants={{
+                initial: { y: 20, opacity: 0 },
+                animate: { 
+                  y: 0, 
+                  opacity: 1,
+                  transition: { duration: 0.5, delay: (wordIndex * 5 + charIndex) * 0.02, ease: [0.22, 1, 0.36, 1] }
+                },
+                hover: {
+                  y: [0, -5, 0],
+                  color: "#f59e0b",
+                  transition: { duration: 0.4, delay: charIndex * 0.01 }
+                }
+              }}
+              className="inline-block"
+            >
+              {char}
+            </motion.span>
+          ))}
+        </span>
+      ))}
     </motion.span>
   );
 };
@@ -80,7 +82,7 @@ const ScienceItem = ({
         }
       }}
       animate={{ opacity: isDimmed ? 0.3 : 1 }}
-      className="flex gap-6 group cursor-default transition-opacity duration-500"
+      className="flex gap-4 lg:gap-6 group cursor-default transition-opacity duration-500"
     >
       <div className="relative flex-shrink-0">
         <motion.div
@@ -241,7 +243,7 @@ export const ScienceSection = () => {
             <span className="text-amber-700 font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">
               <StaggerText text="The Science of MGO" />
             </span>
-            <h2 className="text-4xl md:text-6xl font-display font-bold text-text-primary mb-8 leading-tight">
+            <h2 className="text-3xl md:text-6xl font-display font-bold text-text-primary mb-8 leading-tight">
               <StaggerText text="Not All Honey" /><br />
               <StaggerText text="Is Created" /> <span className="text-amber-700"><StaggerText text="Equal." /></span>
             </h2>
@@ -277,7 +279,7 @@ export const ScienceSection = () => {
             </div>
           </motion.div>
 
-          <div className="relative lg:sticky lg:top-32 h-[500px] md:h-[600px] w-full">
+          <div className="relative lg:sticky lg:top-32 h-[400px] sm:h-[500px] md:h-[600px] w-full">
             <div className="w-full h-full rounded-[3rem] overflow-hidden border border-amber-700/20 glass-panel p-2 group bg-white">
               <div className="w-full h-full rounded-[2.5rem] bg-white relative overflow-hidden flex items-center justify-center">
                 {!isLoaded ? (

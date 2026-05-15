@@ -14,7 +14,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, message: 'Configuration error' }, { status: 500 });
     }
     const body = await req.json();
-    const { fullName, whatsapp, email, city, address, items, totalAmount } = body;
+    const { fullName, whatsapp, email, city, address, items, totalAmount, orderNote = "" } = body;
 
     if (!fullName || !whatsapp || !city || !address || !items || !totalAmount) {
       return NextResponse.json({ success: false, message: 'Missing required order fields' }, { status: 400 });

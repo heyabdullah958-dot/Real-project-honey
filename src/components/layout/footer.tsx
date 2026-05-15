@@ -185,20 +185,17 @@ const Footer = () => {
             &copy; {currentYear} AMAZING NATURES. PROUDLY AUSTRALIAN MADE.
           </p>
           <div className="flex items-center gap-2">
-            <a 
-              href="mailto:Zaid@sevennodesb2b.com"
-              className="text-amber-900/60 text-[9px] uppercase tracking-[0.2em] font-bold hover:text-amber-700 transition-colors flex items-center gap-2"
-            >
-              Created by Zaid
-              <div className="w-6 h-6 relative shrink-0">
-                <Image 
-                  src="/assets/brand/SevennodesLogo_smallpdf.jpg" 
-                  alt="Seven Nodes Logo" 
-                  fill
-                  className="object-contain brightness-90"
-                />
-              </div>
-            </a>
+            <span className="text-amber-900/60 text-[9px] uppercase tracking-[0.2em] font-bold">
+              Created by 7nodesb2b
+            </span>
+            <div className="w-5 h-5 relative shrink-0">
+              <Image 
+                src="/assets/brand/SevennodesLogo_smallpdf.jpg" 
+                alt="7nodesb2b Logo" 
+                fill
+                className="object-contain brightness-90"
+              />
+            </div>
           </div>
         </div>
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">

@@ -231,15 +231,15 @@ export const ScienceSection = () => {
   }, [isLoaded, images]);
 
   return (
-    <section ref={sectionRef} className="relative py-32 px-6 overflow-hidden bg-[#F7F4EF] min-h-[150vh]">
-      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-white via-white/50 to-[#F7F4EF] pointer-events-none z-0" />
+    <section ref={sectionRef} className="relative py-24 md:py-32 px-6 overflow-hidden bg-[#FBF5E9] min-h-[150vh]">
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-white via-white/50 to-[#FBF5E9] pointer-events-none z-0" />
       {/* Decorative elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-700/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-700/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <motion.div initial="initial" whileInView="animate" viewport={{ once: true }} className="sticky top-32">
+      <div className="max-w-7xl mx-auto relative z-10 px-0 md:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
+          <motion.div initial="initial" whileInView="animate" viewport={{ once: true }} className="sticky top-24 md:top-32">
             <span className="text-amber-700 font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">
               <StaggerText text="The Science of MGO" />
             </span>

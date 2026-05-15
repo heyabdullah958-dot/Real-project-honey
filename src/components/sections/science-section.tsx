@@ -188,7 +188,7 @@ export const ScienceSection = () => {
       const x = (canvas.width / 2) - (img.width / 2) * scale;
       const y = (canvas.height / 2) - (img.height / 2) * scale;
       
-      // Clear with white background color before drawing
+      // White background fill before drawing frame
       context.fillStyle = "#FFFFFF";
       context.fillRect(0, 0, canvas.width, canvas.height);
       context.drawImage(img, x, y, img.width * scale, img.height * scale);
@@ -224,8 +224,8 @@ export const ScienceSection = () => {
   }, [isLoaded, images]);
 
   return (
-    <section ref={sectionRef} className="relative py-32 px-6 overflow-hidden bg-[#F7F4EF] min-h-[150vh] rounded-t-[3rem]">
-      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white to-[#F7F4EF] pointer-events-none z-0" />
+    <section ref={sectionRef} className="relative py-32 px-6 overflow-hidden bg-[#F7F4EF] min-h-[150vh]">
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-white via-white/50 to-[#F7F4EF] pointer-events-none z-0" />
       {/* Decorative elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-700/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-700/5 blur-[120px] rounded-full pointer-events-none" />
@@ -280,6 +280,7 @@ export const ScienceSection = () => {
                     src="/honey-frames/00001.jpg" 
                     alt="Manuka Honey Activity Level Fallback" 
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-contain opacity-60 grayscale group-hover:grayscale-0 transition-all duration-700"
                     priority
                   />

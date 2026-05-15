@@ -8,7 +8,7 @@ import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 const FRAME_COUNT = 192;
-const PRIORITY_FRAMES = 10;
+const PRIORITY_FRAMES = 30; // Load more WebP frames upfront
 
 const splitChars = (text: string) => {
   return text.split("").map((char, i) => (
@@ -31,6 +31,7 @@ export const HeroCanvas = () => {
       for (let i = 1; i <= FRAME_COUNT; i++) {
         const img = new Image();
         const frameNumber = i.toString().padStart(5, "0");
+        // ✅ Using the new high-quality .jpg frames
         img.src = `/honey-frames/${frameNumber}.jpg`;
         imgs.push(img);
       }
@@ -38,24 +39,20 @@ export const HeroCanvas = () => {
       try {
         const priorityPromises = imgs.slice(0, PRIORITY_FRAMES).map(img => {
           return new Promise((resolve) => {
-            img.onload = () => {
-              if (img.decode) img.decode().then(resolve).catch(resolve);
-              else resolve(null);
-            };
-            if (img.complete) {
-              if (img.decode) img.decode().then(resolve).catch(resolve);
-              else resolve(null);
-            }
+            img.onload = () => resolve(null);
+            img.onerror = () => resolve(null);
+            if (img.complete) resolve(null);
           });
         });
         await Promise.all(priorityPromises);
       } catch (e) {
-        console.error("Priority decode failed", e);
+        console.error("Priority load failed", e);
       }
 
       setImages(imgs);
       setIsLoaded(true);
 
+      // Decodes remaining images in background
       imgs.slice(PRIORITY_FRAMES).forEach(img => {
         if (img.decode) img.decode().catch(() => {});
       });
@@ -67,13 +64,15 @@ export const HeroCanvas = () => {
   useEffect(() => {
     if (!isLoaded || images.length === 0 || !canvasRef.current || !containerRef.current) return;
 
-    const context = canvasRef.current.getContext("2d", { alpha: false });
+    // ✅ Alpha enabled for transparent WebP
+    const context = canvasRef.current.getContext("2d", { alpha: true });
     if (!context) return;
 
     const canvas = canvasRef.current;
     const scrollObj = { frame: lastFrameRef.current };
 
     let resizeTimer: ReturnType<typeof setTimeout>;
+
     const updateCanvasSize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -85,33 +84,53 @@ export const HeroCanvas = () => {
       resizeTimer = setTimeout(updateCanvasSize, 150);
     };
 
+    let lastRenderedIdx = 0;
+
     const renderFrame = (index: number) => {
       const idx = Math.min(FRAME_COUNT - 1, Math.max(0, index));
       lastFrameRef.current = idx;
-      const img = images[idx];
-      if (!img || !img.complete) return;
-      
+
+      let img = images[idx];
+
+      // ✅ Clear canvas to let the site's background show through
+      context.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (!img || !img.complete) {
+        const fallback = images[lastRenderedIdx];
+        if (fallback?.complete) {
+          const s = Math.max(canvas.width / fallback.width, canvas.height / fallback.height);
+          const fx = (canvas.width / 2) - (fallback.width / 2) * s;
+          const fy = (canvas.height / 2) - (fallback.height / 2) * s;
+          context.drawImage(fallback, fx, fy, fallback.width * s, fallback.height * s);
+        }
+        return;
+      }
+
       const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
       const x = (canvas.width / 2) - (img.width / 2) * scale;
       const y = (canvas.height / 2) - (img.height / 2) * scale;
-      
+
       context.drawImage(img, x, y, img.width * scale, img.height * scale);
+      lastRenderedIdx = idx; 
     };
 
     window.addEventListener("resize", handleResize);
     updateCanvasSize();
 
-    // ✅ Scrub model — scroll-connected, cinematic
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=200%",
+        end: "+=250%",
         pin: true,
-        scrub: 0.1,             // ← Reduced from 1.2 because Lenis handles smoothing
+        pinSpacing: true,
+        scrub: 0.6, // Balanced scrub for WebP
+        anticipatePin: 1,
         invalidateOnRefresh: true,
         fastScrollEnd: true,
         preventOverlaps: true,
+        onLeave: () => renderFrame(FRAME_COUNT - 1),
+        onLeaveBack: () => renderFrame(0),
       }
     });
 
@@ -124,6 +143,7 @@ export const HeroCanvas = () => {
       }
     }, 0);
 
+    // Text Animations
     tl.fromTo(".act-1-block", { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, ease: "power2.out", duration: 0.15 }, 0)
     .fromTo(".act-1-chars .char", { y: 60, opacity: 0, filter: "blur(8px)" }, { y: 0, opacity: 1, filter: "blur(0px)", stagger: 0.02, ease: "power4.out", duration: 0.2 }, 0.05)
     .to(".act-1-block", { y: -80, opacity: 0, ease: "power2.in", duration: 0.1 }, 0.2);
@@ -162,7 +182,7 @@ export const HeroCanvas = () => {
         <div className="act-1-block absolute inset-0 flex flex-col items-center justify-center opacity-0">
           <div className="text-center px-6">
             <span className="text-amber-700 font-bold uppercase tracking-[0.5em] text-[10px] mb-4 block">Pure Australian Gold</span>
-            <h1 className="act-1-chars text-6xl md:text-9xl font-display font-semibold text-[#FBF5E9] leading-display">
+            <h1 className="act-1-chars text-6xl md:text-9xl font-display font-semibold text-stone-800 leading-display">
               <span className="block">{splitChars("Amazing")}</span>
               <span className="text-amber-700">{splitChars("Natures")}</span>
             </h1>
@@ -171,13 +191,13 @@ export const HeroCanvas = () => {
         <div className="act-2-block absolute inset-0 flex items-center justify-start px-12 md:px-24 opacity-0">
           <div className="max-w-xl">
             <span className="act-2-eyebrow text-amber-700 font-bold text-[10px] uppercase tracking-eyebrow mb-4 block">Engineered by Nature</span>
-            <h2 className="act-2-heading text-5xl md:text-8xl font-display font-semibold text-[#FBF5E9] leading-display">Bio-Active <br /><span className="act-2-clip text-amber-700 inline-block">Activity.</span></h2>
+            <h2 className="act-2-heading text-5xl md:text-8xl font-display font-semibold text-stone-800 leading-display">Bio-Active <br /><span className="act-2-clip text-amber-700 inline-block">Activity.</span></h2>
           </div>
         </div>
         <div className="act-3-block absolute inset-0 flex items-center justify-end px-12 md:px-24 opacity-0">
           <div className="text-right max-w-xl">
             <span className="text-amber-700 font-bold text-[10px] uppercase tracking-eyebrow mb-4 block">Molecular Excellence</span>
-            <h2 className="text-5xl md:text-8xl font-display font-semibold text-[#FBF5E9] leading-display mb-8">
+            <h2 className="text-5xl md:text-8xl font-display font-semibold text-stone-800 leading-display mb-8">
               <span className="act-3-line-1 block">The Science</span>
               <span className="act-3-line-2 block text-amber-700">of MGO.</span>
             </h2>
@@ -190,7 +210,7 @@ export const HeroCanvas = () => {
         </div>
         <div className="act-4-block absolute inset-0 flex flex-col items-center justify-center opacity-0">
           <div className="act-4-content text-center px-6">
-            <h2 className="text-5xl md:text-8xl font-display font-bold text-[#FBF5E9] mb-12">Secure Your <br /><span className="text-amber-700">Liquid Gold.</span></h2>
+            <h2 className="text-5xl md:text-8xl font-display font-bold text-stone-800 mb-12">Secure Your <br /><span className="text-amber-700">Liquid Gold.</span></h2>
             <Link href="/products" className="inline-block bg-amber-700 text-void font-bold uppercase tracking-[0.2em] px-12 py-6 rounded-2xl hover:bg-amber-400 transition-all shadow-xl hover:scale-105 active:scale-95 pointer-events-auto">Shop Collection</Link>
           </div>
         </div>

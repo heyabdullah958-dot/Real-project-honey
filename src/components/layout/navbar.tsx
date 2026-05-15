@@ -58,6 +58,7 @@ const Navbar = () => {
               src="/assets/brand/Amazing_Natures_logo_design_202605111144.jpeg" 
               alt="Amazing Natures Logo" 
               fill
+              sizes="48px"
               className="object-contain rounded-lg animate-logo-pulse group-hover:scale-110 transition-transform"
             />
           </div>

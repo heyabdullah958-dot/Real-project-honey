@@ -186,12 +186,12 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-2">
             <span className="text-amber-900/60 text-[9px] uppercase tracking-[0.2em] font-bold">
-              Created by 7nodesb2b
+              Created by sevennodesb2b
             </span>
             <div className="w-5 h-5 relative shrink-0">
               <Image 
                 src="/assets/brand/SevennodesLogo_smallpdf.jpg" 
-                alt="7nodesb2b Logo" 
+                alt="sevennodesb2b Logo" 
                 fill
                 className="object-contain brightness-90"
               />

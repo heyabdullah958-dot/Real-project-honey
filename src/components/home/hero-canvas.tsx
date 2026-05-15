@@ -173,7 +173,7 @@ export const HeroCanvas = () => {
     <div ref={containerRef} className="relative w-full h-screen overflow-hidden bg-[#FBF5E9]">
       <canvas
         ref={canvasRef}
-        className="block w-full h-full object-cover"
+        className="block w-full h-full object-contain"
         style={{
           willChange: 'transform',
         }}

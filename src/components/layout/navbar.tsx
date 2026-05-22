@@ -103,8 +103,12 @@ const Navbar = () => {
             )}
           </Button>
           
+          <Link href="/admin" className="hidden md:flex">
+            <Button variant="outline" className="px-4 py-2 text-xs uppercase tracking-wider font-semibold border-amber-700/20 hover:border-amber-700/60 text-amber-900">Sign In</Button>
+          </Link>
+
           <Link href="/products" className="hidden md:flex">
-            <Button>Shop Now</Button>
+            <Button className="px-4 py-2 text-xs uppercase tracking-wider font-semibold">Shop Now</Button>
           </Link>
 
           <button 
@@ -132,9 +136,14 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Link href="/products" onClick={() => setMobileMenuOpen(false)}>
-              <Button className="w-full">Shop Now</Button>
-            </Link>
+            <div className="flex flex-col gap-3 mt-2">
+              <Link href="/admin" onClick={() => setMobileMenuOpen(false)}>
+                <Button variant="outline" className="w-full">Sign In</Button>
+              </Link>
+              <Link href="/products" onClick={() => setMobileMenuOpen(false)}>
+                <Button className="w-full">Shop Now</Button>
+              </Link>
+            </div>
           </div>
         </div>
       )}

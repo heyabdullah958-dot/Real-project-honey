@@ -9,8 +9,16 @@ const DEFAULT_BACKEND_URL = "http://localhost:5000";
  */
 export function getProductImageUrl(imagePath: string): string {
   if (!imagePath) return "/assets/products/mgo-800.png";
-  if (imagePath.startsWith("http://") || imagePath.startsWith("https://") || imagePath.startsWith("data:")) {
+  if (
+    imagePath.startsWith("http://") ||
+    imagePath.startsWith("https://") ||
+    imagePath.startsWith("data:")
+  ) {
     return imagePath;
+  }
+  // If it's a static frontend asset (e.g. starting with /assets/), do not prepend backend URL
+  if (imagePath.startsWith("/assets/") || imagePath.startsWith("assets/")) {
+    return imagePath.startsWith("/") ? imagePath : `/${imagePath}`;
   }
   const backendUrl = process.env.NEXT_PUBLIC_API_URL || DEFAULT_BACKEND_URL;
   // Ensure we don't double slash

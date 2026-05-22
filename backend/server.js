@@ -14,10 +14,20 @@ const fs = require('fs');
 
 const app = express();
 
+// Trust proxy for Vercel/reverse proxies (required by express-rate-limit)
+app.set('trust proxy', 1);
+
 // Ensure uploads folder exists
-const uploadsDir = path.join(__dirname, 'uploads');
+const uploadsDir = process.env.VERCEL 
+  ? path.join('/tmp', 'uploads')
+  : path.join(__dirname, 'uploads');
+
 if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
+  try {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+  } catch (err) {
+    console.error('Failed to create uploads directory:', err);
+  }
 }
 
 // 1. Database connect

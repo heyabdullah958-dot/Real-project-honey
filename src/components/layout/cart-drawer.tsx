@@ -6,9 +6,13 @@ import { useCartStore } from "@/store/use-cart-store";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const CartDrawer = () => {
+  const pathname = usePathname();
   const { items, isOpen, setIsOpen, removeItem, updateQuantity, getTotalPrice } = useCartStore();
+
+  if (pathname?.startsWith("/admin")) return null;
 
   return (
     <AnimatePresence>

@@ -81,11 +81,28 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
     };
 
     try {
-      const response = await fetch('/api/orders', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
+      const backendUrl = process.env.NEXT_PUBLIC_API_URL || '';
+      let response;
+      
+      try {
+        console.log("Attempting to send order to Express backend at:", `${backendUrl}/api/orders`);
+        response = await fetch(`${backendUrl}/api/orders`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        
+        if (!response.ok) {
+          throw new Error(`Express backend responded with status ${response.status}`);
+        }
+      } catch (backendError) {
+        console.warn("Express backend failed, falling back to local Next.js API route:", backendError);
+        response = await fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+      }
 
       if (response.ok) {
         clearCart();

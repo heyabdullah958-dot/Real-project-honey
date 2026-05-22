@@ -1,11 +1,13 @@
 import { HeroCanvas } from "@/components/home/hero-canvas";
 import { ProductCard } from "@/components/products/product-card";
 import { ScienceSection } from "@/components/sections/science-section";
-import { products } from "@/lib/data";
+import { getProducts } from "@/lib/products";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-export default function Home() {
+export default async function Home() {
+  const dynamicProducts = await getProducts();
+
   return (
     <main className="min-h-screen">
       <h1 className="sr-only">Amazing Natures - Premium Australian Manuka Honey</h1>
@@ -37,7 +39,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {products.slice(0, 3).map((product) => (
+            {dynamicProducts.slice(0, 3).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

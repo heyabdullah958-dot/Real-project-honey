@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, MapPin, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const AnimatedLink = ({ href, children }: { href: string; children: string }) => {
   return (
@@ -73,7 +74,10 @@ const SocialIcon = ({ icon: Icon, href = "#" }: { icon: React.ElementType; href?
 );
 
 const Footer = () => {
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
+
+  if (pathname?.startsWith("/admin")) return null;
 
   return (
     <footer className="bg-white relative pt-16 pb-8 px-8 mt-12 overflow-visible border-t border-amber-900/10">

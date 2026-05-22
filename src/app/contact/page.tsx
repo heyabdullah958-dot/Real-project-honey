@@ -21,11 +21,28 @@ export default function ContactPage() {
     };
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+      const backendUrl = process.env.NEXT_PUBLIC_API_URL || '';
+      let response;
+
+      try {
+        console.log("Attempting to send contact inquiry to Express backend at:", `${backendUrl}/api/contact`);
+        response = await fetch(`${backendUrl}/api/contact`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Express backend contact route returned status ${response.status}`);
+        }
+      } catch (backendError) {
+        console.warn("Express backend contact route failed, falling back to local Next.js API route:", backendError);
+        response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+      }
 
       if (response.ok) {
         setIsSuccess(true);

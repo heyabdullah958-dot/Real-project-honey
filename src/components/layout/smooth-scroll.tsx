@@ -4,9 +4,14 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { usePathname } from "next/navigation";
 
 export const SmoothScroll = () => {
+  const pathname = usePathname();
+
   useEffect(() => {
+    if (pathname?.startsWith("/admin")) return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -33,7 +38,7 @@ export const SmoothScroll = () => {
       lenis.destroy();
       gsap.ticker.remove(updateRaf);
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 };

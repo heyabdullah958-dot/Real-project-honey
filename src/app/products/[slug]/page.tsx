@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Star, ShieldCheck, Beaker, Leaf, ArrowRight, MapPin } from "lucide-react";
-import { products } from "@/lib/data";
+import { getProducts, getProductBySlug } from "@/lib/products";
 import { cn } from "@/lib/utils";
 import { ProductBuyActions } from "@/components/products/product-buy-actions";
 import { Metadata } from "next";
@@ -12,7 +12,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const product = products.find((p) => p.slug === slug);
+  const product = await getProductBySlug(slug);
   
   if (!product) return { title: "Product Not Found" };
 
@@ -28,14 +28,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export async function generateStaticParams() {
-  return products.map((product) => ({
+  const allProducts = await getProducts();
+  return allProducts.map((product) => ({
     slug: product.slug,
   }));
 }
 
 export default async function ProductDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const product = products.find((p) => p.slug === slug);
+  const product = await getProductBySlug(slug);
 
   if (!product) {
     notFound();

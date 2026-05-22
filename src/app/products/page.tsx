@@ -10,10 +10,12 @@ export const metadata: Metadata = {
   },
 };
 
-import { products } from "@/lib/data";
+import { getProducts } from "@/lib/products";
 import { ProductCard } from "@/components/products/product-card";
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const dynamicProducts = await getProducts();
+
   return (
     <div className="py-32 px-6 min-h-screen">
       <div className="max-w-7xl mx-auto">
@@ -33,7 +35,7 @@ export default function ProductsPage() {
 
         {/* Product Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {products.map((product) => (
+          {dynamicProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
@@ -52,7 +54,7 @@ export default function ProductsPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-amber-900/5">
-              {products.map((p) => (
+              {dynamicProducts.map((p) => (
                 <tr key={p.id} className="group hover:bg-amber-900/5 transition-colors">
                   <td className="py-6 font-display font-bold text-amber-700">MGO {p.mgo}</td>
                   <td className="py-6 text-sm text-text-secondary">{p.bestFor}</td>

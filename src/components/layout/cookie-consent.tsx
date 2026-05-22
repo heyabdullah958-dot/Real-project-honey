@@ -5,9 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Shield } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function CookieConsent() {
+  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(false);
+
+  if (pathname?.startsWith("/admin")) return null;
 
   useEffect(() => {
     const consent = localStorage.getItem("cookie-consent");

@@ -7,12 +7,16 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/store/use-cart-store";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { toggleCart, getTotalItems } = useCartStore();
+
+  if (pathname?.startsWith("/admin")) return null;
 
   useEffect(() => {
     const timer = setTimeout(() => setMounted(true), 0);

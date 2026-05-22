@@ -173,3 +173,23 @@ src/
 8. **LEGAL COMPLIANCE:** NEVER use "Antibacterial", "Lab Certified", "Pay on Arrival", "healing", "cure", "medicine", or "treatment". 
 9. **TERMINOLOGY:** Use "Scientifically Verified", "Bioactive Profile", "Secure Payment", and "Wellness Support".
 10. **PAYMENT:** Payments are processed securely via standard checkout (No "Pay on arrival").
+
+
+New rules addition
+
+
+## 3. Mandatory Rules & Guardrails
+
+> [!IMPORTANT]
+> **MANDATORY TUTORIAL SYNC**
+> Before writing a single line of code, the AI **MUST** check the [docs/backend_cheat_sheet.md](file:///D:/sitesdata/T2M/docs/backend_cheat_sheet.md) file.
+> Your backend structure, routing, error handling, security model, and animation workflows must 100% strictly follow the patterns and methods taught in that cheatsheet (which condenses the full backend youtube transcripts). Do not use generic coding patterns if a specific workflow is outlined in the cheatsheet.
+
+* **Database Connection:** Use Mongoose to connect to MongoDB Atlas safely, checking credentials only through environment variables (`.env`). Never hardcode secrets.
+* **Security Standards:**
+  * Implement authentication using JWT stored exclusively in **http-only cookies** to prevent XSS attacks.
+  * Define strict **CORS** origin limits.
+  * Integrate **Express rate-limiting** on auth routes.
+* **Error Handling:** Avoid silent failures. All backend endpoints must implement global try-catch middleware and return descriptive JSON error payloads with correct HTTP status codes (e.g., `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, `500 Server Error`).
+* **Animations (GSAP / Framer Motion):** Follow premium, micro-interactive design patterns with smooth transitions and zero frame lag. Ensure clean hook-based cleanup on component unmounts.
+

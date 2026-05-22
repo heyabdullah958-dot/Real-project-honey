@@ -16,7 +16,7 @@ const CinematicSection = () => {
   const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
 
   return (
-    <div ref={containerRef} className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[3rem] overflow-hidden group mb-32 shadow-2xl shadow-amber-700/5">
+    <div ref={containerRef} className="relative w-full aspect-[4/5] sm:aspect-[16/9] md:aspect-[21/9] rounded-[3rem] overflow-hidden group mb-32 shadow-2xl shadow-amber-700/5">
       <motion.div style={{ y, scale: 1.2 }} className="absolute inset-0">
         <Image
           src="/assets/about-hive.jpg"
@@ -32,18 +32,18 @@ const CinematicSection = () => {
       
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none shadow-[inset_0_0_100px_rgba(212,147,10,0.2)]" />
 
-      <div className="absolute bottom-12 left-12 right-12 flex flex-col md:flex-row justify-between items-end gap-8">
+      <div className="absolute bottom-6 left-6 right-6 md:bottom-12 md:left-12 md:right-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-8">
         <div className="max-w-xl text-left">
-          <span className="text-amber-300 font-bold uppercase tracking-[0.5em] text-[10px] mb-4 block">
+          <span className="text-amber-300 font-bold uppercase tracking-[0.5em] text-[10px] mb-2 md:mb-4 block">
             The Source of Life
           </span>
-          <h2 className="text-4xl md:text-6xl font-display font-bold text-white">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-display font-bold text-white">
             A Sanctuary of <br />
             <span className="text-amber-300">Pure Bio-Activity.</span>
           </h2>
         </div>
-        <div className="flex flex-col items-end">
-          <p className="text-white/90 text-sm max-w-xs text-right mb-6 leading-relaxed font-medium">
+        <div className="flex flex-col items-start md:items-end">
+          <p className="text-white/90 text-xs md:text-sm max-w-xs text-left md:text-right mb-4 md:mb-6 leading-relaxed font-medium">
             Every drop is a testament to the untamed beauty of the Australian wilderness and the power of monofloral excellence.
           </p>
           <div className="w-12 h-[1px] bg-amber-300/50" />
@@ -55,7 +55,7 @@ const CinematicSection = () => {
 
 export default function AboutPage() {
   return (
-    <div className="py-24 px-8 min-h-screen">
+    <div className="pt-[140px] pb-24 px-6 md:pt-36 md:px-8 min-h-screen">
       <div className="max-w-7xl mx-auto">
         <CinematicSection />
 

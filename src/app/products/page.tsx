@@ -17,7 +17,7 @@ export default async function ProductsPage() {
   const dynamicProducts = await getProducts();
 
   return (
-    <div className="py-32 px-6 min-h-screen">
+    <div className="pt-[150px] pb-32 px-6 md:pt-40 min-h-screen">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
           <div className="flex flex-col gap-4">

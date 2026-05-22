@@ -31,7 +31,7 @@ export default function FAQPage() {
   ];
 
   return (
-    <div className="py-24 px-6 min-h-screen">
+    <div className="pt-[140px] pb-24 px-6 min-h-screen md:pt-36">
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-col gap-6 mb-20 text-center">
            <span className="text-amber-700 font-medium tracking-[0.3em] uppercase text-xs">Knowledge Base</span>

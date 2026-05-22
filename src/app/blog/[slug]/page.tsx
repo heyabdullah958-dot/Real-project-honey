@@ -90,7 +90,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   return (
-    <div className="py-24 px-6 min-h-screen">
+    <div className="pt-[140px] pb-24 px-6 md:pt-36 min-h-screen">
       <div className="max-w-4xl mx-auto">
         <Link 
           href="/blog" 

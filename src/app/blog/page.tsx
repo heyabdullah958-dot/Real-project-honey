@@ -43,7 +43,7 @@ const blogPosts = [
 
 export default function BlogPage() {
   return (
-    <div className="py-24 px-6 min-h-screen">
+    <div className="pt-[140px] pb-24 px-6 md:pt-36 min-h-screen">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col gap-6 mb-20">
            <span className="text-amber-700 font-medium tracking-[0.3em] uppercase text-xs">Wellness Blog</span>

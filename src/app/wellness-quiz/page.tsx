@@ -255,7 +255,7 @@ export default function WellnessQuizPage() {
   };
 
   return (
-    <div className="py-24 px-6 min-h-[90vh] flex items-center justify-center relative overflow-hidden">
+    <div className="pt-[140px] pb-24 px-6 md:pt-36 min-h-[90vh] flex items-center justify-center relative overflow-hidden">
       <div className="max-w-4xl w-full relative z-10">
         <AnimatePresence mode="wait">
           {!isAnalyzing && !result ? (

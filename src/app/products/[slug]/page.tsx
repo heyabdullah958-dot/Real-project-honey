@@ -62,7 +62,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   };
 
   return (
-    <div className="py-12 px-6">
+    <div className="pt-[140px] pb-12 px-6 md:pt-36">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

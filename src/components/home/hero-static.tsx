@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 export const HeroStatic = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center bg-[#FBF5E9] pt-32 pb-20 md:pt-40 md:pb-28 px-6 overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center bg-[#FBF5E9] pt-36 pb-20 md:pt-44 md:pb-28 px-6 overflow-hidden">
       {/* Decorative ambient background glows */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-700/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-amber-700/5 blur-[150px] rounded-full pointer-events-none" />

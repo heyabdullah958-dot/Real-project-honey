@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function SciencePage() {
   return (
-    <div className="py-24 px-6">
+    <div className="pt-[140px] pb-24 px-6 md:pt-36">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col gap-6 mb-20 max-w-3xl">
            <span className="text-amber-700 font-medium tracking-[0.3em] uppercase text-xs">Education Hub</span>

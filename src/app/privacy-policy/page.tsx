@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="py-32 px-6 max-w-4xl mx-auto min-h-screen">
+    <div className="pt-[140px] pb-32 px-6 max-w-4xl mx-auto min-h-screen md:pt-36">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

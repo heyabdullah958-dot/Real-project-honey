@@ -104,6 +104,19 @@ export default function AdminDashboard() {
   // Fetch Backend Base URL
   const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
+  // Helper to resolve images for display
+  const getImageUrl = (path: string | undefined | null) => {
+    if (!path) return '';
+    if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
+      return path;
+    }
+    if (path.startsWith('/assets/') || path.startsWith('assets/')) {
+      return path.startsWith('/') ? path : `/${path}`;
+    }
+    const cleanPath = path.startsWith('/') ? path : `/${path}`;
+    return `${backendUrl}${cleanPath}`;
+  };
+
   // -------------------------------------------------------------
   // Prevent background scrolling when modal is open
   // -------------------------------------------------------------
@@ -347,11 +360,7 @@ export default function AdminDashboard() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Failed to upload image");
 
-      const absoluteUrl = (data.data.url.startsWith("http") || data.data.url.startsWith("data:"))
-        ? data.data.url 
-        : `${backendUrl}${data.data.url}`;
-
-      setEditFormData(prev => ({ ...prev, image: absoluteUrl }));
+      setEditFormData(prev => ({ ...prev, image: data.data.url }));
       showSuccess("Image uploaded successfully!");
     } catch (err: any) {
       console.error("Upload error:", err);
@@ -694,7 +703,7 @@ export default function AdminDashboard() {
                               {product.image && (
                                 <div className="w-10 h-10 bg-[#FAF4E8] border border-amber-700/10 rounded-lg overflow-hidden flex items-center justify-center p-1 shrink-0">
                                   <img 
-                                    src={product.image} 
+                                    src={getImageUrl(product.image)} 
                                     alt={product.name} 
                                     className="max-w-full max-h-full object-contain"
                                     onError={(e) => { (e.target as any).src = 'https://placehold.co/100x100?text=Honey' }} 
@@ -1122,7 +1131,7 @@ export default function AdminDashboard() {
                         <div className="w-28 h-28 bg-white border border-amber-700/10 rounded-xl overflow-hidden flex items-center justify-center p-2 relative group shadow-sm shrink-0">
                           {editFormData.image ? (
                             <img 
-                              src={editFormData.image} 
+                              src={getImageUrl(editFormData.image)} 
                               alt="Product preview" 
                               className="max-w-full max-h-full object-contain"
                               onError={(e) => { (e.target as any).src = 'https://placehold.co/100x100?text=No+Image' }}
@@ -1242,7 +1251,7 @@ export default function AdminDashboard() {
                             <div className={`relative w-full h-full flex items-center justify-center ${(editFormData.mgo || 0) === 30 ? "max-h-full" : "max-h-[85%]"}`}>
                               {editFormData.image ? (
                                 <img
-                                  src={editFormData.image}
+                                  src={getImageUrl(editFormData.image)}
                                   alt={editFormData.name || "Preview Product"}
                                   className="object-contain w-full h-full max-w-full max-h-full"
                                   onError={(e) => { (e.target as any).src = 'https://placehold.co/300x300?text=No+Image' }}

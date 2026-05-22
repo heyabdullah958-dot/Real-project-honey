@@ -1,5 +1,5 @@
 # Amazing Natures — Project Memory (AI Context File)
-> Last updated: 13 May 2026 | Read this BEFORE reading any source files.
+> Last updated: 22 May 2026 | Read this BEFORE reading any source files.
 
 ---
 
@@ -106,6 +106,7 @@ src/
 ### 📦 product-card.tsx
 - **Clean Display:** User requested removal of all CSS effects (mix-blend, glow, shimmer).
 - Images show as-is using `object-contain` on transparent `npa X.jpeg` files.
+- **Image Fallback:** Automatically switches to standard `<img>` tag when a base64 `data:` URL is detected to prevent Next.js optimizer crashes.
 
 ### 🌊 smooth-scroll.tsx (Lenis)
 - Multipliers: `wheelMultiplier: 1.8`, `touchMultiplier: 2.8`.
@@ -130,13 +131,16 @@ src/
 | Feature | Status | Notes |
 |---------|--------|-------|
 | Hero animation | ✅ Working | Synced scrub, jitter-free |
-| COD Backend | ✅ Done | /api/orders wired with Resend |
-| Contact API | ✅ Done | /api/contact wired with Resend |
+| COD Backend | ✅ Done | /api/orders wired with Express + Resend |
+| Contact API | ✅ Done | /api/contact wired with Express + Resend |
 | Order emails | ✅ Done | Admin & Customer templates live |
 | Smooth scroll | ✅ Working | Buttery momentum (1.8x/2.8x) |
 | Logo Effects | ✅ Done | Breathing pulse + Amber glow |
 | Google Maps | ✅ Done | Footer, About, and Checkout |
 | Product Images | ✅ Updated | Replaced with NPA transparent set |
+| Admin Dashboard| ✅ Done | Premium cream-themed dashboard for managing products, orders, and inquiries |
+| Dynamic Sync   | ✅ Done | Storefront rewired to load products from MongoDB Atlas dynamically |
+| Image Uploads  | ✅ Done | Express backend image uploads storing relative paths and supporting base64 Vercel fallbacks |
 
 ---
 

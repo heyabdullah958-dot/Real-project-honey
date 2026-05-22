@@ -63,7 +63,11 @@ const CartDrawer = () => {
                 items.map((item) => (
                   <div key={item.id} className="flex gap-4 group">
                     <div className="relative w-24 h-24 rounded-2xl overflow-hidden glass-panel border-amber-900/10">
-                      <Image src={item.image} alt={item.name} fill className="object-cover" />
+                      {item.image?.startsWith('data:') ? (
+                        <img src={item.image} alt={item.name} className="absolute inset-0 w-full h-full object-cover" />
+                      ) : (
+                        <Image src={item.image} alt={item.name} fill className="object-cover" />
+                      )}
                     </div>
                     <div className="flex-grow flex flex-col justify-between py-1">
                       <div>

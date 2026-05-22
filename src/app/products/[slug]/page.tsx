@@ -73,13 +73,21 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <div className="w-full flex justify-center">
             <div className="relative w-full max-w-[420px] aspect-square bg-white rounded-[3rem] border border-amber-900/5 p-12 md:p-16 flex items-center justify-center shadow-2xl shadow-amber-900/5 group">
               <div className="relative w-full h-full">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  className="object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
-                  priority
-                />
+                {product.image?.startsWith('data:') ? (
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
+                  />
+                ) : (
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
+                    priority
+                  />
+                )}
               </div>
               <div className="absolute top-8 left-8">
                  <span className="amber-gradient text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">

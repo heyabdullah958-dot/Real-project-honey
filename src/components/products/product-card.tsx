@@ -102,14 +102,22 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
               "relative w-full h-full flex items-center justify-center",
               product.mgo === 30 ? "max-h-full" : "max-h-[85%]"
             )}>
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-contain"
-                priority
-              />
+              {product.image?.startsWith('data:') ? (
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="absolute inset-0 w-full h-full object-contain"
+                />
+              ) : (
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-contain"
+                  priority
+                />
+              )}
             </div>
           </motion.div>
         </div>

@@ -191,7 +191,11 @@ const ResultCard = ({ result, onReset }: { result: Product; onReset: () => void 
             <div className="relative group">
               <div className="absolute -inset-4 bg-amber-700/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
               <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="relative z-10 w-64 h-80 bg-earth/10 rounded-3xl border border-amber-700/10 flex items-center justify-center p-8 overflow-hidden">
-                 <Image src={result.image} alt={result.name} width={200} height={200} className="object-contain w-full h-full mix-blend-multiply drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
+                 {result.image?.startsWith('data:') ? (
+                   <img src={result.image} alt={result.name} className="object-contain w-full h-full mix-blend-multiply drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
+                 ) : (
+                   <Image src={result.image} alt={result.name} width={200} height={200} className="object-contain w-full h-full mix-blend-multiply drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
+                 )}
               </motion.div>
             </div>
           </motion.div>

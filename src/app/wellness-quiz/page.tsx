@@ -120,8 +120,6 @@ const MGOScanner = ({ onComplete }: { onComplete: () => void }) => {
 };
 
 const ResultCard = ({ result, onReset }: { result: Product; onReset: () => void }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  
   useEffect(() => {
     const duration = 3 * 1000;
     const animationEnd = Date.now() + duration;
@@ -138,24 +136,6 @@ const ResultCard = ({ result, onReset }: { result: Product; onReset: () => void 
 
     return () => clearInterval(interval);
   }, []);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const card = cardRef.current;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 20;
-    const rotateY = (centerX - x) / 20;
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  };
-
-  const handleMouseLeave = () => {
-    if (!cardRef.current) return;
-    cardRef.current.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
-  };
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -176,10 +156,7 @@ const ResultCard = ({ result, onReset }: { result: Product; onReset: () => void 
     >
       <div className="absolute -inset-20 bg-radial-gradient from-amber-700/10 to-transparent blur-3xl pointer-events-none opacity-50" />
       <div 
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        className="glass-panel p-8 md:p-16 rounded-[4rem] border-amber-700/20 relative overflow-hidden transition-transform duration-200 ease-out"
+        className="glass-panel p-6 md:p-10 rounded-[3rem] border-amber-700/20 relative overflow-hidden"
       >
         <motion.div 
           animate={{ x: ["-100%", "200%"] }}
@@ -190,22 +167,20 @@ const ResultCard = ({ result, onReset }: { result: Product; onReset: () => void 
           <motion.div variants={itemVariants} className="w-full md:w-1/2 flex justify-center">
             <div className="relative group">
               <div className="absolute -inset-4 bg-amber-700/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-              <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="relative z-10 w-64 h-80 bg-earth/10 rounded-3xl border border-amber-700/10 flex items-center justify-center p-8 overflow-hidden">
+              <div className="relative z-10 w-40 h-52 bg-earth/10 rounded-3xl border border-amber-700/10 flex items-center justify-center p-6 overflow-hidden">
                  {result.image?.startsWith('data:') ? (
-                   <img src={result.image} alt={result.name} className="object-contain w-full h-full mix-blend-multiply drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
+                   <img src={result.image} alt={result.name} className="object-contain w-full h-full drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]" />
                  ) : (
-                   <Image src={result.image} alt={result.name} width={200} height={200} className="object-contain w-full h-full mix-blend-multiply drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
+                   <Image src={result.image} alt={result.name} width={120} height={160} className="object-contain w-full h-full drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]" />
                  )}
-              </motion.div>
+              </div>
             </div>
           </motion.div>
           <div className="w-full md:w-1/2 text-left flex flex-col items-center md:items-start">
             <motion.div variants={itemVariants} className="mb-6 flex flex-col items-center md:items-start">
               <span className="text-amber-700 font-bold uppercase tracking-[0.5em] text-[10px] mb-4 block">Your Match Found</span>
-              <h2 className="text-4xl md:text-6xl font-display font-bold text-text-primary mb-2 overflow-hidden flex">
-                {result.name.split("").map((char, i) => (
-                  <motion.span key={i} initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ delay: i * 0.02 + 0.5, duration: 0.5, ease: "circOut" }} className="inline-block whitespace-pre">{char}</motion.span>
-                ))}
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-text-primary mb-2">
+                {result.name}
               </h2>
             </motion.div>
             <motion.div variants={itemVariants} className="mb-8 flex flex-wrap gap-3">
@@ -219,9 +194,8 @@ const ResultCard = ({ result, onReset }: { result: Product; onReset: () => void 
             <motion.p variants={itemVariants} className="text-text-muted text-lg mb-10 leading-relaxed text-center md:text-left">{result.description}</motion.p>
             <motion.div variants={itemVariants} className="flex flex-col gap-4 w-full">
                <Link href={`/products/${result.slug}`} className="w-full">
-                  <Button size="lg" className="w-full h-14 text-lg tracking-widest bg-amber-700 text-void hover:bg-amber-400 shadow-2xl shadow-amber-700/20 relative group overflow-hidden">
-                    <span className="relative z-10 flex items-center gap-2 justify-center uppercase font-bold">Shop Now <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" /></span>
-                    <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} className="absolute inset-0 bg-white/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <Button size="lg" className="w-full h-14 uppercase tracking-widest">
+                    Shop Now <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                </Link>
                <div className="flex flex-col items-center md:items-start gap-4 mt-6 pt-6 border-t border-amber-700/10">

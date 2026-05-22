@@ -1,4 +1,4 @@
-import { HeroCanvas } from "@/components/home/hero-canvas";
+import { HeroStatic } from "@/components/home/hero-static";
 import { ProductCard } from "@/components/products/product-card";
 import { ScienceSection } from "@/components/sections/science-section";
 import { getProducts } from "@/lib/products";
@@ -12,7 +12,7 @@ export default async function Home() {
     <main className="min-h-screen">
       <h1 className="sr-only">Amazing Natures - Premium Australian Manuka Honey</h1>
       {/* Cinematic Hero Canvas Sequence */}
-      <HeroCanvas />
+      <HeroStatic />
 
       {/* Narrative Section: The Science of Activity */}
       <ScienceSection />
@@ -60,7 +60,7 @@ export default async function Home() {
                 Which Manuka is <br /> right for you?
               </h3>
               <p className="text-text-muted text-lg mb-12 max-w-xl mx-auto leading-relaxed">
-                Experience the gold standard of natural bioactivity. Find your ideal MGO rating based on your unique wellness profile.
+                Experience the Amazing Standard of natural bioactivity. Find your ideal MGO rating based on your unique wellness profile.
               </p>
               <Link 
                 href="/wellness-quiz"

@@ -22,7 +22,7 @@ exports.create = async (req, res, next) => {
     });
 
     // Send email alert to admin
-    const adminEmail = process.env.ADMIN_EMAIL || 'abdullahhere958@gmail.com';
+    const adminEmail = process.env.ADMIN_EMAIL || 'Zeeshan.ahmed2691@gmail.com';
     console.log(`Sending admin email for contact inquiry to: ${adminEmail}`);
     await sendEmail({
       to: adminEmail,

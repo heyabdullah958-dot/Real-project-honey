@@ -34,7 +34,7 @@ const db = {
       size: "250g",
       activityLevel: 1,
       rating: 4,
-      tagline: "The Gold Standard for Daily Use",
+      tagline: "The Amazing Standard for Daily Use",
       description: "Entry-level Manuka honey for daily use and natural wellness. Ethically harvested Australian Manuka honey with a premium bioactive profile based on MGO level.",
       benefits: ["Daily Wellness", "Natural Energy", "Sugar Substitute"],
       bestFor: "Daily Use",

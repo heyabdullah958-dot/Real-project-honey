@@ -32,7 +32,7 @@ export default function SciencePage() {
               <h2 className="text-3xl font-display font-bold text-text-primary mb-6">What is MGO?</h2>
               <div className="space-y-6 text-text-secondary leading-relaxed">
                 <p>
-                  Methylglyoxal (MGO) is the naturally occurring compound that gives Manuka honey its distinctive bioactive activity. While all honey has some level of bio-active properties, Manuka is unique because its MGO levels are stable and resistant to heat and light.
+                  Methylglyoxal (MGO) is the naturally occurring compound that gives Manuka honey its distinctive bioactive activity. While all honey has some level of bio-active properties, Manuka is unique because of its naturally high MGO concentration. Our specialized bottles are designed to protect against heat and light, preserving the honey's vital bioactive properties.
                 </p>
                 <p>
                   The higher the MGO number, the stronger the bioactive activity and the more premium the honey is for wellness support.
@@ -48,7 +48,7 @@ export default function SciencePage() {
               {[
                 { icon: ShieldCheck, title: "Quality Assured", text: "Supports overall wellness profile." },
                 { icon: Beaker, title: "Dynamic Activity", text: "Premium bioactive properties." },
-                { icon: Microscope, title: "The Gold Standard", text: "Verified bioactive profile." },
+                { icon: Microscope, title: "The Amazing Standard", text: "Verified bioactive profile." },
                 { icon: Zap, title: "Naturally Concentrated", text: "Raw, natural energy for vitality." }
               ].map((item, i) => (
                 <div key={i} className="glass-panel p-8 rounded-3xl flex flex-col gap-4">
@@ -73,17 +73,14 @@ export default function SciencePage() {
               <div className="flex flex-col gap-2">
                  <span className="text-4xl font-display font-bold text-amber-700">01</span>
                  <h5 className="font-bold text-text-primary uppercase text-xs tracking-widest">Harvesting</h5>
-                 <p className="text-text-muted text-xs">Carefully collected from wild Australian Manuka blooms.</p>
               </div>
               <div className="flex flex-col gap-2">
                  <span className="text-4xl font-display font-bold text-amber-700">02</span>
                  <h5 className="font-bold text-text-primary uppercase text-xs tracking-widest">Cold Filtering</h5>
-                 <p className="text-text-muted text-xs">Slowly filtered at hive temperatures (approx. 35°C).</p>
               </div>
               <div className="flex flex-col gap-2">
                  <span className="text-4xl font-display font-bold text-amber-700">03</span>
-                 <h5 className="font-bold text-text-primary uppercase text-xs tracking-widest">Testing</h5>
-                 <p className="text-text-muted text-xs">Independent lab verification of MGO and purity.</p>
+                 <h5 className="font-bold text-text-primary uppercase text-xs tracking-widest">Ready to Serve</h5>
               </div>
            </div>
         </div>
@@ -91,7 +88,7 @@ export default function SciencePage() {
         {/* Lab Reports CTA */}
         <div className="mt-32 flex flex-col items-center text-center gap-10 bg-earth/30 p-16 rounded-[4rem] border border-amber-900/10">
            <div className="flex flex-col gap-3">
-              <h3 className="text-4xl md:text-5xl font-display font-bold text-text-primary">The Gold Standard</h3>
+              <h3 className="text-4xl md:text-5xl font-display font-bold text-text-primary">The Amazing Standard</h3>
               <p className="text-text-secondary text-lg">Unwavering commitment to quality in every drop.</p>
            </div>
            <Link 

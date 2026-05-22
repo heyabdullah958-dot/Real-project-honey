@@ -36,7 +36,7 @@ const db = {
       size: "250g",
       activityLevel: 1,
       rating: 4,
-      tagline: "The Gold Standard for Daily Use",
+      tagline: "The Amazing Standard for Daily Use",
       description: "Entry-level Manuka honey...",
       benefits: ["Daily Wellness"],
       bestFor: "Daily Use",

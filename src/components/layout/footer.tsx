@@ -105,8 +105,8 @@ const Footer = () => {
             Nature&apos;s most robust bioactive profile, ethically harvested from the pristine wilderness of Australia.
           </p>
           <div className="flex gap-4 justify-center md:justify-start">
-            <SocialIcon icon={Mail} href="mailto:heyabdullah958@gmail.com" />
-            <SocialIcon icon={MapPin} href="https://www.google.com/maps/search/?api=1&query=Amazing+Natures+Manuka+Honey+Sydney+NSW+Australia" />
+            <SocialIcon icon={Mail} href="mailto:Zeeshan.ahmed2691@gmail.com" />
+            <SocialIcon icon={MapPin} href="https://www.google.com/maps/search/?api=1&query=8+Gingelly+Close,+Point+Cook,+VIC,+3030" />
             <SocialIcon icon={ArrowRight} />
           </div>
         </div>
@@ -137,13 +137,13 @@ const Footer = () => {
           <h4 className="text-amber-600 font-display font-bold mb-6 uppercase tracking-widest text-[10px]">Location</h4>
           <div className="w-full h-32 rounded-2xl overflow-hidden border border-amber-900/20 grayscale hover:grayscale-0 transition-all duration-700 mb-6">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.898246877969!2d151.2073!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae401e8b983f%3A0x5017d6816329200!2sSydney%20NSW!5e0!3m2!1sen!2sau!4v1715560000000!5m2!1sen!2sau" 
+                src="https://maps.google.com/maps?q=8%20Gingelly%20Close,%20Point%20Cook,%20VIC,%203030&t=&z=14&ie=UTF8&iwloc=&output=embed" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
                 allowFullScreen 
                 loading="lazy"
-                title="Amazing Natures Sydney HQ Location"
+                title="Amazing Natures Point Cook HQ Location"
             ></iframe>
           </div>
           

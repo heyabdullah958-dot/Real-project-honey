@@ -171,7 +171,7 @@ Retrieve all active honey products.
         "size": "250g",
         "activityLevel": 1,
         "rating": 4,
-        "tagline": "The Gold Standard for Daily Use",
+        "tagline": "The Amazing Standard for Daily Use",
         "description": "Entry-level Manuka honey...",
         "benefits": ["Daily Wellness", "Natural Energy"],
         "bestFor": "Daily Use",

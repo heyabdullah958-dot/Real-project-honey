@@ -34,7 +34,7 @@ exports.create = async (req, res, next) => {
     let emailSent = false;
 
     // Send Email to Admin
-    const adminEmail = process.env.ADMIN_EMAIL || 'abdullahhere958@gmail.com';
+    const adminEmail = process.env.ADMIN_EMAIL || 'Zeeshan.ahmed2691@gmail.com';
     console.log(`Sending admin email notification to: ${adminEmail}`);
     const adminRes = await sendEmail({
       to: adminEmail,

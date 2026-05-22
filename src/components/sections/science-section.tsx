@@ -1,19 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Beaker, ShieldCheck, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const FRAME_COUNT = 192;
-const PRIORITY_FRAMES = 30;
-
-const StaggerText = ({ text, className, hover = false }: { text: string; className?: string; hover?: boolean }) => {
+const StaggerText = ({ text, className }: { text: string; className?: string }) => {
   const words = text.split(" ");
   
   return (
@@ -131,107 +124,9 @@ const ScienceItem = ({
 
 export const ScienceSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [images, setImages] = useState<HTMLImageElement[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    const loadImages = async () => {
-      const imgs: HTMLImageElement[] = [];
-      for (let i = 1; i <= FRAME_COUNT; i++) {
-        const img = new globalThis.Image();
-        const frameNumber = i.toString().padStart(5, "0");
-        img.src = `/honey-frames/${frameNumber}.jpg`;
-        imgs.push(img);
-      }
-
-      try {
-        const priorityPromises = imgs.slice(0, PRIORITY_FRAMES).map(img => {
-          return new Promise((resolve) => {
-            img.onload = () => {
-              if (img.decode) img.decode().then(resolve).catch(resolve);
-              else resolve(null);
-            };
-            if (img.complete) {
-              if (img.decode) img.decode().then(resolve).catch(resolve);
-              else resolve(null);
-            }
-          });
-        });
-        await Promise.all(priorityPromises);
-      } catch (e) {
-        console.error("Priority decode failed", e);
-      }
-
-      setImages(imgs);
-      setIsLoaded(true);
-
-      // Decodes remaining images in background to improve scroll smoothness
-      imgs.slice(PRIORITY_FRAMES).forEach(img => {
-        if (img.decode) img.decode().catch(() => {});
-      });
-    };
-
-    loadImages();
-  }, []);
-
-  useEffect(() => {
-    if (!isLoaded || images.length === 0 || !canvasRef.current || !sectionRef.current) return;
-
-    const context = canvasRef.current.getContext("2d", { alpha: false });
-    if (!context) return;
-
-    const canvas = canvasRef.current;
-    const scrollObj = { frame: 0 };
-
-    const renderFrame = (index: number) => {
-      const idx = Math.min(FRAME_COUNT - 1, Math.max(0, index));
-      const img = images[idx];
-      if (!img || !img.complete) return;
-      
-      const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
-      const x = (canvas.width / 2) - (img.width / 2) * scale;
-      const y = (canvas.height / 2) - (img.height / 2) * scale;
-      
-      // White background fill before drawing frame
-      context.fillStyle = "#FFFFFF";
-      context.fillRect(0, 0, canvas.width, canvas.height);
-      context.drawImage(img, x, y, img.width * scale, img.height * scale);
-    };
-
-    const updateCanvasSize = () => {
-      const rect = canvas.parentElement?.getBoundingClientRect();
-      if (rect) {
-        canvas.width = rect.width;
-        canvas.height = rect.height;
-        renderFrame(Math.round(scrollObj.frame));
-      }
-    };
-
-    window.addEventListener("resize", updateCanvasSize);
-    updateCanvasSize();
-
-    const trigger = ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top center",
-      end: "bottom center",
-      scrub: 0.1, // Reduced from 1 because Lenis handles smoothing
-      onUpdate: (self) => {
-        const frameIndex = Math.floor(self.progress * (FRAME_COUNT - 1));
-        renderFrame(frameIndex);
-      }
-    });
-
-    return () => {
-      window.removeEventListener("resize", updateCanvasSize);
-      trigger.kill();
-    };
-  }, [isLoaded, images]);
 
   return (
-    <section ref={sectionRef} className="relative py-24 md:py-32 px-6 overflow-hidden bg-[#FBF5E9] min-h-[150vh]">
+    <section className="relative py-24 md:py-32 px-6 overflow-hidden bg-[#FBF5E9]">
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-white via-white/50 to-[#FBF5E9] pointer-events-none z-0" />
       {/* Decorative elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-700/5 blur-[120px] rounded-full pointer-events-none" />
@@ -239,7 +134,7 @@ export const ScienceSection = () => {
 
       <div className="max-w-7xl mx-auto relative z-10 px-0 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
-          <motion.div initial="initial" whileInView="animate" viewport={{ once: true }} className="sticky top-20 md:top-32 mb-24 lg:mb-0">
+          <motion.div initial="initial" whileInView="animate" viewport={{ once: true }} className="lg:sticky lg:top-32 mb-24 lg:mb-0">
             <span className="text-amber-700 font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">
               <StaggerText text="The Science of MGO" />
             </span>
@@ -252,7 +147,7 @@ export const ScienceSection = () => {
               <ScienceItem
                 index={0}
                 icon={Beaker}
-                title="The Gold Standard Profile"
+                title="The Amazing Standard Profile"
                 description="MGO is the compound that gives Manuka its distinctive bioactive profile. Our premium reserve is naturally concentrated for excellence."
                 active={activeIndex === null ? null : activeIndex === 0}
                 onHover={() => setActiveIndex(0)}
@@ -279,25 +174,19 @@ export const ScienceSection = () => {
             </div>
           </motion.div>
 
-          <div className="relative lg:sticky top-12 lg:top-32 h-[400px] sm:h-[500px] md:h-[600px] w-full">
+          <div className="relative lg:sticky lg:top-32 h-[400px] sm:h-[500px] md:h-[600px] w-full">
             <div className="w-full h-full rounded-[3rem] overflow-hidden border border-amber-700/20 glass-panel p-2 group bg-white">
-              <div className="w-full h-full rounded-[2.5rem] bg-white relative overflow-hidden flex items-center justify-center">
-                {!isLoaded ? (
+              <div className="w-full h-full rounded-[2.5rem] bg-white relative overflow-hidden flex items-center justify-center p-8">
+                <div className="relative w-full h-full max-h-[85%]">
                   <Image 
-                    src="/honey-frames/00001.jpg" 
-                    alt="Manuka Honey Activity Level Fallback" 
+                    src="/assets/products/mgo-800.png" 
+                    alt="Amazing Natures Premium Manuka Honey MGO 800" 
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-contain opacity-60 grayscale group-hover:grayscale-0 transition-all duration-700"
+                    className="object-contain transition-transform duration-700 group-hover:scale-105"
                     priority
                   />
-                ) : (
-                  <canvas 
-                    ref={canvasRef} 
-                    className="w-full h-full object-contain"
-                    style={{ background: '#FFFFFF' }}
-                  />
-                )}
+                </div>
                 
                 {/* Glowing Drop Animation Overlay */}
                 <motion.div

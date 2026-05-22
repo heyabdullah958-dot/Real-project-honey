@@ -12,7 +12,7 @@ const blogPosts = [
   {
     id: 1,
     title: "Why MGO Ratings Matter for Your Bioactive Profile",
-    excerpt: "Discover the natural compound Methylglyoxal and how it defines the gold standard of Manuka.",
+    excerpt: "Discover the natural compound Methylglyoxal and how it defines the Amazing Standard of Manuka.",
     date: "May 10, 2026",
     author: "Dr. Amy Wells",
     readTime: "5 min read",

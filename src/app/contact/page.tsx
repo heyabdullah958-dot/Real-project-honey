@@ -118,7 +118,7 @@ export default function ContactPage() {
                        <Mail className="w-6 h-6" />
                     </div>
                     <h4 className="font-bold text-text-primary uppercase tracking-widest text-sm">Email Us</h4>
-                    <p className="text-text-secondary text-sm">heyabdullah958@gmail.com</p>
+                    <p className="text-text-secondary text-sm">Zeeshan.ahmed2691@gmail.com</p>
                  </div>
                  <div className="flex flex-col gap-4">
                     <div className="w-12 h-12 amber-gradient rounded-2xl flex items-center justify-center text-void">
@@ -130,7 +130,7 @@ export default function ContactPage() {
               </div>
 
               <a 
-                href="https://www.google.com/maps/search/?api=1&query=Amazing+Natures+Manuka+Honey+Sydney+NSW+Australia"
+                href="https://www.google.com/maps/search/?api=1&query=8+Gingelly+Close,+Point+Cook,+VIC,+3030"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-panel p-8 rounded-3xl border-amber-700/10 hover:border-amber-700/30 transition-all group block"
@@ -144,21 +144,21 @@ export default function ContactPage() {
                  <div className="flex flex-col gap-6">
                     <p className="text-text-secondary text-sm leading-relaxed">
                         Amazing Natures HQ<br />
-                        123 Wilderness Way<br />
-                        New South Wales, 2000<br />
+                        8 Gingelly Close<br />
+                        Point Cook, VIC, 3030<br />
                         Australia
                     </p>
                     {/* Google Maps Embed */}
                     <div className="w-full h-64 rounded-2xl overflow-hidden border border-amber-700/10 grayscale-[0.8] group-hover:grayscale-0 transition-all duration-700">
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.898246877969!2d151.2073!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae401e8b983f%3A0x5017d6816329200!2sSydney%20NSW!5e0!3m2!1sen!2sau!4v1715560000000!5m2!1sen!2sau" 
+                            src="https://maps.google.com/maps?q=8%20Gingelly%20Close,%20Point%20Cook,%20VIC,%203030&t=&z=14&ie=UTF8&iwloc=&output=embed" 
                             width="100%" 
                             height="100%" 
                             style={{ border: 0 }} 
                             allowFullScreen 
                             loading="lazy" 
                             referrerPolicy="no-referrer-when-downgrade"
-                            title="Amazing Natures Sydney HQ Location"
+                            title="Amazing Natures Point Cook HQ Location"
                         ></iframe>
                     </div>
                  </div>

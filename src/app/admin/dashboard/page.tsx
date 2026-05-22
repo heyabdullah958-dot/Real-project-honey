@@ -327,31 +327,34 @@ export default function AdminDashboard() {
     setSuccessMessage("");
 
     try {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = async () => {
-        const base64Data = reader.result as string;
+      // Read file to base64 using a Promise so the uploader flow operates sequentially
+      const base64Data = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = () => reject(reader.error || new Error("Failed to read file"));
+        reader.readAsDataURL(file);
+      });
 
-        const res = await fetch(`${backendUrl}/api/products/upload`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify({ image: base64Data })
-        });
+      const res = await fetch(`${backendUrl}/api/products/upload`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({ image: base64Data })
+      });
 
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.message || "Failed to upload image");
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Failed to upload image");
 
-        const absoluteUrl = data.data.url.startsWith("http") 
-          ? data.data.url 
-          : `${backendUrl}${data.data.url}`;
+      const absoluteUrl = (data.data.url.startsWith("http") || data.data.url.startsWith("data:"))
+        ? data.data.url 
+        : `${backendUrl}${data.data.url}`;
 
-        setEditFormData(prev => ({ ...prev, image: absoluteUrl }));
-        showSuccess("Image uploaded successfully!");
-      };
+      setEditFormData(prev => ({ ...prev, image: absoluteUrl }));
+      showSuccess("Image uploaded successfully!");
     } catch (err: any) {
+      console.error("Upload error:", err);
       setErrorMessage(err.message || "Failed to upload image.");
     } finally {
       setIsUploading(false);

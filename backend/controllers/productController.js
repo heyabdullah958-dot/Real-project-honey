@@ -122,6 +122,15 @@ exports.uploadImage = async (req, res, next) => {
       return res.status(400).json({ success: false, message: 'Image size exceeds the 5MB limit.' });
     }
 
+    // If running on Vercel, return base64 string directly to avoid ephemeral filesystem loss
+    if (process.env.VERCEL) {
+      return res.status(200).json({
+        success: true,
+        message: 'Image processed successfully (Base64 Mode).',
+        data: { url: image }
+      });
+    }
+
     let extension = 'png';
     if (mimeType.includes('jpeg') || mimeType.includes('jpg')) {
       extension = 'jpg';
@@ -134,15 +143,22 @@ exports.uploadImage = async (req, res, next) => {
     const filename = `product-${Date.now()}-${Math.round(Math.random() * 1e9)}.${extension}`;
     const filepath = path.join(__dirname, '../uploads', filename);
 
-    fs.writeFileSync(filepath, buffer);
-
-    const fileUrl = `/uploads/${filename}`;
-
-    res.status(200).json({
-      success: true,
-      message: 'Image uploaded successfully.',
-      data: { url: fileUrl }
-    });
+    try {
+      fs.writeFileSync(filepath, buffer);
+      const fileUrl = `/uploads/${filename}`;
+      return res.status(200).json({
+        success: true,
+        message: 'Image uploaded successfully.',
+        data: { url: fileUrl }
+      });
+    } catch (writeErr) {
+      console.warn('Failed to write file, falling back to base64 URL:', writeErr.message);
+      return res.status(200).json({
+        success: true,
+        message: 'Image processed successfully (Base64 Fallback).',
+        data: { url: image }
+      });
+    }
   } catch (error) {
     next(error);
   }

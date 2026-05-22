@@ -16,8 +16,6 @@ const Navbar = () => {
   const [mounted, setMounted] = useState(false);
   const { toggleCart, getTotalItems } = useCartStore();
 
-  if (pathname?.startsWith("/admin")) return null;
-
   useEffect(() => {
     const timer = setTimeout(() => setMounted(true), 0);
     return () => clearTimeout(timer);
@@ -42,6 +40,8 @@ const Navbar = () => {
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ];
+
+  if (pathname?.startsWith("/admin")) return null;
 
   return (
     <nav

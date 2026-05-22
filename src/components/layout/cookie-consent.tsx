@@ -11,20 +11,21 @@ export default function CookieConsent() {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(false);
 
-  if (pathname?.startsWith("/admin")) return null;
-
   useEffect(() => {
+    if (pathname?.startsWith("/admin")) return;
     const consent = localStorage.getItem("cookie-consent");
     if (!consent) {
       const timer = setTimeout(() => setIsVisible(true), 2000);
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [pathname]);
 
   const acceptCookies = () => {
     localStorage.setItem("cookie-consent", "true");
     setIsVisible(false);
   };
+
+  if (pathname?.startsWith("/admin")) return null;
 
   return (
     <AnimatePresence>

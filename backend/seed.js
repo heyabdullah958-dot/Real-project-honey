@@ -68,7 +68,7 @@ const products = [
     tagline: "Dynamic Natural Activity",
     description: "High-activity reserve grade, ideal for intensive daily wellness routines.",
     benefits: ["Skin Wellness", "Intensive Wellness Support", "Natural Support"],
-    bestFor: "Wellness Support",
+    bestFor: "Intensive Support",
     activity: "Very High",
     taste: "Strong",
     image: "/assets/products/mgo-400.png",

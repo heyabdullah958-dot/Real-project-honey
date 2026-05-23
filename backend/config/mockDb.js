@@ -91,7 +91,7 @@ const db = {
       tagline: "Dynamic Natural Activity",
       description: "Ethically harvested Australian Manuka honey with a premium bioactive profile based on MGO level. Premium reserve grade for intensive wellness support.",
       benefits: ["Skin Wellness", "Intensive Wellness Support", "Natural Support"],
-      bestFor: "Wellness Support",
+      bestFor: "Intensive Support",
       activity: "Very High",
       taste: "Strong",
       image: "/assets/products/mgo-400.png",

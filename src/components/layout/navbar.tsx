@@ -46,13 +46,13 @@ const Navbar = () => {
   return (
     <>
       {/* Announcement Banner */}
-      <div className="fixed top-0 left-0 right-0 h-[36px] bg-amber-700 text-white flex items-center justify-center text-center px-4 text-[10px] md:text-xs font-bold uppercase tracking-widest z-50">
+      <div className="fixed top-0 left-0 right-0 h-[44px] bg-amber-700 text-white flex items-center justify-center text-center px-6 text-xs md:text-sm font-bold uppercase tracking-wider z-50 shadow-md shadow-amber-900/20">
         🐝 Free Delivery on all Australian orders over $150
       </div>
 
       <nav
         className={cn(
-          "fixed top-[36px] left-0 right-0 z-50 transition-all duration-300 px-6 py-3 bg-[#FBF5E9]/90 backdrop-blur-lg border-b border-amber-900/10"
+          "fixed top-[44px] left-0 right-0 z-50 transition-all duration-300 px-6 py-3 bg-[#FBF5E9]/90 backdrop-blur-lg border-b border-amber-900/10"
         )}
         aria-label="Main Navigation"
       >

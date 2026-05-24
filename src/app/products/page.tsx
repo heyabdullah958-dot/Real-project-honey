@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Shop All Manuka Honey | Amazing Natures Australia",
   description: "Browse our premium range of Australian Manuka honey. From daily wellness MGO 30 to premium reserve grade MGO 800+, all quality assured and ethically harvested.",

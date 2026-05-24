@@ -2,6 +2,8 @@ import { HeroStatic } from "@/components/home/hero-static";
 import { ProductCard } from "@/components/products/product-card";
 import { ScienceSection } from "@/components/sections/science-section";
 import { getProducts } from "@/lib/products";
+
+export const dynamic = 'force-dynamic';
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 

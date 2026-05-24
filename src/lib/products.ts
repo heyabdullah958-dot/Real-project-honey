@@ -33,7 +33,7 @@ export async function getProducts(): Promise<Product[]> {
   const backendUrl = process.env.NEXT_PUBLIC_API_URL || DEFAULT_BACKEND_URL;
   try {
     const res = await fetch(`${backendUrl}/api/products`, {
-      next: { revalidate: 30 } // Cache and revalidate every 30 seconds
+      cache: 'no-store'
     });
     
     if (!res.ok) {
@@ -67,7 +67,7 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
   const backendUrl = process.env.NEXT_PUBLIC_API_URL || DEFAULT_BACKEND_URL;
   try {
     const res = await fetch(`${backendUrl}/api/products/${slug}`, {
-      next: { revalidate: 30 }
+      cache: 'no-store'
     });
     
     if (res.status === 404) {

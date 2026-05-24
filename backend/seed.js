@@ -87,8 +87,8 @@ const products = [
     description: "Our most potent reserve, exceptional bioactive concentration for serious wellness focus.",
     benefits: ["Advanced Wellness", "Max Bio-Activity", "Premium Support"],
     bestFor: "Targeted Support",
-    activity: "Exceptional",
-    taste: "Intense",
+    activity: "Ultimate",
+    taste: "Rich",
     image: "/assets/products/mgo-800.png",
     color: "#9B6500",
     isActive: true

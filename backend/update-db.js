@@ -9,10 +9,10 @@ const updateDb = async () => {
     await mongoose.connect(process.env.MONGO_URI);
     console.log('Connected!');
     
-    // Update the product mgo-400's bestFor field
+    // Update the product mgo-800's activity and taste fields
     const result = await mongoose.connection.db.collection('products').updateOne(
-      { slug: 'mgo-400' },
-      { $set: { bestFor: 'Intensive Support' } }
+      { slug: 'mgo-800' },
+      { $set: { activity: 'Ultimate', taste: 'Rich' } }
     );
     
     console.log('Update result:', result);

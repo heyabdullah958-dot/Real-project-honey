@@ -43,7 +43,7 @@ export default async function ProductsPage() {
         {/* Activity Level Guide Table */}
         <div className="mt-32 glass-panel rounded-[2rem] p-8 md:p-12 overflow-x-auto">
           <h2 className="text-2xl font-display font-bold text-text-primary mb-8">Activity Comparison</h2>
-          <table className="w-full text-left border-collapse">
+          <table className="w-full min-w-[600px] text-left border-collapse">
             <thead>
               <tr className="border-b border-amber-900/10 text-[10px] uppercase tracking-widest text-text-muted">
                 <th className="pb-4 font-medium">Grade</th>

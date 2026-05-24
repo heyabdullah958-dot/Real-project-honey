@@ -9,13 +9,19 @@ const updateDb = async () => {
     await mongoose.connect(process.env.MONGO_URI);
     console.log('Connected!');
     
-    // Update the product mgo-800's activity and taste fields
-    const result = await mongoose.connection.db.collection('products').updateOne(
-      { slug: 'mgo-800' },
-      { $set: { activity: 'Ultimate', taste: 'Rich' } }
+    // Update mgo-100 bestFor
+    const res100 = await mongoose.connection.db.collection('products').updateOne(
+      { slug: 'mgo-100' },
+      { $set: { bestFor: 'Daily Balance' } }
     );
-    
-    console.log('Update result:', result);
+    console.log('MGO 100 update result:', res100);
+
+    // Update mgo-263 bestFor
+    const res263 = await mongoose.connection.db.collection('products').updateOne(
+      { slug: 'mgo-263' },
+      { $set: { bestFor: 'Enhanced Support' } }
+    );
+    console.log('MGO 263 update result:', res263);
     
     mongoose.connection.close();
   } catch (error) {

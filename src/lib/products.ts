@@ -42,11 +42,12 @@ export async function getProducts(): Promise<Product[]> {
     
     const json = await res.json();
     if (json.success && Array.isArray(json.data) && json.data.length > 0) {
-      return json.data.map((p: any) => ({
+      const mapped = json.data.map((p: any) => ({
         ...p,
         id: p.slug, // Map slug to id for frontend type compatibility
         image: getProductImageUrl(p.image)
       }));
+      return mapped.sort((a: any, b: any) => a.mgo - b.mgo);
     }
   } catch (error) {
     console.warn("Express backend API unreachable. Falling back to static products data.", error);
@@ -56,7 +57,7 @@ export async function getProducts(): Promise<Product[]> {
   return staticProducts.map(p => ({
     ...p,
     image: getProductImageUrl(p.image)
-  }));
+  })).sort((a, b) => a.mgo - b.mgo);
 }
 
 /**

@@ -1,6 +1,6 @@
 "use client";
 
-import { Leaf, ShieldCheck, Heart, Beaker, MapPin } from "lucide-react";
+import { Heart, Beaker, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -44,7 +44,7 @@ const CinematicSection = () => {
         </div>
         <div className="flex flex-col items-start md:items-end">
           <p className="text-white/90 text-xs md:text-sm max-w-xs text-left md:text-right mb-4 md:mb-6 leading-relaxed font-medium">
-            Every drop is a testament to the untamed beauty of the Australian wilderness and the power of monofloral excellence.
+            Every drop is a testament to the untamed beauty of the Australian wilderness and the power of natural excellence.
           </p>
           <div className="w-12 h-[1px] bg-amber-300/50" />
         </div>
@@ -94,20 +94,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-6">
-              <div className="flex flex-col gap-4 p-8 glass-panel rounded-3xl border-amber-700/10">
-                 <div className="w-12 h-12 amber-gradient rounded-2xl flex items-center justify-center text-void">
-                   <Leaf className="w-6 h-6" />
-                 </div>
-                 <h4 className="font-bold text-text-primary uppercase tracking-widest text-[10px]">Sustainably Sourced</h4>
-              </div>
-              <div className="flex flex-col gap-4 p-8 glass-panel rounded-3xl border-amber-700/10">
-                 <div className="w-12 h-12 amber-gradient rounded-2xl flex items-center justify-center text-void">
-                   <ShieldCheck className="w-6 h-6" />
-                 </div>
-                 <h4 className="font-bold text-text-primary uppercase tracking-widest text-[10px]">Independently Verified</h4>
-              </div>
-            </div>
+
           </div>
           
           <div className="relative aspect-[4/5] glass-panel rounded-[4rem] overflow-hidden group">
@@ -131,9 +118,9 @@ export default function AboutPage() {
           </div>
           <div className="flex flex-col gap-6 p-10 glass-panel rounded-[2.5rem] border-amber-700/20">
              <Beaker className="w-10 h-10 text-amber-700" />
-             <h3 className="text-2xl font-display font-bold text-text-primary">Independently Verified</h3>
+             <h3 className="text-2xl font-display font-bold text-text-primary">Quality Assured</h3>
              <p className="text-text-secondary text-sm leading-relaxed">
-               Every jar undergoes rigorous independent verification to confirm its MGO concentration, so you can trust the potency and purity of what's inside.
+               Every jar meets our rigorous quality assurance standards to confirm its MGO concentration, so you can trust the potency and purity of what&apos;s inside.
              </p>
           </div>
           <div className="flex flex-col gap-6 p-10 glass-panel rounded-[2.5rem]">

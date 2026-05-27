@@ -174,8 +174,8 @@ src/
 5. **LOCATION:** Business is centered in **Sydney, NSW, Australia**.
 6. **Next.js 16.2.6** (Turbopack) is used — build is verified and passsing.
 7. **BRAND COLOR:** Use `amber-700` or darker for brand accents (replacing `amber-500`) to ensure contrast against white/cream backgrounds.
-8. **LEGAL COMPLIANCE:** NEVER use "Antibacterial", "Lab Certified", "Pay on Arrival", "healing", "cure", "medicine", or "treatment". 
-9. **TERMINOLOGY:** Use "Scientifically Verified", "Bioactive Profile", "Secure Payment", and "Wellness Support".
+8. **LEGAL COMPLIANCE:** NEVER use "Antibacterial", "Lab Certified", "Pay on Arrival", "healing", "cure", "medicine", "treatment", "Independently Verified", or "Monofloral". 
+9. **TERMINOLOGY:** Use "Scientifically Verified", "Bioactive Profile", "Secure Payment", "Wellness Support", and "Quality Assured".
 10. **PAYMENT:** Payments are processed securely via standard checkout (No "Pay on arrival").
 
 

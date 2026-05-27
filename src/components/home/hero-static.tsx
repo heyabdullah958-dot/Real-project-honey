@@ -24,7 +24,7 @@ export const HeroStatic = () => {
           >
             <div className="flex flex-wrap gap-3">
               <span className="inline-flex items-center gap-1.5 px-4.5 py-2 rounded-full bg-amber-700/5 border border-amber-700/10 text-amber-900 font-bold uppercase tracking-widest text-[9px] md:text-[10px]">
-                <ShieldCheck className="w-3.5 h-3.5 text-amber-700" /> 100% Monofloral
+                <ShieldCheck className="w-3.5 h-3.5 text-amber-700" /> 100% Australian
               </span>
               <span className="inline-flex items-center gap-1.5 px-4.5 py-2 rounded-full bg-amber-700/5 border border-amber-700/10 text-amber-900 font-bold uppercase tracking-widest text-[9px] md:text-[10px]">
                 <Zap className="w-3.5 h-3.5 text-amber-700" /> MGO Verified

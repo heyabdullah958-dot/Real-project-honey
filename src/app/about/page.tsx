@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, Beaker, MapPin } from "lucide-react";
+import { ShieldCheck, Heart, Beaker, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";

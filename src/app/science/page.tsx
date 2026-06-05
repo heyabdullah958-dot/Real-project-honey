@@ -32,7 +32,7 @@ export default function SciencePage() {
               <h2 className="text-3xl font-display font-bold text-text-primary mb-6">What is MGO?</h2>
               <div className="space-y-6 text-text-secondary leading-relaxed">
                 <p>
-                  Methylglyoxal (MGO) is the naturally occurring compound that gives Manuka honey its distinctive bioactive activity. While all honey has some level of bio-active properties, Manuka is unique because of its naturally high MGO concentration. Our specialized bottles are designed to protect against heat and light, preserving the honey's vital bioactive properties.
+                  Methylglyoxal (MGO) is the naturally occurring compound that gives Manuka honey its distinctive bioactive activity. While all honey has some level of bio-active properties, Manuka is unique because of its naturally high MGO concentration.
                 </p>
                 <p>
                   The higher the MGO number, the stronger the bioactive activity and the more premium the honey is for wellness support.
@@ -48,7 +48,6 @@ export default function SciencePage() {
               {[
                 { icon: ShieldCheck, title: "Quality Assured", text: "Supports overall wellness profile." },
                 { icon: Beaker, title: "Dynamic Activity", text: "Premium bioactive properties." },
-                { icon: Microscope, title: "The Amazing Standard", text: "Verified bioactive profile." },
                 { icon: Zap, title: "Naturally Concentrated", text: "Raw, natural energy for vitality." }
               ].map((item, i) => (
                 <div key={i} className="glass-panel p-8 rounded-3xl flex flex-col gap-4">

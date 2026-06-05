@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ShoppingCart, Menu, X } from "lucide-react";
+import { ShoppingCart, Menu, X, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/store/use-cart-store";
@@ -13,6 +14,7 @@ const Navbar = () => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { toggleCart, getTotalItems } = useCartStore();
 
@@ -81,15 +83,52 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-sm font-medium text-text-secondary hover:text-amber-700 transition-colors uppercase tracking-widest"
-            >
-              {link.name}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            if (link.name === "Shop") {
+              return (
+                <div 
+                  key={link.name} 
+                  className="relative group py-4"
+                  onMouseEnter={() => setDropdownOpen(true)}
+                  onMouseLeave={() => setDropdownOpen(false)}
+                >
+                  <Link
+                    href={link.href}
+                    className="flex items-center gap-1 text-sm font-medium text-text-secondary hover:text-amber-700 transition-colors uppercase tracking-widest"
+                  >
+                    {link.name} <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
+                  </Link>
+                  <AnimatePresence>
+                    {dropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-48 bg-[#FBF5E9]/95 backdrop-blur-md border border-amber-900/10 rounded-2xl shadow-xl overflow-hidden p-2 z-50 flex flex-col gap-1"
+                      >
+                        <Link href="/products" className="px-4 py-3 rounded-xl hover:bg-amber-700/5 text-sm font-bold text-text-primary uppercase tracking-wider transition-colors" onClick={() => setDropdownOpen(false)}>
+                          All Products
+                        </Link>
+                        <Link href="/science" className="px-4 py-3 rounded-xl hover:bg-amber-700/5 text-sm font-bold text-text-primary uppercase tracking-wider transition-colors" onClick={() => setDropdownOpen(false)}>
+                          MGO Guide
+                        </Link>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            }
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-sm font-medium text-text-secondary hover:text-amber-700 transition-colors uppercase tracking-widest"
+              >
+                {link.name}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Actions */}
@@ -129,30 +168,38 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-[#FBF5E9] border-b border-amber-900/10 shadow-lg p-6 md:hidden animate-in slide-in-from-top duration-300">
-          <div className="flex flex-col gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-lg font-medium text-text-secondary"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="flex flex-col gap-3 mt-2">
-              <Link href="/admin" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="outline" className="w-full">Sign In</Button>
-              </Link>
-              <Link href="/products" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full">Shop Now</Button>
-              </Link>
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute top-full left-0 right-0 bg-[#FBF5E9] border-b border-amber-900/10 shadow-lg md:hidden overflow-hidden"
+          >
+            <div className="p-6 flex flex-col gap-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-lg font-medium text-text-secondary"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <div className="flex flex-col gap-3 mt-2">
+                <Link href="/admin" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full">Sign In</Button>
+                </Link>
+                <Link href="/products" onClick={() => setMobileMenuOpen(false)}>
+                  <Button className="w-full">Shop Now</Button>
+                </Link>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
     </>
   );

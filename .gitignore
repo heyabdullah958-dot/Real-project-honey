@@ -44,3 +44,9 @@ next-env.d.ts
 /logs/
 /.gemini/
 
+# local shortcuts
+/b
+/b.bat
+/b.ps1
+/b.sh
+

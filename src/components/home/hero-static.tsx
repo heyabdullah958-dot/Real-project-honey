@@ -4,7 +4,66 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, Heart, Zap, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+
+const carouselImages = [
+  { src: "/assets/products/mgo-30.png", name: "MGO 30", rating: "Daily Wellness" },
+  { src: "/assets/products/mgo-100.png", name: "MGO 100", rating: "Premium Reserve" },
+  { src: "/assets/products/mgo-263.png", name: "MGO 263", rating: "Naturally Concentrated" },
+  { src: "/assets/products/mgo-400.png", name: "MGO 400", rating: "Dynamic Activity" },
+  { src: "/assets/products/mgo-800.png", name: "MGO 800", rating: "Liquid Gold Reserve" },
+];
+
+const HeroCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % carouselImages.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 flex items-center justify-center p-8"
+        >
+          <Image
+            src={carouselImages[currentIndex].src}
+            alt={`Amazing Natures ${carouselImages[currentIndex].name}`}
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-contain transition-transform duration-1000 group-hover:scale-105 p-6 drop-shadow-2xl"
+            priority={currentIndex === 0}
+          />
+          {/* Subtle overlay badge */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px-6 py-3 rounded-2xl border border-amber-700/20 shadow-xl flex flex-col items-center gap-1">
+            <span className="font-display font-bold text-amber-700 text-lg leading-none">{carouselImages[currentIndex].name}</span>
+            <span className="text-[10px] uppercase tracking-widest text-text-secondary font-bold whitespace-nowrap">{carouselImages[currentIndex].rating}</span>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+        {carouselImages.map((_, idx) => (
+          <div
+            key={idx}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+              currentIndex === idx ? "w-4 bg-amber-700" : "bg-amber-700/30"
+            }`}
+          />
+        ))}
+      </div>
+    </>
+  );
+};
 
 export const HeroStatic = () => {
   return (
@@ -65,17 +124,9 @@ export const HeroStatic = () => {
             className="lg:col-span-5 flex justify-center"
           >
             <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[3rem] p-3 glass-panel bg-white/40 border border-amber-900/10 shadow-[0_24px_64px_rgba(155,101,0,0.12)] group hover:shadow-[0_32px_80px_rgba(155,101,0,0.2)] transition-all duration-700">
-              <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden bg-white">
-                <Image
-                  src="/assets/1.jpeg"
-                  alt="Amazing Natures Premium Manuka Honey Jar"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0705]/20 via-transparent to-transparent opacity-60 pointer-events-none" />
-              </div>
+              <Link href="/products" className="relative w-full h-full rounded-[2.5rem] overflow-hidden bg-white/50 backdrop-blur-sm block group-hover:bg-white/80 transition-colors duration-500">
+                <HeroCarousel />
+              </Link>
             </div>
           </motion.div>
         </div>

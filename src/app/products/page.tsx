@@ -14,9 +14,12 @@ export const metadata: Metadata = {
 
 import { getProducts } from "@/lib/products";
 import { ProductCard } from "@/components/products/product-card";
+import { ProductPackageCarousel } from "@/components/products/product-package-carousel";
 
 export default async function ProductsPage() {
   const dynamicProducts = await getProducts();
+  const bundleProducts = dynamicProducts.filter(p => p.slug.includes('-pack-'));
+  const singleProducts = dynamicProducts.filter(p => !p.slug.includes('-pack-'));
 
   return (
     <div className="pt-[150px] pb-32 px-6 md:pt-40 min-h-screen">
@@ -34,6 +37,11 @@ export default async function ProductsPage() {
             Discover the perfect balance of taste and bioactive profile. Every jar is wild-sourced and quality assured for MGO content.
           </p>
         </div>
+
+        {/* Bundle Package Carousel */}
+        {bundleProducts.length > 0 && (
+          <ProductPackageCarousel products={bundleProducts} />
+        )}
 
         {/* Product Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">

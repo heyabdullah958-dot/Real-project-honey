@@ -218,11 +218,24 @@ const ResultCard = ({ result, onReset }: { result: Product; onReset: () => void 
   );
 };
 
+let savedQuizState = {
+  currentStep: 0,
+  answers: [] as string[],
+  isAnalyzing: false,
+  result: null as Product | null,
+  quizCompleted: false,
+};
+
 export default function WellnessQuizPage() {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [answers, setAnswers] = useState<string[]>([]);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [result, setResult] = useState<Product | null>(null);
+  const [currentStep, setCurrentStep] = useState(savedQuizState.currentStep);
+  const [answers, setAnswers] = useState<string[]>(savedQuizState.answers);
+  const [isAnalyzing, setIsAnalyzing] = useState(savedQuizState.isAnalyzing);
+  const [result, setResult] = useState<Product | null>(savedQuizState.result);
+  const [quizCompleted, setQuizCompleted] = useState(savedQuizState.quizCompleted);
+
+  useEffect(() => {
+    savedQuizState = { currentStep, answers, isAnalyzing, result, quizCompleted };
+  }, [currentStep, answers, isAnalyzing, result, quizCompleted]);
 
   const handleAnswer = (answer: string) => {
     const newAnswers = [...answers, answer];
@@ -245,6 +258,7 @@ export default function WellnessQuizPage() {
     else if (goal === "general" && frequency === "occasional") recommendedSlug = "mgo-800";
     const product = products.find(p => p.slug === recommendedSlug);
     setResult(product || products[0]);
+    setQuizCompleted(true);
   };
 
   const resetQuiz = () => {
@@ -252,7 +266,14 @@ export default function WellnessQuizPage() {
     setAnswers([]);
     setResult(null);
     setIsAnalyzing(false);
+    setQuizCompleted(false);
   };
+
+  useEffect(() => {
+    if (quizCompleted) {
+      resetQuiz();
+    }
+  }, []);
 
   return (
     <div className="pt-[140px] pb-24 px-6 md:pt-36 min-h-[90vh] flex items-center justify-center relative overflow-hidden">

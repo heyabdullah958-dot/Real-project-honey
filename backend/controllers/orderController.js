@@ -1,6 +1,6 @@
 const Order = require('../models/Order');
 const sendEmail = require('../utils/sendEmail');
-const { getAdminOrderEmail, getCustomerOrderEmail } = require('../utils/emailTemplates');
+const { getAdminOrderEmail, getCustomerOrderEmail, getStatusUpdateEmail } = require('../utils/emailTemplates');
 
 // @desc    Create new COD order
 // @route   POST /api/orders
@@ -119,9 +119,29 @@ exports.updateStatus = async (req, res, next) => {
       return res.status(404).json({ success: false, message: 'Order not found.' });
     }
 
+    // Send status update email if customer provided an email address
+    let emailSent = false;
+    if (order.email) {
+      try {
+        console.log(`Sending status update (${status}) email to: ${order.email}`);
+        const emailTemplate = getStatusUpdateEmail(order, status);
+        const emailRes = await sendEmail({
+          to: order.email,
+          subject: emailTemplate.subject,
+          html: emailTemplate.html
+        });
+        emailSent = emailRes.success;
+      } catch (emailErr) {
+        console.error('❌ Failed to send status email:', emailErr);
+      }
+    } else {
+      console.log(`No email for order ${order.orderId}, skipping status update notification.`);
+    }
+
     res.status(200).json({
       success: true,
       message: `Order status updated to ${status}.`,
+      emailSent,
       data: order
     });
   } catch (error) {

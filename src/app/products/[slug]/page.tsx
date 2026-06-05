@@ -71,7 +71,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-[0.8fr,1.2fr] gap-16 items-center">
           {/* Left: Product Image */}
           <div className="w-full flex justify-center">
-            <div className="relative w-full max-w-[420px] aspect-square bg-white rounded-[3rem] border border-amber-900/5 p-12 md:p-16 flex items-center justify-center shadow-2xl shadow-amber-900/5 group">
+            <div className="relative w-full max-w-[420px] aspect-square bg-white rounded-[3rem] border border-amber-900/5 p-6 sm:p-10 md:p-12 flex items-center justify-center shadow-2xl shadow-amber-900/5 group">
               <div className="relative w-full h-full">
                 {product.image?.startsWith('data:') ? (
                   <img

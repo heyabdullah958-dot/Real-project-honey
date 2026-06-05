@@ -234,7 +234,16 @@ export default function AdminDashboard() {
       if (!response.ok) throw new Error(data.message || 'Failed to update status');
       
       setOrders(prev => prev.map(o => o.orderId === orderId ? { ...o, status: newStatus } : o));
-      showSuccess(`Order ${orderId} updated to ${newStatus}`);
+      if (data.emailSent) {
+        showSuccess(`Order ${orderId} updated to ${newStatus} (customer notification email sent).`);
+      } else {
+        const targetOrder = orders.find(o => o.orderId === orderId);
+        if (targetOrder && !targetOrder.email) {
+          showSuccess(`Order ${orderId} updated to ${newStatus} (no email on file).`);
+        } else {
+          showSuccess(`Order ${orderId} updated to ${newStatus} (email notification skipped).`);
+        }
+      }
     } catch (err: any) {
       setErrorMessage(err.message || 'Failed to update order status.');
     } finally {

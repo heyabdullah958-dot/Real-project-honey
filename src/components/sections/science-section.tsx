@@ -207,11 +207,11 @@ export const ScienceSection = () => {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent pointer-events-none" />
                 
-                <div className="absolute bottom-12 left-12 right-12 z-30 pointer-events-none">
-                  <div className="flex items-end justify-between">
+                <div className="absolute bottom-6 left-6 right-6 sm:bottom-12 sm:left-12 sm:right-12 z-30 pointer-events-none">
+                  <div className="flex items-end justify-between gap-4">
                     <div>
-                      <span className="text-amber-700 font-bold text-5xl block mb-2 tracking-tighter">800+</span>
-                      <span className="text-text-primary font-bold uppercase tracking-widest text-xs">Premium Reserve MGO</span>
+                      <span className="text-amber-700 font-bold text-2xl sm:text-3xl md:text-4xl block mb-1 tracking-tighter">800+</span>
+                      <span className="text-text-primary font-bold uppercase tracking-widest text-[9px] sm:text-xs">Premium Reserve MGO</span>
                     </div>
                     <div className="h-1.5 w-32 bg-amber-700/10 rounded-full overflow-hidden border border-amber-700/5">
                       <motion.div 

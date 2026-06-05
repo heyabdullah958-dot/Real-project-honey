@@ -118,7 +118,6 @@ const Footer = () => {
             <li><AnimatedLink href="/products">All Honey</AnimatedLink></li>
             <li><AnimatedLink href="/products/mgo-800">Premium MGO 800+</AnimatedLink></li>
             <li><AnimatedLink href="/wellness-quiz">Wellness Quiz</AnimatedLink></li>
-            <li><AnimatedLink href="/subscriptions">Subscribe & Save</AnimatedLink></li>
           </ul>
         </div>
 

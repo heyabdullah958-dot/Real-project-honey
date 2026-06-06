@@ -18,12 +18,9 @@ const carouselImages = [
 const HeroCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % carouselImages.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, []);
+  // Auto-play animation removed to make it static
+  const handleNext = () => setCurrentIndex((prev) => (prev + 1) % carouselImages.length);
+  const handlePrev = () => setCurrentIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
 
   return (
     <>
@@ -34,7 +31,18 @@ const HeroCarousel = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8 }}
-          className="absolute inset-0 flex items-center justify-center p-8"
+          className="absolute inset-0 flex items-center justify-center p-8 cursor-grab active:cursor-grabbing"
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
+          onDragEnd={(e, { offset, velocity }) => {
+            const swipe = Math.abs(offset.x) * velocity.x;
+            if (swipe < -10000 || offset.x < -50) {
+              handleNext();
+            } else if (swipe > 10000 || offset.x > 50) {
+              handlePrev();
+            }
+          }}
         >
           <Image
             src={carouselImages[currentIndex].src}

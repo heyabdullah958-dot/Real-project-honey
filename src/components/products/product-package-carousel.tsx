@@ -10,12 +10,7 @@ import { Product } from "@/types";
 export const ProductPackageCarousel = ({ products }: { products: Product[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % products.length);
-    }, 3500);
-    return () => clearInterval(timer);
-  }, [products.length]);
+  // Auto-play animation removed to make it static
 
   const handleNext = () => setCurrentIndex((prev) => (prev + 1) % products.length);
   const handlePrev = () => setCurrentIndex((prev) => (prev - 1 + products.length) % products.length);
@@ -55,7 +50,18 @@ export const ProductPackageCarousel = ({ products }: { products: Product[] }) =>
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute inset-0 flex flex-col md:flex-row items-center gap-6"
+              className="absolute inset-0 flex flex-col md:flex-row items-center gap-6 cursor-grab active:cursor-grabbing"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              onDragEnd={(e, { offset, velocity }) => {
+                const swipe = Math.abs(offset.x) * velocity.x;
+                if (swipe < -10000 || offset.x < -50) {
+                  handleNext();
+                } else if (swipe > 10000 || offset.x > 50) {
+                  handlePrev();
+                }
+              }}
             >
               <div className="w-full md:w-1/3 h-48 md:h-full relative bg-white/40 rounded-2xl p-4 flex items-center justify-center">
                 <Image 

@@ -18,11 +18,11 @@ export default async function Home() {
       {/* Cinematic Hero Canvas Sequence */}
       <HeroStatic />
 
+      {/* Promotional Bundle Carousel — positioned top for max visibility */}
+      <PromoCarousel products={bundleProducts} />
+
       {/* Narrative Section: The Science of Activity */}
       <ScienceSection />
-
-      {/* Promotional Bundle Carousel */}
-      <PromoCarousel products={bundleProducts} />
 
       {/* Product Grid Section */}
       <section className="py-32 px-6 bg-amber-900/[0.04] relative">

@@ -14,13 +14,19 @@ export const metadata: Metadata = {
 
 import { getProducts } from "@/lib/products";
 import { ProductCard } from "@/components/products/product-card";
+import { MiniPackageCarousel } from "@/components/products/mini-package-carousel";
 
 export default async function ProductsPage() {
-  const dynamicProducts = await getProducts();
+  const allProducts = await getProducts();
+
+  // Separate base products from bundle variants
+  const baseProducts = allProducts.filter((p) => !p.parentSlug);
+  const bundleProducts = allProducts.filter((p) => !!p.parentSlug);
 
   return (
     <div className="pt-[150px] pb-32 px-6 md:pt-40 min-h-screen">
       <div className="max-w-7xl mx-auto">
+        {/* Page Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
           <div className="flex flex-col gap-4">
             <span className="text-amber-700 font-bold tracking-[0.4em] uppercase text-[10px]">
@@ -35,38 +41,35 @@ export default async function ProductsPage() {
           </p>
         </div>
 
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {dynamicProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-        
-        {/* Activity Level Guide Table */}
-        <div className="mt-32 glass-panel rounded-[2rem] p-8 md:p-12 overflow-x-auto">
-          <h2 className="text-2xl font-display font-bold text-text-primary mb-8">Activity Comparison</h2>
-          <table className="w-full min-w-[600px] text-left border-collapse">
-            <thead>
-              <tr className="border-b border-amber-900/10 text-[10px] uppercase tracking-widest text-text-muted">
-                <th className="pb-4 font-medium">Grade</th>
-                <th className="pb-4 font-medium">Best For</th>
-                <th className="pb-4 font-medium">Bio-Active</th>
-                <th className="pb-4 font-medium">Taste Profile</th>
-                <th className="pb-4 font-medium text-right">Price</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-amber-900/5">
-              {dynamicProducts.map((p) => (
-                <tr key={p.id} className="group hover:bg-amber-900/5 transition-colors">
-                  <td className="py-6 font-display font-bold text-amber-700">MGO {p.mgo}</td>
-                  <td className="py-6 text-sm text-text-secondary">{p.bestFor}</td>
-                  <td className="py-6 text-sm text-text-secondary">{p.activity}</td>
-                  <td className="py-6 text-sm text-text-secondary">{p.taste}</td>
-                  <td className="py-6 text-sm text-text-primary font-bold text-right">${p.price}.00</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        {/* Product + Bundle Carousel Rows */}
+        <div className="flex flex-col gap-16">
+          {baseProducts.map((product) => {
+            const productBundles = bundleProducts.filter(
+              (b) => b.parentSlug === product.slug
+            );
+
+            return (
+              <div
+                key={product.id}
+                className={`grid gap-8 items-stretch ${
+                  productBundles.length > 0
+                    ? "grid-cols-1 lg:grid-cols-2"
+                    : "grid-cols-1 max-w-lg"
+                }`}
+              >
+                {/* Product Card */}
+                <ProductCard product={product} />
+
+                {/* Bundle Carousel — only if bundles exist for this MGO */}
+                {productBundles.length > 0 && (
+                  <MiniPackageCarousel
+                    bundles={productBundles}
+                    parentProduct={product}
+                  />
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

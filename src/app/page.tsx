@@ -1,6 +1,7 @@
 import { HeroStatic } from "@/components/home/hero-static";
 import { ProductCard } from "@/components/products/product-card";
 import { ScienceSection } from "@/components/sections/science-section";
+import { PromoCarousel } from "@/components/home/promo-carousel";
 import { getProducts } from "@/lib/products";
 
 export const dynamic = 'force-dynamic';
@@ -9,6 +10,7 @@ import { ArrowRight } from "lucide-react";
 
 export default async function Home() {
   const dynamicProducts = await getProducts();
+  const bundleProducts = dynamicProducts.filter(p => p.slug.includes('-pack-'));
 
   return (
     <main className="min-h-screen">
@@ -18,6 +20,9 @@ export default async function Home() {
 
       {/* Narrative Section: The Science of Activity */}
       <ScienceSection />
+
+      {/* Promotional Bundle Carousel */}
+      <PromoCarousel products={bundleProducts} />
 
       {/* Product Grid Section */}
       <section className="py-32 px-6 bg-amber-900/[0.04] relative">

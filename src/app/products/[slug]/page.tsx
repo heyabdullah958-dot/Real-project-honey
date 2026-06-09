@@ -4,6 +4,7 @@ import { Star, ShieldCheck, Beaker, Leaf, ArrowRight, MapPin } from "lucide-reac
 import { getProducts, getProductBySlug } from "@/lib/products";
 import { cn } from "@/lib/utils";
 import { ProductBuyActions } from "@/components/products/product-buy-actions";
+import { ProductDetailCarousel } from "@/components/products/product-detail-carousel";
 import { Metadata } from "next";
 
 interface PageProps {
@@ -41,6 +42,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
   if (!product) {
     notFound();
   }
+
+  const allProducts = await getProducts();
+  const currentBundles = allProducts.filter(
+    p => p.slug.startsWith(product.slug + "-pack-")
+  );
 
   // Schema.org Structured Data
   const jsonLd = {
@@ -110,6 +116,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
               </h1>
               <p className="text-3xl font-bold text-amber-700 mt-2">${product.price}.00 AUD</p>
             </div>
+
+            {product.slug === "mgo-100" && (
+              <ProductDetailCarousel bundles={currentBundles} />
+            )}
 
             <p className="text-lg text-text-secondary leading-relaxed">
               {product.description}

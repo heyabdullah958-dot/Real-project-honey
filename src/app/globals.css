@@ -118,4 +118,21 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+@utility pause-marquee {
+  animation-play-state: paused;
+}
+
 

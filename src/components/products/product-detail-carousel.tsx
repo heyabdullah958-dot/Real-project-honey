@@ -1,28 +1,64 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/use-cart-store";
 import { Product } from "@/types";
+import { getProducts } from "@/lib/products";
 import { ArrowRight, Gift } from "lucide-react";
 
 interface ProductDetailCarouselProps {
-  bundles: Product[];
+  productSlug: string;
 }
 
-export const ProductDetailCarousel = ({ bundles }: ProductDetailCarouselProps) => {
+const getPackQuantity = (slug: string): number => {
+  const match = slug.match(/-pack-(\d+)/);
+  return match ? parseInt(match[1]) : 1;
+};
+
+export const ProductDetailCarousel = ({ productSlug }: ProductDetailCarouselProps) => {
+  const [bundles, setBundles] = useState<Product[]>([]);
+  const [parentPrice, setParentPrice] = useState<number>(0);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const { addItem, clearCart, setIsOpen } = useCartStore();
 
+  useEffect(() => {
+    let isMounted = true;
+    getProducts()
+      .then((allProducts) => {
+        if (!isMounted) return;
+        const filtered = allProducts.filter((p) => p.parentSlug === productSlug);
+        const parent = allProducts.find((p) => p.slug === productSlug);
+        
+        setBundles(filtered);
+        if (parent) {
+          setParentPrice(parent.price);
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to load products in details carousel", err);
+        if (isMounted) {
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [productSlug]);
+
   const handleBundleClick = (product: Product) => {
-    // Clear cart, add product, close cart drawer, and redirect to checkout
+    // Clear cart, add bundle, close cart drawer, and redirect to checkout
     clearCart();
     addItem(product);
     setIsOpen(false);
     router.push("/checkout");
   };
 
-  if (!bundles || bundles.length === 0) return null;
+  // Cleanly return null if loading or no bundles are configured (preventing layout gap/crash)
+  if (loading || bundles.length === 0) return null;
 
   return (
     <div className="w-full my-6 flex flex-col gap-4">
@@ -33,11 +69,16 @@ export const ProductDetailCarousel = ({ bundles }: ProductDetailCarouselProps) =
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {bundles.map((bundle) => {
-          const isPackOf3 = bundle.slug.includes("-pack-3");
-          const savingsText = isPackOf3 ? "Save $3.00 AUD" : "Save $8.00 AUD";
-          const offerText = isPackOf3 
+          const qty = getPackQuantity(bundle.slug);
+          const totalSinglePrice = parentPrice * qty;
+          const savings = totalSinglePrice - bundle.price;
+
+          const savingsText = savings > 0 ? `Save $${savings}.00 AUD` : "";
+          const offerText = qty === 3 
             ? "We are offering it in a pack of three too" 
-            : "And a pack of five too";
+            : qty === 5 
+            ? "And a pack of five too" 
+            : `Available in a pack of ${qty} too`;
 
           return (
             <button
@@ -50,15 +91,17 @@ export const ProductDetailCarousel = ({ bundles }: ProductDetailCarouselProps) =
                   <span className="text-[9px] font-bold uppercase tracking-widest text-amber-700 bg-amber-700/5 px-2.5 py-1 rounded-full">
                     {bundle.size} Pack
                   </span>
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-emerald-600 bg-emerald-600/5 px-2.5 py-1 rounded-full">
-                    {savingsText}
-                  </span>
+                  {savingsText && (
+                    <span className="text-[9px] font-bold uppercase tracking-widest text-emerald-600 bg-emerald-600/5 px-2.5 py-1 rounded-full">
+                      {savingsText}
+                    </span>
+                  )}
                 </div>
                 <h4 className="text-sm font-heading font-bold text-text-primary mb-1">
                   {offerText}
                 </h4>
                 <p className="text-[11px] text-text-muted">
-                  Pure MGO 100 Manuka Honey in bulk value.
+                  Pure MGO {bundle.mgo} Manuka Honey in bulk value.
                 </p>
               </div>
 
@@ -77,3 +120,5 @@ export const ProductDetailCarousel = ({ bundles }: ProductDetailCarouselProps) =
     </div>
   );
 };
+
+export default ProductDetailCarousel;

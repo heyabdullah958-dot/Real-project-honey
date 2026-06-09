@@ -15,4 +15,5 @@ export interface Product {
   tagline: string;
   color: string;
   slug: string;
+  parentSlug?: string;
 }

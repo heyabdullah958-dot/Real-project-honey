@@ -16,6 +16,7 @@ const productSchema = new mongoose.Schema({
   taste:         { type: String },
   image:         { type: String },
   color:         { type: String },
+  parentSlug:    { type: String },
   isActive:      { type: Boolean, default: true }
 }, { timestamps: true });
 

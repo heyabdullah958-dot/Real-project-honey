@@ -108,6 +108,7 @@ export const products: Product[] = [
     taste: "Medium",
     image: "/assets/products/mgo-263.png",
     color: "#D4930A",
+    parentSlug: "mgo-263",
   },
   {
     id: "mgo-30-pack-5",
@@ -126,6 +127,7 @@ export const products: Product[] = [
     taste: "Mild",
     image: "/assets/products/mgo-30.png",
     color: "#C8A96E",
+    parentSlug: "mgo-30",
   },
   {
     id: "mgo-30-pack-3",
@@ -144,6 +146,7 @@ export const products: Product[] = [
     taste: "Mild",
     image: "/assets/products/mgo-30.png",
     color: "#C8A96E",
+    parentSlug: "mgo-30",
   },
   {
     id: "mgo-100-pack-3",
@@ -162,6 +165,7 @@ export const products: Product[] = [
     taste: "Mild-Med",
     image: "/assets/products/mgo-100.png",
     color: "#C49A2A",
+    parentSlug: "mgo-100",
   },
   {
     id: "mgo-100-pack-5",
@@ -180,5 +184,6 @@ export const products: Product[] = [
     taste: "Mild-Med",
     image: "/assets/products/mgo-100.png",
     color: "#C49A2A",
+    parentSlug: "mgo-100",
   }
 ];

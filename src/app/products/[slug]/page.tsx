@@ -43,11 +43,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const allProducts = await getProducts();
-  const currentBundles = allProducts.filter(
-    p => p.slug.startsWith(product.slug + "-pack-")
-  );
-
   // Schema.org Structured Data
   const jsonLd = {
     "@context": "https://schema.org",
@@ -117,9 +112,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <p className="text-3xl font-bold text-amber-700 mt-2">${product.price}.00 AUD</p>
             </div>
 
-            {product.slug === "mgo-100" && (
-              <ProductDetailCarousel bundles={currentBundles} />
-            )}
+            <ProductDetailCarousel productSlug={product.slug} />
 
             <p className="text-lg text-text-secondary leading-relaxed">
               {product.description}

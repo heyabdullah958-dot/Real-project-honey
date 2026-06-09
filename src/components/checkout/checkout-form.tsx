@@ -105,8 +105,7 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
       }
 
       if (response.ok) {
-        clearCart();
-        onSuccess();
+        onSuccess(); // clearCart is handled by ThankYouView after 10s so the WhatsApp message captures the correct total
       } else {
         alert("Failed to place order. Please try again.");
       }

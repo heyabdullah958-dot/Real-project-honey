@@ -15,7 +15,7 @@ const blogPosts = {
     date: "May 10, 2026",
     author: "Dr. Amy Wells",
     readTime: "5 min read",
-    image: "/assets/products/mgo-800.png",
+    image: "/assets/products/.webp",
     paragraphs: [
       "When selecting a premium Manuka honey, the letters 'MGO' are often the first thing you notice on the label. This represents Methylglyoxal, the naturally occurring organic compound responsible for the honey's unique properties. Understanding MGO ratings is essential for choosing the right level of daily support for your personal wellness journey.",
       "Methylglyoxal is formed naturally in the nectar of the Manuka flower (Leptospermum scoparium). In standard honeys, bioactive components can be fragile and easily degraded by heat or light. However, Manuka's MGO concentration is remarkably stable. This ensures that the premium honey preserves its potency from the hive to your home.",
@@ -30,7 +30,7 @@ const blogPosts = {
     date: "May 8, 2026",
     author: "Sarah Jenkins",
     readTime: "4 min read",
-    image: "/assets/products/mgo-400.png",
+    image: "/assets/products/.webp",
     paragraphs: [
       "Honey has been celebrated for centuries as a natural beauty secret, but premium Manuka honey takes topical application to a new level. With its dense bioactive profile and natural humectant properties, Manuka honey has become a favorite ingredient for clean beauty enthusiasts and skincare professionals alike.",
       "As a natural humectant, Manuka honey draws moisture from the air directly into the skin. This provides deep, long-lasting hydration, helping to plump the skin and restore a youthful, radiant glow. It is particularly effective for those seeking dry skin support or looking to maintain skin suppleness.",
@@ -45,7 +45,7 @@ const blogPosts = {
     date: "May 5, 2026",
     author: "Marcus Thorne",
     readTime: "6 min read",
-    image: "/assets/products/mgo-100.png",
+    image: "/assets/products/.webp",
     paragraphs: [
       "Not all honey is created equal, and the journey from hive to jar makes all the difference. At Amazing Natures, our ethical harvesting and cold-extraction processes are designed to preserve the delicate, naturally occurring enzymes and bioactive profile of our premium Australian Manuka honey.",
       "Many commercial honeys are subjected to high-temperature pasteurization and ultra-filtration. While this creates a uniform, cheap product, it destroys the vital enzymes and beneficial compounds that make honey a true wellness food. Heat is the ultimate enemy of raw honey, degrading its natural structure.",

@@ -179,7 +179,7 @@ export const ScienceSection = () => {
               <div className="w-full h-full rounded-[2.5rem] bg-white relative overflow-hidden flex items-center justify-center p-8">
                 <div className="relative w-full h-full max-h-[85%]">
                   <Image 
-                    src="/assets/products/mgo-800.png" 
+                    src="/assets/products/.webp" 
                     alt="Amazing Natures Premium Manuka Honey MGO 800" 
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"

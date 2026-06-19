@@ -305,7 +305,7 @@ export default function AdminDashboard() {
       bestFor: '',
       activity: '',
       taste: '',
-      image: '/assets/products/mgo-800.png',
+      image: '/assets/products/.webp',
       color: '#9B6500',
       isActive: true
     };
@@ -1196,7 +1196,7 @@ export default function AdminDashboard() {
                           type="text"
                           name="image"
                           required
-                          placeholder="/assets/products/mgo-800.png"
+                          placeholder="/assets/products/.webp"
                           value={editFormData.image || ''}
                           onChange={handleProductInputChange}
                           className="w-full h-9 rounded-lg bg-white border border-amber-700/10 px-3 text-[#111111] focus:outline-none focus:border-amber-700/50 font-mono text-[11px]"

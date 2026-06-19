@@ -31,7 +31,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://amazing-natures-beta.vercel.app"),
+  metadataBase: new URL("https://amazingnatures.com.au"),
   title: {
     default: "Amazing Natures | Premium Australian Manuka Honey",
     template: "%s | Amazing Natures"
@@ -49,13 +49,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_AU",
-    url: "https://amazing-natures-beta.vercel.app",
+    url: "https://amazingnatures.com.au",
     siteName: "Amazing Natures",
     title: "Amazing Natures | Premium Australian Manuka Honey",
     description: "Nature's purity, bottled in liquid gold. The amazing standard of natural bioactivity.",
     images: [
       {
-        url: "/assets/products/mgo-800.png",
+        url: "/assets/products/.webp",
         width: 1200,
         height: 630,
         alt: "Amazing Natures Liquid Gold",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Amazing Natures | Premium Australian Manuka Honey",
     description: "Experience the amazing standard of natural bioactivity.",
-    images: ["/assets/products/mgo-800.png"],
+    images: ["/assets/products/.webp"],
   },
   robots: {
     index: true,
@@ -85,19 +85,7 @@ export default function RootLayout({
       className={`${inter.variable} ${cormorant.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#FBF5E9] text-text-primary selection:bg-amber-700/30">
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-XXXXXXXXXX');
-          `}
-        </Script>
+        {/* GA4 script removed — add real Measurement ID when Analytics is configured */}
         <SmoothScroll />
         <Navbar />
         <main className="flex-grow">

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://amazing-natures-beta.vercel.app'
+  const baseUrl = 'https://amazingnatures.com.au'
   
   // List of all static routes
   const routes = [

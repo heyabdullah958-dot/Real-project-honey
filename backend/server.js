@@ -39,8 +39,22 @@ app.use(helmet({
 }));
 
 // 3. CORS policy (support credential sharing for HTTP-only cookies)
+// Accepts comma-separated origins from CORS_ORIGIN env var, e.g.:
+// CORS_ORIGIN=https://amazingnatures.com.au,https://amazing-natures-beta.vercel.app
+const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:3000')
+  .split(',')
+  .map(o => o.trim())
+  .filter(Boolean);
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  origin: (origin, callback) => {
+    // Allow server-to-server (no origin) and whitelisted origins
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS blocked: ${origin}`));
+    }
+  },
   credentials: true
 }));
 
@@ -74,6 +88,7 @@ app.use('/uploads', express.static(uploadsDir));
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/orders', require('./routes/orderRoutes'));
+app.use('/api/payments', require('./routes/paymentRoutes'));
 app.use('/api/contact', require('./routes/contactRoutes'));
 
 // 11. Health check

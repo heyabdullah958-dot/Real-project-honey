@@ -7,7 +7,7 @@ const { getAdminOrderEmail, getCustomerOrderEmail, getStatusUpdateEmail } = requ
 // @access  Public
 exports.create = async (req, res, next) => {
   try {
-    const { fullName, whatsapp, email, city, address, items, totalAmount, orderNote } = req.body;
+    const { fullName, whatsapp, email, city, address, items, totalAmount, orderNote, paymentId, paymentStatus } = req.body;
 
     if (!fullName || !whatsapp || !city || !address || !items || !totalAmount) {
       return res.status(400).json({ success: false, message: 'Missing required order fields.' });
@@ -25,7 +25,10 @@ exports.create = async (req, res, next) => {
       address,
       items,
       totalAmount,
-      orderNote: orderNote || ''
+      orderNote: orderNote || '',
+      paymentMethod: 'stripe',
+      paymentId,
+      paymentStatus: paymentStatus || 'pending'
     };
 
     // Save to database

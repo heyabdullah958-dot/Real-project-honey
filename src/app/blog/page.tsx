@@ -16,7 +16,7 @@ const blogPosts = [
     date: "May 10, 2026",
     author: "Dr. Amy Wells",
     readTime: "5 min read",
-    image: "/assets/products/mgo-800.png",
+    image: "/assets/products/.webp",
     slug: "why-mgo-ratings-matter"
   },
   {
@@ -26,7 +26,7 @@ const blogPosts = [
     date: "May 8, 2026",
     author: "Sarah Jenkins",
     readTime: "4 min read",
-    image: "/assets/products/mgo-400.png",
+    image: "/assets/products/.webp",
     slug: "manuka-skincare-routine"
   },
   {
@@ -36,7 +36,7 @@ const blogPosts = [
     date: "May 5, 2026",
     author: "Marcus Thorne",
     readTime: "6 min read",
-    image: "/assets/products/mgo-100.png",
+    image: "/assets/products/.webp",
     slug: "truth-about-cold-extraction"
   }
 ];

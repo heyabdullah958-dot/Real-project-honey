@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight, ShieldCheck, Lock } from "lucide-react";
+import { ChevronRight, ShieldCheck, Lock, CreditCard } from "lucide-react";
 import { useCartStore } from "@/store/use-cart-store";
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
 interface FloatingInputProps {
   label: string;
@@ -57,16 +58,43 @@ const FloatingInput = ({ label, name, type = "text", required = true }: Floating
   );
 };
 
+const CARD_OPTIONS = {
+  style: {
+    base: {
+      color: "#f59e0b", // text-amber-500
+      fontFamily: '"Inter", sans-serif',
+      fontSmoothing: "antialiased",
+      fontSize: "14px",
+      "::placeholder": {
+        color: "rgba(255, 255, 255, 0.4)",
+      },
+      iconColor: "#f59e0b",
+    },
+    invalid: {
+      color: "#ef4444",
+      iconColor: "#ef4444",
+    },
+  },
+};
+
 export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
   const [isLoading, setIsLoading] = useState(false);
   const { items, getTotalPrice, clearCart } = useCartStore();
+  const stripe = useStripe();
+  const elements = useElements();
+  const [paymentError, setPaymentError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!stripe || !elements) {
+      return;
+    }
+
     setIsLoading(true);
+    setPaymentError(null);
     
     const formData = new FormData(e.currentTarget);
-    const data = {
+    const orderData = {
       fullName: formData.get('fullName'),
       whatsapp: formData.get('whatsapp'),
       email: formData.get('email'),
@@ -82,36 +110,79 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
 
     try {
       const backendUrl = process.env.NEXT_PUBLIC_API_URL || '';
-      let response;
       
-      try {
-        console.log("Attempting to send order to Express backend at:", `${backendUrl}/api/orders`);
-        response = await fetch(`${backendUrl}/api/orders`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        
-        if (!response.ok) {
-          throw new Error(`Express backend responded with status ${response.status}`);
-        }
-      } catch (backendError) {
-        console.warn("Express backend failed, falling back to local Next.js API route:", backendError);
-        response = await fetch('/api/orders', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
+      // 1. Create PaymentIntent on the backend
+      const piResponse = await fetch(`${backendUrl}/api/payments/create-payment-intent`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: orderData.totalAmount }),
+      });
+
+      if (!piResponse.ok) {
+        throw new Error("Failed to initialize payment.");
       }
 
-      if (response.ok) {
-        onSuccess(); // clearCart is handled by ThankYouView after 10s so the WhatsApp message captures the correct total
-      } else {
-        alert("Failed to place order. Please try again.");
+      const { clientSecret } = await piResponse.json();
+
+      // 2. Confirm the payment with Stripe
+      const cardElement = elements.getElement(CardElement);
+      if (!cardElement) throw new Error("Card element not found");
+
+      const paymentResult = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: cardElement,
+          billing_details: {
+            name: orderData.fullName as string,
+            email: orderData.email as string,
+          },
+        },
+      });
+
+      if (paymentResult.error) {
+        setPaymentError(paymentResult.error.message || "Payment failed.");
+        setIsLoading(false);
+        return;
       }
-    } catch (error) {
+
+      // 3. Payment succeeded, create the order in our backend
+      if (paymentResult.paymentIntent && paymentResult.paymentIntent.status === 'succeeded') {
+        let orderResponse;
+        try {
+          orderResponse = await fetch(`${backendUrl}/api/orders`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              ...orderData,
+              paymentId: paymentResult.paymentIntent.id,
+              paymentStatus: 'paid'
+            })
+          });
+          
+          if (!orderResponse.ok) {
+            throw new Error(`Express backend responded with status ${orderResponse.status}`);
+          }
+        } catch (backendError) {
+          console.warn("Express backend failed, falling back to local Next.js API route:", backendError);
+          orderResponse = await fetch('/api/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              ...orderData,
+              paymentId: paymentResult.paymentIntent.id,
+              paymentStatus: 'paid'
+            })
+          });
+        }
+
+        if (orderResponse.ok) {
+          onSuccess(); 
+        } else {
+          setPaymentError("Payment successful, but failed to save order. Please contact support.");
+        }
+      }
+    } catch (error: any) {
       console.error("Order submit error:", error);
-      alert("An error occurred. Please check your connection.");
+      setPaymentError(error.message || "An error occurred. Please check your connection.");
     } finally {
       setIsLoading(false);
     }
@@ -147,20 +218,28 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
 
       <div className="flex flex-col gap-6">
         <div className="flex items-center justify-between ml-4">
-           <h3 className="text-[10px] uppercase tracking-[0.4em] font-bold text-amber-800">PREMIUM PAY-ON-ARRIVAL</h3>
+           <h3 className="text-[10px] uppercase tracking-[0.4em] font-bold text-amber-800">PAYMENT DETAILS</h3>
         </div>
-        <div className="glass-panel p-8 rounded-[2rem] border-amber-700/20 bg-amber-700/[0.02] flex flex-col gap-4 group cursor-default">
+        <div className="glass-panel p-8 rounded-[2rem] border-amber-700/20 bg-amber-700/[0.02] flex flex-col gap-6">
            <div className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-full bg-amber-700/10 flex items-center justify-center text-amber-700">
-                 <Lock className="w-5 h-5" />
+                 <CreditCard className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold text-text-primary text-sm uppercase tracking-widest">Premium Pay-on-Arrival</h4>
+                <h4 className="font-bold text-text-primary text-sm uppercase tracking-widest">Secure Credit Card</h4>
                 <p className="text-[10px] text-text-secondary uppercase tracking-wider leading-relaxed mt-1">
-                  Inspect your liquid gold at your doorstep before you pay. We trust our quality, and we trust you.
+                  All transactions are secure and encrypted via Stripe
                 </p>
               </div>
            </div>
+
+           <div className="p-4 rounded-xl bg-black/20 border border-white/5">
+             <CardElement options={CARD_OPTIONS} />
+           </div>
+           
+           {paymentError && (
+             <p className="text-red-500 text-xs mt-2">{paymentError}</p>
+           )}
         </div>
       </div>
 
@@ -187,10 +266,10 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
 
       <div className="flex flex-col gap-4">
         <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          disabled={isLoading}
-          className="relative w-full h-16 rounded-2xl overflow-hidden amber-gradient text-void font-bold uppercase tracking-[0.3em] text-xs shadow-2xl shadow-amber-700/20 group"
+          whileHover={{ scale: stripe && !isLoading ? 1.02 : 1 }}
+          whileTap={{ scale: stripe && !isLoading ? 0.98 : 1 }}
+          disabled={isLoading || !stripe || !elements}
+          className="relative w-full h-16 rounded-2xl overflow-hidden amber-gradient text-void font-bold uppercase tracking-[0.3em] text-xs shadow-2xl shadow-amber-700/20 group disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {/* Shimmer Effect */}
           <motion.div 
@@ -199,7 +278,7 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           />
           <span className="relative z-10 flex items-center justify-center gap-2">
-            {isLoading ? "Validating Sanctuary..." : "Proceed to Secure Payment"}
+            {isLoading ? "Processing Payment..." : "Complete Secure Payment"}
             {!isLoading && <ChevronRight className="w-4 h-4" />}
           </span>
         </motion.button>

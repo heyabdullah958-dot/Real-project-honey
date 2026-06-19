@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/admin', '/checkout/thank-you'],
     },
-    sitemap: 'https://amazing-natures-beta.vercel.app/sitemap.xml',
+    sitemap: 'https://amazingnatures.com.au/sitemap.xml',
   }
 }

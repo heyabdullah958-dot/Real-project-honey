@@ -8,6 +8,16 @@ import { ThankYouView } from "@/components/checkout/thank-you-view";
 import { ShieldCheck, Lock, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+// Make sure to call loadStripe outside of a component's render to avoid
+// recreating the Stripe object on every render.
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || 
+  "pk_live_51TiEIfAYBShjNQ3cfA7nqWyqxSn2Q7xCoJwaILo5HB6mezAHELKyzp5tjvAoVqnuUoRiZMygg9XvfXeWbC0ko6sQ00u4J3O9vi"
+);
+
 export default function CheckoutPage() {
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -49,7 +59,9 @@ export default function CheckoutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
            {/* Left: Form */}
            <div className="lg:col-span-7">
-              <CheckoutForm onSuccess={() => setIsSuccess(true)} />
+              <Elements stripe={stripePromise}>
+                <CheckoutForm onSuccess={() => setIsSuccess(true)} />
+              </Elements>
            </div>
 
            {/* Right: Summary */}

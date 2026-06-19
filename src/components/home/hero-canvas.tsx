@@ -8,7 +8,7 @@ import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 const FRAME_COUNT = 192;
-const PRIORITY_FRAMES = 30; // Load more WebP frames upfront
+const PRIORITY_FRAMES = 15; // Load fewer priority frames for faster TTI on mobile
 
 const splitChars = (text: string) => {
   return text.split("").map((char, i) => (
@@ -31,8 +31,8 @@ export const HeroCanvas = () => {
       for (let i = 1; i <= FRAME_COUNT; i++) {
         const img = new Image();
         const frameNumber = i.toString().padStart(5, "0");
-        // ✅ Using the new high-quality .jpg frames
-        img.src = `/honey-frames/${frameNumber}.jpg`;
+        // ✅ Using the new highly compressed .webp frames
+        img.src = `/honey-frames/${frameNumber}.webp`;
         imgs.push(img);
       }
 

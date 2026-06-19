@@ -8,11 +8,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const carouselImages = [
-  { src: "/assets/products/.webp", name: "MGO 30", rating: "Daily Wellness" },
-  { src: "/assets/products/.webp", name: "MGO 100", rating: "Premium Reserve" },
-  { src: "/assets/products/.webp", name: "MGO 263", rating: "Naturally Concentrated" },
-  { src: "/assets/products/.webp", name: "MGO 400", rating: "Dynamic Activity" },
-  { src: "/assets/products/.webp", name: "MGO 800", rating: "Liquid Gold Reserve" },
+  { src: "/assets/products/mgo-30.webp", name: "MGO 30", rating: "Daily Wellness" },
+  { src: "/assets/products/mgo-100.webp", name: "MGO 100", rating: "Premium Reserve" },
+  { src: "/assets/products/mgo-263.webp", name: "MGO 263", rating: "Naturally Concentrated" },
+  { src: "/assets/products/mgo-400.webp", name: "MGO 400", rating: "Dynamic Activity" },
+  { src: "/assets/products/mgo-800.webp", name: "MGO 800", rating: "Liquid Gold Reserve" },
 ];
 
 const HeroCarousel = () => {

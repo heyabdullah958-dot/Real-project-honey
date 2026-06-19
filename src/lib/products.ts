@@ -8,7 +8,12 @@ const DEFAULT_BACKEND_URL = "http://localhost:5000";
  * it prepends the backend URL, otherwise it returns it as is.
  */
 export function getProductImageUrl(imagePath: string): string {
-  if (!imagePath) return "/assets/products/mgo-800.png";
+  if (!imagePath) return "/assets/products/mgo-800.webp";
+  
+  // Static assets were converted to WebP for performance
+  if (imagePath.includes('/assets/products/') && (imagePath.endsWith('.png') || imagePath.endsWith('.jpeg') || imagePath.endsWith('.jpg'))) {
+    imagePath = imagePath.replace(/\.(png|jpeg|jpg)$/i, '.webp');
+  }
   if (
     imagePath.startsWith("http://") ||
     imagePath.startsWith("https://") ||
@@ -33,7 +38,7 @@ export async function getProducts(): Promise<Product[]> {
   const backendUrl = process.env.NEXT_PUBLIC_API_URL || DEFAULT_BACKEND_URL;
   try {
     const res = await fetch(`${backendUrl}/api/products`, {
-      cache: 'no-store'
+      next: { revalidate: 60 }
     });
     
     if (!res.ok) {
@@ -67,7 +72,7 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
   const backendUrl = process.env.NEXT_PUBLIC_API_URL || DEFAULT_BACKEND_URL;
   try {
     const res = await fetch(`${backendUrl}/api/products/${slug}`, {
-      cache: 'no-store'
+      next: { revalidate: 60 }
     });
     
     if (res.status === 404) {

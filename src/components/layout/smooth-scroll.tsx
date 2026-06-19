@@ -19,7 +19,7 @@ export const SmoothScroll = () => {
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1.8,
-      touchMultiplier: 2.8,
+      touchMultiplier: 1.5,
       infinite: false,
     });
 

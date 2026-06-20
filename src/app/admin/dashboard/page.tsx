@@ -914,7 +914,7 @@ export default function AdminDashboard() {
 
       {/* 5. Product Create/Edit Modal with Lock Scroll Fix */}
       {editingProduct && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4 overflow-y-auto">
           
           {/* Modal Container */}
           <div className="bg-[#FAF4E8] border border-amber-700/15 rounded-[32px] w-full max-w-5xl max-h-[90vh] overflow-y-auto shadow-2xl relative flex flex-col my-auto animate-in fade-in zoom-in-95 duration-300">
@@ -1250,7 +1250,7 @@ export default function AdminDashboard() {
                   <div className="border border-amber-700/15 rounded-[2.5rem] bg-[#FBF5E9] p-6 shadow-inner flex justify-center items-center min-h-[460px]">
                     
                     {/* Mock Store Card */}
-                    <div className="w-full max-w-[280px] rounded-[2.5rem] overflow-hidden border border-amber-700/15 bg-white/70 backdrop-blur-md shadow-lg flex flex-col h-full transition-all duration-300 relative group">
+                    <div className="w-full max-w-[280px] rounded-[2.5rem] overflow-hidden border border-amber-700/15 bg-white/90 shadow-lg flex flex-col h-full transition-all duration-300 relative group">
                       
                       {/* Product Image Section */}
                       <div className="block relative aspect-square overflow-hidden bg-white shrink-0">
@@ -1372,7 +1372,7 @@ export default function AdminDashboard() {
 
       {/* 6. Product Deletion Confirmation Modal */}
       {deletingProductSlug && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
           <div className="bg-[#FAF4E8] border border-red-200 rounded-[24px] w-full max-w-md p-6 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-full bg-red-50 border border-red-200 flex items-center justify-center text-red-600 shrink-0">

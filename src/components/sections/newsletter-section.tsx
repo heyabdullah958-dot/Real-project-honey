@@ -4,7 +4,7 @@ import { Mail, Sparkles } from "lucide-react";
 const NewsletterSection = () => {
   return (
     <section className="py-24 px-6 relative overflow-hidden">
-      <div className="absolute inset-0 bg-amber-700/5 backdrop-blur-[2px] z-0" />
+      <div className="absolute inset-0 bg-amber-700/5 z-0" />
       
       <div className="max-w-5xl mx-auto relative z-10 glass-panel p-12 md:p-24 rounded-[4rem] border-amber-700/10 flex flex-col items-center text-center gap-10">
          <div className="w-20 h-20 amber-gradient rounded-3xl rotate-12 flex items-center justify-center text-white shadow-[0_20px_50px_rgba(212,147,10,0.3)]">

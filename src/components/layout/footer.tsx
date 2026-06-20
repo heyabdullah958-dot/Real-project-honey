@@ -68,7 +68,7 @@ const SocialIcon = ({ icon: Icon, href = "#" }: { icon: React.ElementType; href?
       />
     </AnimatePresence>
     <motion.div
-      className="absolute inset-0 drop-shadow-[0_0_12px_rgba(217,119,6,0.7)] opacity-0 group-hover:opacity-100 transition-opacity"
+      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
     />
   </motion.a>
 );

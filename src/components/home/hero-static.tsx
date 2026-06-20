@@ -49,11 +49,11 @@ const HeroCarousel = () => {
             alt={`Amazing Natures ${carouselImages[currentIndex].name}`}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-contain transition-transform duration-1000 group-hover:scale-105 p-6 drop-shadow-2xl"
+            className="object-contain transition-transform duration-1000 group-hover:scale-105 p-6"
             priority={currentIndex === 0}
           />
           {/* Subtle overlay badge */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px-6 py-3 rounded-2xl border border-amber-700/20 shadow-xl flex flex-col items-center gap-1">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white/90 px-6 py-3 rounded-2xl border border-amber-700/20 shadow-xl flex flex-col items-center gap-1">
             <span className="font-display font-bold text-amber-700 text-lg leading-none">{carouselImages[currentIndex].name}</span>
             <span className="text-[10px] uppercase tracking-widest text-text-secondary font-bold whitespace-nowrap">{carouselImages[currentIndex].rating}</span>
           </div>
@@ -132,7 +132,7 @@ export const HeroStatic = () => {
             className="lg:col-span-5 flex justify-center"
           >
             <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[3rem] p-3 glass-panel bg-white/40 border border-amber-900/10 shadow-[0_24px_64px_rgba(155,101,0,0.12)] group hover:shadow-[0_32px_80px_rgba(155,101,0,0.2)] transition-all duration-700">
-              <Link href="/products" className="relative w-full h-full rounded-[2.5rem] overflow-hidden bg-white/50 backdrop-blur-sm block group-hover:bg-white/80 transition-colors duration-500">
+              <Link href="/products" className="relative w-full h-full rounded-[2.5rem] overflow-hidden bg-white/50 block group-hover:bg-white/80 transition-colors duration-500">
                 <HeroCarousel />
               </Link>
             </div>

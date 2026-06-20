@@ -120,7 +120,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               />
             </div>
             <div className="absolute top-6 left-6">
-              <span className="bg-amber-700/10 backdrop-blur-md text-amber-700 border border-amber-700/20 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest">
+              <span className="bg-amber-700/10 text-amber-700 border border-amber-700/20 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest">
                 {post.date}
               </span>
             </div>

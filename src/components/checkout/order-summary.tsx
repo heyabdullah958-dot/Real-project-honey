@@ -42,7 +42,7 @@ export const OrderSummary = () => {
               >
                 <div className="flex items-center gap-3 md:gap-4 flex-1 min-w-0">
                   <div className="w-12 h-12 md:w-14 md:h-14 bg-white rounded-xl flex items-center justify-center border border-white/5 overflow-hidden shrink-0 shadow-sm">
-                    <img src={item.image} alt={item.name} className="w-10 h-10 md:w-12 md:h-12 object-contain mix-blend-multiply" />
+                    <img src={item.image} alt={item.name} className="w-10 h-10 md:w-12 md:h-12 object-contain" />
                   </div>
                   <div className="flex flex-col gap-1 min-w-0">
                     <h4 className="text-sm font-bold text-text-primary leading-tight truncate">{item.name}</h4>

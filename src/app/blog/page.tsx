@@ -68,7 +68,7 @@ export default function BlogPage() {
                       />
                    </div>
                    <div className="absolute top-4 left-4">
-                      <span className="bg-white/80 backdrop-blur-md text-amber-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                      <span className="bg-white/80 text-amber-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
                         Nutrition
                       </span>
                    </div>

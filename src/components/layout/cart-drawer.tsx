@@ -24,7 +24,7 @@ const CartDrawer = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-[#050505]/40 backdrop-blur-sm z-[60]"
+            className="fixed inset-0 bg-[#050505]/60 z-[60]"
           />
 
           {/* Drawer */}

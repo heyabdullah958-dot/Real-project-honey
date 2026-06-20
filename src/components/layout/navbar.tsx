@@ -54,7 +54,7 @@ const Navbar = () => {
 
       <nav
         className={cn(
-          "fixed top-[44px] left-0 right-0 z-50 transition-all duration-300 px-6 py-3 bg-[#FBF5E9]/90 backdrop-blur-lg border-b border-amber-900/10"
+          "fixed top-[44px] left-0 right-0 z-50 transition-all duration-300 px-6 py-3 bg-[#FBF5E9]/95 border-b border-amber-900/10"
         )}
         aria-label="Main Navigation"
       >
@@ -105,7 +105,7 @@ const Navbar = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -8 }}
                         transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-48 bg-[#FBF5E9]/95 backdrop-blur-md border border-amber-900/10 rounded-2xl shadow-xl overflow-hidden p-2 z-50 flex flex-col gap-1"
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-48 bg-[#FBF5E9] border border-amber-900/10 rounded-2xl shadow-xl overflow-hidden p-2 z-50 flex flex-col gap-1"
                       >
                         <Link href="/products" className="px-4 py-3 rounded-xl hover:bg-amber-700/5 text-sm font-bold text-text-primary uppercase tracking-wider transition-colors" onClick={() => setDropdownOpen(false)}>
                           All Products
@@ -176,7 +176,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="fixed inset-0 top-[112px] bg-black/30 backdrop-blur-sm z-30 md:hidden"
+              className="fixed inset-0 top-[112px] bg-black/50 z-30 md:hidden"
               onClick={() => setMobileMenuOpen(false)}
             />
             {/* Menu Panel */}

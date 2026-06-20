@@ -169,9 +169,9 @@ const ResultCard = ({ result, onReset }: { result: Product; onReset: () => void 
               <div className="absolute -inset-4 bg-amber-700/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10 w-40 h-52 bg-earth/10 rounded-3xl border border-amber-700/10 flex items-center justify-center p-6 overflow-hidden">
                  {result.image?.startsWith('data:') ? (
-                   <img src={result.image} alt={result.name} className="object-contain w-full h-full drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]" />
+                   <img src={result.image} alt={result.name} className="object-contain w-full h-full" />
                  ) : (
-                   <Image src={result.image} alt={result.name} width={120} height={160} className="object-contain w-full h-full drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]" />
+                   <Image src={result.image} alt={result.name} width={120} height={160} className="object-contain w-full h-full" />
                  )}
               </div>
             </div>

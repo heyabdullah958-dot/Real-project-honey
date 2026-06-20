@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Shop All Manuka Honey | Amazing Natures Australia",
     description: "Premium Australian Manuka honey, ethically harvested and quality assured.",
-    images: [{ url: "/assets/products/.webp" }],
+    images: [{ url: "/assets/products/mgo-30.webp" }],
   },
 };
 

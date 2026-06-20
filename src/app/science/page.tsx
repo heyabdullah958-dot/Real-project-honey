@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Science of Manuka | Amazing Natures",
     description: "Understand the bioactive profile of our premium honey.",
-    images: [{ url: "/assets/products/.webp" }],
+    images: [{ url: "/assets/products/mgo-30.webp" }],
   },
 };
 

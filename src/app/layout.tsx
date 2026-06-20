@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     description: "Nature's purity, bottled in liquid gold. The amazing standard of natural bioactivity.",
     images: [
       {
-        url: "/assets/products/.webp",
+        url: "/assets/products/mgo-30.webp",
         width: 1200,
         height: 630,
         alt: "Amazing Natures Liquid Gold",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Amazing Natures | Premium Australian Manuka Honey",
     description: "Experience the amazing standard of natural bioactivity.",
-    images: ["/assets/products/.webp"],
+    images: ["/assets/products/mgo-30.webp"],
   },
   robots: {
     index: true,

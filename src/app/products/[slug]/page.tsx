@@ -78,14 +78,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
+                    className="absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                   />
                 ) : (
                   <Image
                     src={product.image}
                     alt={product.name}
                     fill
-                    className="object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
+                    className="object-contain transition-transform duration-700 group-hover:scale-105"
                     priority
                   />
                 )}

@@ -4,7 +4,7 @@ import { ScienceSection } from "@/components/sections/science-section";
 import { PromoCarousel } from "@/components/home/promo-carousel";
 import { getProducts } from "@/lib/products";
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 

@@ -11,9 +11,10 @@ interface FloatingInputProps {
   name: string;
   type?: string;
   required?: boolean;
+  onChange?: (val: string) => void;
 }
 
-const FloatingInput = ({ label, name, type = "text", required = true }: FloatingInputProps) => {
+const FloatingInput = ({ label, name, type = "text", required = true, onChange }: FloatingInputProps) => {
   const [value, setValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
 
@@ -28,6 +29,7 @@ const FloatingInput = ({ label, name, type = "text", required = true }: Floating
       val = val.charAt(0).toUpperCase() + val.slice(1);
     }
     setValue(val);
+    if (onChange) onChange(val);
   };
 
   return (
@@ -79,10 +81,22 @@ const CARD_OPTIONS = {
 
 export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const { items, getTotalPrice, clearCart } = useCartStore();
+  const { items, getTotalPrice, clearCart, shippingFee, setShippingFee } = useCartStore();
   const stripe = useStripe();
   const elements = useElements();
   const [paymentError, setPaymentError] = useState<string | null>(null);
+
+  const handleCityChange = (val: string) => {
+    const city = val.trim().toLowerCase();
+    // Example logic: Free shipping in Sydney/Melbourne, $15 elsewhere
+    if (!city) {
+      setShippingFee(0);
+    } else if (city === "sydney" || city === "melbourne") {
+      setShippingFee(0);
+    } else {
+      setShippingFee(15);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -105,7 +119,7 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
         quantity: item.quantity,
         price: item.price
       })),
-      totalAmount: getTotalPrice()
+      totalAmount: getTotalPrice() + shippingFee
     };
 
     try {
@@ -198,7 +212,7 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FloatingInput label="Email Address" name="email" type="email" />
-          <FloatingInput label="City" name="city" />
+          <FloatingInput label="City" name="city" onChange={handleCityChange} />
         </div>
         <div className="relative group">
           <motion.label

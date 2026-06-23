@@ -17,6 +17,8 @@ interface CartStore {
   setIsOpen: (isOpen: boolean) => void;
   getTotalItems: () => number;
   getTotalPrice: () => number;
+  shippingFee: number;
+  setShippingFee: (fee: number) => void;
 }
 
 export const useCartStore = create<CartStore>()(
@@ -24,6 +26,8 @@ export const useCartStore = create<CartStore>()(
     (set, get) => ({
       items: [],
       isOpen: false,
+      shippingFee: 0,
+      setShippingFee: (fee) => set({ shippingFee: fee }),
       addItem: (product) => {
         const currentItems = get().items;
         const existingItem = currentItems.find((item) => item.id === product.id);

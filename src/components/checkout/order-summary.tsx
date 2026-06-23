@@ -7,10 +7,9 @@ import { useEffect, useState } from "react";
 
 export const OrderSummary = () => {
   const [mounted, setMounted] = useState(false);
-  const { items, getTotalPrice, updateQuantity, removeItem } = useCartStore();
+  const { items, getTotalPrice, updateQuantity, removeItem, shippingFee } = useCartStore();
   const subtotal = getTotalPrice();
-  const shipping = 0; // Complimentary
-  const total = subtotal + shipping;
+  const total = subtotal + shippingFee;
 
   useEffect(() => {
     setMounted(true);
@@ -93,7 +92,9 @@ export const OrderSummary = () => {
           </div>
           <div className="flex justify-between text-sm">
             <span className="text-text-secondary">Shipping</span>
-            <span className="text-amber-700 font-bold uppercase tracking-widest text-[10px]">Complimentary</span>
+            <span className={shippingFee === 0 ? "text-amber-700 font-bold uppercase tracking-widest text-[10px]" : "text-text-primary font-bold"}>
+              {shippingFee === 0 ? "Complimentary" : `AUD $${shippingFee}.00`}
+            </span>
           </div>
           <div className="flex justify-between items-center pt-4">
             <span className="text-lg font-display font-bold text-text-primary">Total</span>

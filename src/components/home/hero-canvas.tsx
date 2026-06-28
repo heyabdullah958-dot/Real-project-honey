@@ -211,7 +211,7 @@ export const HeroCanvas = () => {
         <div className="act-4-block absolute inset-0 flex flex-col items-center justify-center opacity-0">
           <div className="act-4-content text-center px-6">
             <h2 className="text-5xl md:text-8xl font-display font-bold text-stone-800 mb-12">Secure Your <br /><span className="text-amber-700">Liquid Gold.</span></h2>
-            <Link href="/products" className="inline-block bg-amber-700 text-void font-bold uppercase tracking-[0.2em] px-12 py-6 rounded-2xl hover:bg-amber-400 transition-all shadow-xl hover:scale-105 active:scale-95 pointer-events-auto">Shop Collection</Link>
+            <Link href="/products" className="inline-block amber-gradient text-white font-bold uppercase tracking-[0.2em] px-12 py-6 rounded-2xl hover:brightness-110 transition-all shadow-xl hover:scale-105 active:scale-95 pointer-events-auto">Shop Collection</Link>
           </div>
         </div>
       </div>

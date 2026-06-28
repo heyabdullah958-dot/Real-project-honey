@@ -50,7 +50,7 @@ export default function CookieConsent() {
                   </Link>.
                 </p>
                 <div className="flex gap-3">
-                  <Button onClick={acceptCookies} size="sm" className="bg-amber-700 text-white hover:bg-amber-400 font-bold px-6">
+                  <Button onClick={acceptCookies} size="sm" className="amber-gradient text-white hover:brightness-110 font-bold px-6">
                     Accept
                   </Button>
                   <Button 

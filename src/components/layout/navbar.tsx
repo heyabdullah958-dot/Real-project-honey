@@ -176,7 +176,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="fixed inset-0 top-[112px] bg-black/50 z-30 md:hidden"
+              className="fixed inset-0 top-[116px] bg-black/50 z-30 md:hidden"
               onClick={() => setMobileMenuOpen(false)}
             />
             {/* Menu Panel */}
@@ -186,7 +186,7 @@ const Navbar = () => {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed top-[112px] left-0 right-0 bg-[#FBF5E9] border-b border-amber-900/10 shadow-lg md:hidden overflow-y-auto max-h-[calc(100vh-112px)] z-40"
+              className="fixed top-[116px] left-0 right-0 bg-[#FBF5E9] border-b border-amber-900/10 shadow-lg md:hidden overflow-y-auto max-h-[calc(100vh-116px)] z-40"
             >
               <div className="p-6 flex flex-col gap-6">
                 {navLinks.map((link) => (

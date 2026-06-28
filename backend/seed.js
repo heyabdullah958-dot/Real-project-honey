@@ -57,7 +57,7 @@ const products = [
     taste: "Medium",
     image: "/assets/products/mgo-263.png",
     color: "#D4930A",
-    stock: 25,
+    stock: 0,
     isActive: true
   },
   {
@@ -76,7 +76,7 @@ const products = [
     taste: "Strong",
     image: "/assets/products/mgo-400.png",
     color: "#B87800",
-    stock: 15,
+    stock: 0,
     isActive: true
   },
   {
@@ -115,7 +115,7 @@ const products = [
     image: "/assets/products/mgo-263.png",
     color: "#D4930A",
     parentSlug: "mgo-263",
-    stock: 8,
+    stock: 0,
     isActive: true
   },
   {

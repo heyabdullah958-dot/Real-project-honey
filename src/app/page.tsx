@@ -71,7 +71,7 @@ export default async function Home() {
               </p>
               <Link 
                 href="/wellness-quiz"
-                className="inline-block bg-amber-700 text-white font-bold uppercase tracking-[0.2em] px-12 py-6 rounded-2xl hover:bg-amber-400 transition-all shadow-2xl shadow-amber-700/20 hover:scale-105 active:scale-95"
+                className="inline-block amber-gradient text-white font-bold uppercase tracking-[0.2em] px-12 py-6 rounded-2xl hover:brightness-110 transition-all shadow-2xl shadow-amber-700/20 hover:scale-105 active:scale-95"
               >
                 Find My Match
               </Link>

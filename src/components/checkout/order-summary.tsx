@@ -46,7 +46,7 @@ export const OrderSummary = () => {
                   <div className="flex flex-col gap-1 min-w-0">
                     <h4 className="text-sm font-bold text-text-primary leading-tight truncate">{item.name}</h4>
                     <div className="flex items-center gap-2 md:gap-3">
-                      <div className="flex items-center bg-white/[0.05] border border-white/10 rounded-lg p-0.5 md:p-1">
+                      <div className="flex items-center bg-amber-700/[0.02] border border-amber-900/10 rounded-lg p-0.5 md:p-1">
                         <button 
                           onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
                           className="w-5 h-5 md:w-6 md:h-6 flex items-center justify-center text-text-muted hover:text-amber-700 transition-colors"
@@ -55,8 +55,13 @@ export const OrderSummary = () => {
                         </button>
                         <span className="w-5 md:w-6 text-center text-[10px] md:text-[11px] font-bold text-text-primary">{item.quantity}</span>
                         <button 
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="w-5 h-5 md:w-6 md:h-6 flex items-center justify-center text-text-muted hover:text-amber-700 transition-colors"
+                          onClick={() => {
+                            if (item.stock === undefined || item.quantity < item.stock) {
+                              updateQuantity(item.id, item.quantity + 1);
+                            }
+                          }}
+                          className="w-5 h-5 md:w-6 md:h-6 flex items-center justify-center text-text-muted hover:text-amber-700 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                          disabled={item.stock !== undefined && item.stock > 0 && item.quantity >= item.stock}
                         >
                           <Plus className="w-2.5 h-2.5 md:w-3 md:h-3" />
                         </button>
@@ -85,7 +90,7 @@ export const OrderSummary = () => {
           )}
         </div>
 
-        <div className="space-y-4 pt-6 border-t border-white/5">
+        <div className="space-y-4 pt-6 border-t border-amber-900/10">
           <div className="flex justify-between text-sm">
             <span className="text-text-secondary">Subtotal</span>
             <span className="text-text-primary font-bold">AUD ${subtotal}.00</span>
@@ -105,11 +110,11 @@ export const OrderSummary = () => {
 
       <div className="grid grid-cols-1 gap-4">
         {[
-          { icon: ShieldCheck, text: "Authenticity Guaranteed" },
+          { icon: ShieldCheck, text: "Scientifically Verified" },
           { icon: Award, text: "Quality Assured" },
           { icon: Truck, text: "Insured Shipping" }
         ].map((badge, i) => (
-          <div key={i} className="flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/[0.02] border border-white/5">
+          <div key={i} className="flex items-center gap-4 px-6 py-4 rounded-2xl bg-amber-700/[0.02] border border-amber-900/10">
             <badge.icon className="w-5 h-5 text-amber-700/50" />
             <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-text-muted">{badge.text}</span>
           </div>

@@ -39,7 +39,7 @@ const FloatingInput = ({ label, name, type = "text", required = true, onChange }
         animate={{
           y: isFocused || value ? -28 : 0,
           scale: isFocused || value ? 0.8 : 1,
-          color: isFocused ? "#f59e0b" : "#111111B3", // text-text-primary/70
+          color: isFocused ? "#784E00" : "#111111B3", // text-text-primary/70
           x: isFocused || value ? -10 : 0,
         }}
         className="absolute left-6 top-4 pointer-events-none text-sm font-medium origin-top-left z-10"
@@ -54,7 +54,7 @@ const FloatingInput = ({ label, name, type = "text", required = true, onChange }
         onChange={handleChange}
         onFocus={() => setIsFocused(true)}
         onBlur={handleBlur}
-        className="w-full h-14 rounded-2xl bg-white/[0.03] border border-white/10 px-6 pt-4 text-text-primary/70 focus:outline-none focus:border-amber-700/50 transition-all duration-300 group-hover:bg-white/[0.05]"
+        className="w-full h-14 rounded-2xl bg-white border border-amber-900/20 px-6 pt-4 text-text-primary focus:outline-none focus:border-amber-700 transition-all duration-300 group-hover:bg-[#FAF6F0]"
       />
     </div>
   );
@@ -63,14 +63,14 @@ const FloatingInput = ({ label, name, type = "text", required = true, onChange }
 const CARD_OPTIONS = {
   style: {
     base: {
-      color: "#f59e0b", // text-amber-500
+      color: "#111111", // text-text-primary
       fontFamily: '"Inter", sans-serif',
       fontSmoothing: "antialiased",
       fontSize: "14px",
       "::placeholder": {
-        color: "rgba(255, 255, 255, 0.4)",
+        color: "#6B6B6B", // text-text-muted
       },
-      iconColor: "#f59e0b",
+      iconColor: "#784E00", // text-amber-700
     },
     invalid: {
       color: "#ef4444",
@@ -195,18 +195,13 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
           <FloatingInput label="Email Address" name="email" type="email" />
           <FloatingInput label="City" name="city" onChange={handleCityChange} />
         </div>
-        <div className="relative group">
-          <motion.label
-            initial={false}
-            className="absolute left-6 top-4 pointer-events-none text-sm font-medium text-text-primary/70 z-10"
-          >
-            Detailed Shipping Address
-          </motion.label>
+        <div className="flex flex-col gap-2">
+          <label className="text-[10px] uppercase tracking-widest text-text-muted font-bold ml-4">Detailed Shipping Address</label>
           <textarea
             name="address"
             required
             rows={3}
-            className="w-full rounded-2xl bg-white/[0.03] border border-white/10 px-6 pt-10 text-text-primary/70 focus:outline-none focus:border-amber-700/50 transition-all duration-300 group-hover:bg-white/[0.05] resize-none"
+            className="w-full rounded-2xl bg-white border border-amber-900/20 px-6 py-4 text-text-primary focus:outline-none focus:border-amber-700 transition-all duration-300 group-hover:bg-[#FAF6F0] resize-none"
           />
         </div>
       </div>
@@ -228,7 +223,7 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
               </div>
            </div>
 
-           <div className="p-4 rounded-xl bg-black/20 border border-white/5">
+           <div className="p-4 rounded-xl bg-white border border-amber-900/20">
              <CardElement options={CARD_OPTIONS} />
            </div>
            
@@ -239,7 +234,7 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
       </div>
 
       {/* Sustainable Shipping Info */}
-      <div className="px-6 py-5 rounded-2xl bg-white/[0.02] border border-white/5 flex items-start gap-4">
+      <div className="px-6 py-5 rounded-2xl bg-amber-700/[0.02] border border-amber-900/10 flex items-start gap-4">
         <div className="mt-1">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-amber-800">
             <path d="M21 8L12 3L3 8V16L12 21L21 16V8Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

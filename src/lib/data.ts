@@ -56,7 +56,7 @@ export const products: Product[] = [
     taste: "Medium",
     image: "/assets/products/mgo-263.webp",
     color: "#D4930A",
-    stock: 25,
+    stock: 0,
   },
   {
     id: "mgo-400",
@@ -75,7 +75,7 @@ export const products: Product[] = [
     taste: "Strong",
     image: "/assets/products/mgo-400.webp",
     color: "#B87800",
-    stock: 15,
+    stock: 0,
   },
   {
     id: "mgo-800",
@@ -114,7 +114,7 @@ export const products: Product[] = [
     image: "/assets/products/mgo-263.webp",
     color: "#D4930A",
     parentSlug: "mgo-263",
-    stock: 8,
+    stock: 0,
   },
   {
     id: "mgo-30-pack-5",

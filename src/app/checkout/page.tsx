@@ -43,12 +43,12 @@ export default function CheckoutPage() {
                Secure <span className="text-amber-700">Checkout</span>
              </h1>
           </div>
-          <div className="flex items-center gap-6 px-6 py-3 rounded-2xl bg-white/[0.03] border border-white/5">
+          <div className="flex items-center gap-6 px-6 py-3 rounded-2xl bg-amber-700/[0.02] border border-amber-900/10">
              <div className="flex items-center gap-3">
                 <Lock className="w-4 h-4 text-amber-700" />
                 <span className="text-[10px] uppercase tracking-widest font-bold text-text-primary">Encrypted</span>
              </div>
-             <div className="w-px h-4 bg-white/10" />
+             <div className="w-px h-4 bg-amber-900/20" />
              <div className="flex items-center gap-3">
                 <ShieldCheck className="w-4 h-4 text-amber-700" />
                 <span className="text-[10px] uppercase tracking-widest font-bold text-text-primary">Verified</span>

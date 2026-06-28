@@ -34,7 +34,7 @@ exports.create = async (req, res, next) => {
   try {
     const {
       slug, name, mgo, price, size, activityLevel, rating,
-      tagline, description, benefits, bestFor, activity, taste, image, color
+      tagline, description, benefits, bestFor, activity, taste, image, color, stock
     } = req.body;
 
     // Check unique slug
@@ -45,7 +45,7 @@ exports.create = async (req, res, next) => {
 
     const product = await Product.create({
       slug, name, mgo, price, size, activityLevel, rating,
-      tagline, description, benefits, bestFor, activity, taste, image, color
+      tagline, description, benefits, bestFor, activity, taste, image, color, stock
     });
 
     res.status(201).json({ success: true, message: 'Product created successfully.', data: product });

@@ -123,17 +123,16 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
     };
 
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_API_URL || '';
-      
-      // 1. Create PaymentIntent on the backend
-      const piResponse = await fetch(`${backendUrl}/api/payments/create-payment-intent`, {
+      // 1. Create PaymentIntent — always use relative Next.js API route
+      const piResponse = await fetch(`/api/payments/create-payment-intent`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: orderData.totalAmount }),
       });
 
       if (!piResponse.ok) {
-        throw new Error("Failed to initialize payment.");
+        const errData = await piResponse.json().catch(() => ({}));
+        throw new Error(errData.message || "Failed to initialize payment.");
       }
 
       const { clientSecret } = await piResponse.json();
@@ -158,38 +157,20 @@ export const CheckoutForm = ({ onSuccess }: { onSuccess: () => void }) => {
         return;
       }
 
-      // 3. Payment succeeded, create the order in our backend
+      // 3. Payment succeeded, save order via Next.js API route
       if (paymentResult.paymentIntent && paymentResult.paymentIntent.status === 'succeeded') {
-        let orderResponse;
-        try {
-          orderResponse = await fetch(`${backendUrl}/api/orders`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              ...orderData,
-              paymentId: paymentResult.paymentIntent.id,
-              paymentStatus: 'paid'
-            })
-          });
-          
-          if (!orderResponse.ok) {
-            throw new Error(`Express backend responded with status ${orderResponse.status}`);
-          }
-        } catch (backendError) {
-          console.warn("Express backend failed, falling back to local Next.js API route:", backendError);
-          orderResponse = await fetch('/api/orders', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              ...orderData,
-              paymentId: paymentResult.paymentIntent.id,
-              paymentStatus: 'paid'
-            })
-          });
-        }
+        const orderResponse = await fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...orderData,
+            paymentId: paymentResult.paymentIntent.id,
+            paymentStatus: 'paid'
+          })
+        });
 
         if (orderResponse.ok) {
-          onSuccess(); 
+          onSuccess();
         } else {
           setPaymentError("Payment successful, but failed to save order. Please contact support.");
         }

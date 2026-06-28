@@ -97,8 +97,13 @@ const CartDrawer = () => {
                           </button>
                           <span className="text-xs font-bold w-4 text-center">{item.quantity}</span>
                           <button 
-                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                             className="w-6 h-6 flex items-center justify-center text-text-muted hover:text-amber-700 transition-colors"
+                             onClick={() => {
+                               if (item.stock === undefined || item.quantity < item.stock) {
+                                 updateQuantity(item.id, item.quantity + 1);
+                               }
+                             }}
+                             className="w-6 h-6 flex items-center justify-center text-text-muted hover:text-amber-700 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                             disabled={item.stock !== undefined && item.stock > 0 && item.quantity >= item.stock}
                           >
                             <Plus className="w-3 h-3" />
                           </button>

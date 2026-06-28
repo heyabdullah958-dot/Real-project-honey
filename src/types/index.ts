@@ -16,4 +16,5 @@ export interface Product {
   color: string;
   slug: string;
   parentSlug?: string;
+  stock?: number;
 }

@@ -1,12 +1,18 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2025-02-24.acacia',
-});
+const stripe = process.env.STRIPE_SECRET_KEY
+  ? new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: '2026-05-27.dahlia',
+    })
+  : null;
 
 export async function POST(req: Request) {
   try {
+    if (!stripe) {
+      console.error('Stripe API key is missing');
+      return NextResponse.json({ success: false, message: 'Configuration error' }, { status: 500 });
+    }
     const body = await req.json();
     const { amount } = body;
 

@@ -42,6 +42,7 @@ const db = {
       taste: "Mild",
       image: "/assets/products/mgo-30.png",
       color: "#C8A96E",
+      stock: 50,
       isActive: true
     },
     {
@@ -60,6 +61,7 @@ const db = {
       taste: "Mild-Med",
       image: "/assets/products/mgo-100.png",
       color: "#C49A2A",
+      stock: 10,
       isActive: true
     },
     {
@@ -78,6 +80,7 @@ const db = {
       taste: "Medium",
       image: "/assets/products/mgo-263.png",
       color: "#D4930A",
+      stock: 25,
       isActive: true
     },
     {
@@ -96,6 +99,7 @@ const db = {
       taste: "Strong",
       image: "/assets/products/mgo-400.png",
       color: "#B87800",
+      stock: 15,
       isActive: true
     },
     {
@@ -114,6 +118,7 @@ const db = {
       taste: "Intense",
       image: "/assets/products/mgo-800.png",
       color: "#9B6500",
+      stock: 0,
       isActive: true
     }
   ],

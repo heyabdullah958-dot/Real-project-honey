@@ -18,6 +18,7 @@ export const products: Product[] = [
     taste: "Mild",
     image: "/assets/products/mgo-30.webp",
     color: "#C8A96E",
+    stock: 50,
   },
   {
     id: "mgo-100",
@@ -36,6 +37,7 @@ export const products: Product[] = [
     taste: "Mild-Med",
     image: "/assets/products/mgo-100.webp",
     color: "#C49A2A",
+    stock: 10,
   },
   {
     id: "mgo-263",
@@ -54,6 +56,7 @@ export const products: Product[] = [
     taste: "Medium",
     image: "/assets/products/mgo-263.webp",
     color: "#D4930A",
+    stock: 25,
   },
   {
     id: "mgo-400",
@@ -72,6 +75,7 @@ export const products: Product[] = [
     taste: "Strong",
     image: "/assets/products/mgo-400.webp",
     color: "#B87800",
+    stock: 15,
   },
   {
     id: "mgo-800",
@@ -90,6 +94,7 @@ export const products: Product[] = [
     taste: "Rich",
     image: "/assets/products/mgo-800.webp",
     color: "#9B6500",
+    stock: 0,
   },
   {
     id: "mgo-263-pack-3",
@@ -109,6 +114,7 @@ export const products: Product[] = [
     image: "/assets/products/mgo-263.webp",
     color: "#D4930A",
     parentSlug: "mgo-263",
+    stock: 8,
   },
   {
     id: "mgo-30-pack-5",
@@ -128,6 +134,7 @@ export const products: Product[] = [
     image: "/assets/products/mgo-30.webp",
     color: "#C8A96E",
     parentSlug: "mgo-30",
+    stock: 10,
   },
   {
     id: "mgo-30-pack-3",
@@ -147,6 +154,7 @@ export const products: Product[] = [
     image: "/assets/products/mgo-30.webp",
     color: "#C8A96E",
     parentSlug: "mgo-30",
+    stock: 15,
   },
   {
     id: "mgo-100-pack-3",
@@ -166,6 +174,7 @@ export const products: Product[] = [
     image: "/assets/products/mgo-100.webp",
     color: "#C49A2A",
     parentSlug: "mgo-100",
+    stock: 3,
   },
   {
     id: "mgo-100-pack-5",
@@ -185,5 +194,6 @@ export const products: Product[] = [
     image: "/assets/products/mgo-100.webp",
     color: "#C49A2A",
     parentSlug: "mgo-100",
+    stock: 2,
   }
 ];

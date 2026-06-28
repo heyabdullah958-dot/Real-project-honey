@@ -58,7 +58,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
       "@type": "Offer",
       "price": product.price,
       "priceCurrency": "AUD",
-      "availability": "https://schema.org/InStock"
+      "availability": product.stock === 0 ? "https://schema.org/OutOfStock" : "https://schema.org/InStock"
     }
   };
 

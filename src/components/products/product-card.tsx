@@ -16,7 +16,11 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ product, className }: ProductCardProps) => {
-  const { addItem, setIsOpen } = useCartStore();
+  const { addItem, setIsOpen, items } = useCartStore();
+  const cartItem = items.find((item) => item.id === product.id);
+  const cartQuantity = cartItem ? cartItem.quantity : 0;
+  const isOutOfStock = product.stock === 0;
+  const isStockLimitReached = product.stock !== undefined && product.stock > 0 && cartQuantity >= product.stock;
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -54,6 +58,7 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    if (isOutOfStock || isStockLimitReached) return;
     addItem(product);
     setIsOpen(true);
   };
@@ -131,6 +136,19 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
             MGO {product.mgo}
           </span>
         </div>
+
+        {/* Stock Status Badge */}
+        <div className="absolute top-6 right-6 z-20">
+          {isOutOfStock ? (
+            <span className="bg-red-800 text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
+              Sold Out
+            </span>
+          ) : product.stock !== undefined && product.stock > 0 && product.stock <= 10 ? (
+            <span className="bg-amber-800 text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
+              Only {product.stock} Left
+            </span>
+          ) : null}
+        </div>
       </Link>
 
       {/* Content */}
@@ -170,9 +188,13 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
             </span>
           </div>
           <Button 
-            className="rounded-2xl h-14 w-14 group/btn transition-all duration-300"
-            style={{ backgroundColor: product.color, color: "#050505" }}
+            className="rounded-2xl h-14 w-14 group/btn transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{ 
+              backgroundColor: (isOutOfStock || isStockLimitReached) ? "#333333" : product.color, 
+              color: (isOutOfStock || isStockLimitReached) ? "#888888" : "#050505" 
+            }}
             onClick={handleAddToCart}
+            disabled={isOutOfStock || isStockLimitReached}
           >
             <ShoppingCart className="w-6 h-6 transition-transform duration-300 group-hover/btn:scale-110" />
           </Button>

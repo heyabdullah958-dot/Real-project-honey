@@ -20,6 +20,7 @@ const bundleProducts = [
     image: "/assets/products/mgo-263.png",
     color: "#D4930A",
     parentSlug: "mgo-263",
+    stock: 0,
     isActive: true
   },
   {
@@ -39,6 +40,7 @@ const bundleProducts = [
     image: "/assets/products/mgo-30.png",
     color: "#C8A96E",
     parentSlug: "mgo-30",
+    stock: 10,
     isActive: true
   },
   {
@@ -58,6 +60,7 @@ const bundleProducts = [
     image: "/assets/products/mgo-30.png",
     color: "#C8A96E",
     parentSlug: "mgo-30",
+    stock: 15,
     isActive: true
   },
   {
@@ -77,6 +80,7 @@ const bundleProducts = [
     image: "/assets/products/mgo-100.png",
     color: "#C49A2A",
     parentSlug: "mgo-100",
+    stock: 3,
     isActive: true
   },
   {
@@ -96,6 +100,7 @@ const bundleProducts = [
     image: "/assets/products/mgo-100.png",
     color: "#C49A2A",
     parentSlug: "mgo-100",
+    stock: 2,
     isActive: true
   }
 ];

@@ -37,7 +37,7 @@ export const products: Product[] = [
     taste: "Mild-Med",
     image: "/assets/products/mgo-100.webp",
     color: "#C49A2A",
-    stock: 10,
+    stock: 0,
   },
   {
     id: "mgo-263",

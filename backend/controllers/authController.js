@@ -34,7 +34,7 @@ exports.register = async (req, res, next) => {
     }
 
     // Check if user already exists
-    const userExists = await User.findOne({ email });
+    const userExists = await User.findOne({ email: email.toLowerCase() });
     if (userExists) {
       return res.status(409).json({ success: false, message: 'Email already registered.' });
     }
@@ -78,16 +78,20 @@ exports.login = async (req, res, next) => {
     }
 
     // Check user and password (select password as it is hidden by default)
-    const user = await User.findOne({ email }).select('+password');
+    console.log("Login attempt for email:", email);
+    const lowercaseEmail = email.toLowerCase();
+    const user = await User.findOne({ email: lowercaseEmail }).select('+password');
     if (!user) {
+      console.log("User not found for email:", lowercaseEmail);
       return res.status(401).json({ success: false, message: 'Invalid credentials.' });
     }
 
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
+      console.log("Password mismatch for user:", lowercaseEmail);
       return res.status(401).json({ success: false, message: 'Invalid credentials.' });
     }
-
+    console.log("Login successful for user:", lowercaseEmail);
     const accessToken = generateAccessToken(user._id);
     const refreshToken = generateRefreshToken(user._id);
     setRefreshCookie(res, refreshToken);

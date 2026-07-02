@@ -8,12 +8,12 @@ const router = express.Router();
 
 const registerRules = [
   body('fullName').trim().notEmpty().withMessage('Full name is required.'),
-  body('email').isEmail().withMessage('Please provide a valid email.').normalizeEmail(),
+  body('email').trim().toLowerCase().isEmail().withMessage('Please provide a valid email.'),
   body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long.')
 ];
 
 const loginRules = [
-  body('email').isEmail().withMessage('Please provide a valid email.').normalizeEmail(),
+  body('email').trim().toLowerCase().isEmail().withMessage('Please provide a valid email.'),
   body('password').notEmpty().withMessage('Password is required.')
 ];
 

@@ -318,6 +318,10 @@ export default function AdminDashboard() {
     setEditFormData({});
   };
 
+  // Auto-generate a URL-safe slug from a product name
+  const generateSlug = (name: string) =>
+    name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
   const handleProductInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
     
@@ -326,6 +330,13 @@ export default function AdminDashboard() {
       setEditFormData(prev => ({ ...prev, [name]: checked }));
     } else if (name === 'price' || name === 'mgo' || name === 'rating' || name === 'activityLevel') {
       setEditFormData(prev => ({ ...prev, [name]: Number(value) }));
+    } else if (name === 'name' && !editingProduct?._id) {
+      // Auto-generate slug from name only when creating a new product
+      setEditFormData(prev => ({ ...prev, [name]: value, slug: generateSlug(value) }));
+    } else if (name === 'slug') {
+      // Sanitize slug input: lowercase, hyphens only, no spaces
+      const sanitized = value.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-');
+      setEditFormData(prev => ({ ...prev, [name]: sanitized }));
     } else {
       setEditFormData(prev => ({ ...prev, [name]: value }));
     }
@@ -481,6 +492,12 @@ export default function AdminDashboard() {
         setProducts(prev => prev.map(p => p.slug === editingProduct.slug ? data.data : p));
         showSuccess(`Product "${payload.name}" updated successfully.`);
       }
+      
+      // Trigger Next.js revalidation so storefront shows updated products immediately
+      try {
+        await fetch('/api/revalidate?path=/products', { method: 'POST' });
+        await fetch('/api/revalidate?path=/', { method: 'POST' });
+      } catch (_) { /* revalidation is best-effort */ }
       
       closeEditModal();
     } catch (err: any) {

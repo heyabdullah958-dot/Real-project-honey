@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-export const revalidate = 60;
+export const revalidate = 30; // Products refresh every 30s; admin changes trigger instant revalidation
 
 export const metadata: Metadata = {
   title: "Shop All Manuka Honey | Amazing Natures Australia",

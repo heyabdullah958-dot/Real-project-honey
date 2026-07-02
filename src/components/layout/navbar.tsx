@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ShoppingCart, Menu, X, ChevronDown } from "lucide-react";
+import { ShoppingCart, Menu, X, ChevronDown, User } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -133,6 +133,12 @@ const Navbar = () => {
 
         {/* Actions */}
         <div className="flex items-center gap-4">
+          <Link href="/admin/login" className="hidden md:flex" aria-label="Admin Login">
+            <Button variant="ghost" size="icon" className="text-text-secondary hover:text-amber-700 hover:bg-amber-700/5">
+              <User className="w-5 h-5" />
+            </Button>
+          </Link>
+
           <Button 
             variant="ghost" 
             size="icon" 
@@ -201,6 +207,9 @@ const Navbar = () => {
                 ))}
                 <div className="flex flex-col gap-3 mt-2">
 
+                  <Link href="/admin/login" onClick={() => setMobileMenuOpen(false)}>
+                    <Button variant="outline" className="w-full border-amber-900/20 text-amber-900 hover:bg-amber-50">Admin Login</Button>
+                  </Link>
                   <Link href="/products" onClick={() => setMobileMenuOpen(false)}>
                     <Button className="w-full">Shop Now</Button>
                   </Link>
